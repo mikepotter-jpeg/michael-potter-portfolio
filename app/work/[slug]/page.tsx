@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProjectBySlug, getAllProjects } from '@/lib/projects'
+import TableOfContents from '@/components/table-of-contents'
 
 interface Props {
   params: { slug: string }
@@ -104,33 +105,7 @@ export default function ProjectPage({ params }: Props) {
             {/* Sticky Sidebar TOC - Left column on xl screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
               <aside className="hidden xl:block w-48 shrink-0">
-                <nav 
-                  aria-label="Page contents" 
-                  className="sticky top-32"
-                >
-                  {/* Back to top */}
-                  <a 
-                    href="#top" 
-                    className="no-underline block text-text-tertiary hover:text-action transition-colors mb-5 text-lg leading-none"
-                    aria-label="Back to top"
-                  >
-                    ⌃
-                  </a>
-                  
-                  {/* Section links */}
-                  <ul className="space-y-2.5 text-sm">
-                    {project.tableOfContents.map((item) => (
-                      <li key={item.id}>
-                        <a 
-                          href={`#${item.id}`}
-                          className="block text-text-tertiary hover:text-text-primary transition-colors leading-snug"
-                        >
-                          {item.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
+                <TableOfContents items={project.tableOfContents} />
               </aside>
             )}
 
