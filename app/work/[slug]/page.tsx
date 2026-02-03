@@ -100,10 +100,10 @@ export default function ProjectPage({ params }: Props) {
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16 px-5">
         <div className="w-full max-w-7xl mx-auto">
-          <div className="flex gap-16 justify-center">
-            {/* Sticky Sidebar TOC - Left column on large screens */}
+          <div className="flex gap-12 xl:gap-20">
+            {/* Sticky Sidebar TOC - Left column on xl screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
-              <aside className="hidden lg:block w-44 shrink-0">
+              <aside className="hidden xl:block w-48 shrink-0">
                 <nav 
                   aria-label="Page contents" 
                   className="sticky top-32"
@@ -156,7 +156,7 @@ export default function ProjectPage({ params }: Props) {
                   {/* Back to top link - visible on smaller screens without sidebar */}
                   <a 
                     href="#top"
-                    className="lg:hidden inline-flex items-center gap-2 mt-8"
+                    className="xl:hidden inline-flex items-center gap-2 mt-8"
                   >
                     Back to top
                     <svg 
