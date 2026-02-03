@@ -45,7 +45,7 @@ export default function ProjectPage({ params }: Props) {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-5 bg-background-secondary">
+      <section id="top" className="py-16 md:py-24 px-5 bg-background-secondary scroll-mt-20">
         <div className="w-full max-w-content mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-3 text-sm text-text-tertiary mb-8">
@@ -146,7 +146,7 @@ export default function ProjectPage({ params }: Props) {
                 />
                 {/* Back to top link - Following Agriculture Design System pattern */}
                 <a 
-                  href="#page-contents"
+                  href="#top"
                   className="inline-flex items-center gap-2 mt-8 text-action hover:opacity-70 transition-opacity group"
                 >
                   <svg 
@@ -156,9 +156,8 @@ export default function ProjectPage({ params }: Props) {
                     fill="none" 
                     stroke="currentColor" 
                     strokeWidth="2"
-                    className="rotate-180"
                   >
-                    <path d="M8 3v10M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M8 13V3M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   <span className="underline underline-offset-4">Back to top</span>
                 </a>
