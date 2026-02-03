@@ -32,65 +32,76 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function ProjectPage({ params }: Props) {
   const project = getProjectBySlug(params.slug)
+  const allProjects = getAllProjects()
 
   if (!project) {
     notFound()
   }
 
+  // Find next project
+  const currentIndex = allProjects.findIndex(p => p.slug === project.slug)
+  const nextProject = allProjects[(currentIndex + 1) % allProjects.length]
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 px-5">
+      <section className="py-16 md:py-24 px-5 bg-background-secondary">
         <div className="w-full max-w-content mx-auto">
-          <Link 
-            href="/work" 
-            className="inline-flex items-center gap-2 text-sm text-text-tertiary hover:text-text-primary transition-colors mb-8 group"
-          >
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-              className="transition-transform group-hover:-translate-x-1"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back to work
-          </Link>
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-3 text-sm text-text-tertiary mb-8">
+            <Link href="/work" className="hover:text-text-primary transition-colors">
+              My work
+            </Link>
+            <span>›</span>
+            <span className="text-text-primary">{project.title}</span>
+          </nav>
 
-          <div className="max-w-3xl">
-            {/* Categories */}
-            {project.categories.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.categories.map((category) => (
-                  <span
-                    key={category}
-                    className="px-3 py-1 text-sm bg-background-secondary rounded-full text-text-tertiary"
-                  >
-                    {category}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-8">
+          <div className="max-w-3xl space-y-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
               {project.title}
             </h1>
             
             <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
               {project.description}
             </p>
+
+            {/* Meta info */}
+            <div className="flex flex-wrap gap-8 pt-4">
+              <div>
+                <p className="text-sm font-semibold text-text-primary mb-1">Client</p>
+                <p className="text-text-secondary">{project.client}</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-text-primary mb-1">Timeline</p>
+                <p className="text-text-secondary">{project.years}</p>
+              </div>
+            </div>
+
+            {/* Table of Contents */}
+            {project.tableOfContents && project.tableOfContents.length > 0 && (
+              <div className="pt-4 pl-6 border-l-2 border-border">
+                <p className="text-sm font-semibold text-text-primary mb-3">On this page:</p>
+                <ul className="space-y-2">
+                  {project.tableOfContents.map((item) => (
+                    <li key={item.id}>
+                      <a 
+                        href={`#${item.id}`}
+                        className="text-text-secondary hover:text-action transition-colors"
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Cover Image */}
       {project.coverImage && (
-        <section className="px-5 pb-16">
+        <section className="px-5 py-16">
           <div className="w-full max-w-content mx-auto">
             <div className="relative aspect-video rounded-3xl overflow-hidden bg-background-secondary">
               <Image
@@ -105,20 +116,62 @@ export default function ProjectPage({ params }: Props) {
         </section>
       )}
 
-      {/* Content */}
-      {project.content && (
-        <section className="py-16 px-5">
+      {/* Content Sections */}
+      <section className="py-16 px-5">
+        <div className="w-full max-w-content mx-auto">
+          <div className="max-w-3xl space-y-20">
+            {project.sections.map((section) => (
+              <article key={section.id} id={section.id} className="scroll-mt-24">
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+                  {section.title}
+                </h2>
+                <div 
+                  className="prose prose-lg max-w-none
+                    prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-text-primary
+                    prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
+                    prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
+                    prose-a:text-action prose-a:underline prose-a:underline-offset-4 hover:prose-a:opacity-70
+                    prose-ul:text-text-secondary prose-ul:my-6 prose-ul:space-y-2
+                    prose-li:leading-relaxed
+                    prose-strong:text-text-primary prose-strong:font-semibold
+                    prose-img:rounded-2xl prose-img:my-8
+                    prose-figure:my-10"
+                  dangerouslySetInnerHTML={{ __html: section.content }}
+                />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Next Project */}
+      {nextProject && nextProject.slug !== project.slug && (
+        <section className="py-16 px-5 border-t border-border bg-background-secondary">
           <div className="w-full max-w-content mx-auto">
-            <div 
-              className="max-w-3xl prose-custom"
-              dangerouslySetInnerHTML={{ __html: project.content }}
-            />
+            <p className="text-sm font-semibold text-text-tertiary mb-2">Next Project</p>
+            <Link 
+              href={`/work/${nextProject.slug}`}
+              className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-text-primary hover:text-action transition-colors group"
+            >
+              {nextProject.title}
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                className="transition-transform group-hover:translate-x-2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
         </section>
       )}
 
-      {/* Next Project / CTA */}
-      <section className="py-20 md:py-28 px-5 border-t border-border">
+      {/* CTA */}
+      <section className="py-20 md:py-28 px-5">
         <div className="w-full max-w-content mx-auto text-center">
           <p className="text-text-tertiary mb-4">Interested in working together?</p>
           <a 

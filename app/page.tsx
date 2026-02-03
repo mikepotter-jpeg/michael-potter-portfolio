@@ -78,6 +78,8 @@ export default function Home() {
                 description={project.description}
                 categories={project.categories}
                 coverImage={project.coverImage}
+                client={project.client}
+                years={project.years}
                 index={index}
               />
             ))}

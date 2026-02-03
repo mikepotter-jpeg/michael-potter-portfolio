@@ -7,6 +7,8 @@ interface WorkCardProps {
   description: string
   categories?: string[]
   coverImage?: string
+  client?: string
+  years?: string
   index?: number
 }
 
