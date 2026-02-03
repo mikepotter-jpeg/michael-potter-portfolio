@@ -76,7 +76,7 @@ export default function AboutPage() {
                 </p>
                 <a 
                   href="mailto:michaelsavagepotter@gmail.com" 
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
+                  className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -95,7 +95,7 @@ export default function AboutPage() {
         <div className="w-full max-w-content mx-auto">
           <Link 
             href="/" 
-            className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors group"
+            className="inline-flex items-center gap-2"
           >
             Back to home
             <svg 
@@ -107,7 +107,6 @@ export default function AboutPage() {
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
-              className="transition-transform group-hover:-translate-x-1"
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>

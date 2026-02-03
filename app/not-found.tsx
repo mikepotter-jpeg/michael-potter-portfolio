@@ -13,7 +13,7 @@ export default function NotFound() {
         </p>
         <Link 
           href="/" 
-          className="inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
+          className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
         >
           Back to home
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

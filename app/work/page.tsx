@@ -64,7 +64,7 @@ export default function WorkPage() {
         <div className="w-full max-w-content mx-auto">
           <Link 
             href="/" 
-            className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors group"
+            className="inline-flex items-center gap-2"
           >
             Back to home
             <svg 
@@ -76,7 +76,6 @@ export default function WorkPage() {
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
-              className="transition-transform group-hover:-translate-x-1"
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>

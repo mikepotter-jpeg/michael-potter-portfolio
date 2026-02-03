@@ -90,10 +90,7 @@ export default function ProjectPage({ params }: Props) {
                 <ul className="space-y-2">
                   {project.tableOfContents.map((item) => (
                     <li key={item.id}>
-                      <a 
-                        href={`#${item.id}`}
-                        className="text-action underline underline-offset-4 hover:opacity-70 transition-opacity"
-                      >
+                      <a href={`#${item.id}`}>
                         {item.title}
                       </a>
                     </li>
@@ -136,7 +133,6 @@ export default function ProjectPage({ params }: Props) {
                     prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-text-primary
                     prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
                     prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
-                    prose-a:text-action prose-a:underline prose-a:underline-offset-4 hover:prose-a:opacity-70
                     prose-ul:text-text-secondary prose-ul:my-6 prose-ul:space-y-2
                     prose-li:leading-relaxed
                     prose-strong:text-text-primary prose-strong:font-semibold
@@ -144,13 +140,12 @@ export default function ProjectPage({ params }: Props) {
                     prose-figure:my-10"
                   dangerouslySetInnerHTML={{ __html: section.content }}
                 />
-                {/* Back to top link - Following Agriculture Design System pattern */}
-                {/* Icon after text since arrow indicates direction */}
+                {/* Back to top link - Icon after text since arrow indicates direction */}
                 <a 
                   href="#top"
-                  className="inline-flex items-center gap-2 mt-8 text-action hover:opacity-70 transition-opacity group"
+                  className="inline-flex items-center gap-2 mt-8"
                 >
-                  <span className="underline underline-offset-4">Back to top</span>
+                  Back to top
                   <svg 
                     width="16" 
                     height="16" 
@@ -175,7 +170,7 @@ export default function ProjectPage({ params }: Props) {
             <p className="text-sm font-semibold text-text-tertiary mb-2">Next Project</p>
             <Link 
               href={`/work/${nextProject.slug}`}
-              className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-text-primary hover:text-action transition-colors group"
+              className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold"
             >
               {nextProject.title}
               <svg 
@@ -200,7 +195,7 @@ export default function ProjectPage({ params }: Props) {
           <p className="text-text-tertiary mb-4">Interested in working together?</p>
           <a 
             href="mailto:michaelsavagepotter@gmail.com" 
-            className="inline-flex items-center gap-2 text-2xl font-semibold text-action hover:opacity-70 transition-opacity"
+            className="inline-flex items-center gap-2 text-2xl font-semibold"
           >
             Get in touch
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -32,9 +32,9 @@ export default function Home() {
             <div className="pt-4">
               <Link 
                 href="/about" 
-                className="inline-flex items-center gap-3 text-lg text-action hover:opacity-70 transition-opacity group"
+                className="inline-flex items-center gap-3 text-lg"
               >
-                <span className="underline underline-offset-4">Learn a little more about me</span>
+                Learn a little more about me
                 <svg 
                   width="20" 
                   height="20" 
@@ -42,7 +42,6 @@ export default function Home() {
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="2"
-                  className="transition-transform group-hover:translate-x-1"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -127,7 +126,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="mailto:michaelsavagepotter@gmail.com" 
-              className="inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -139,7 +138,7 @@ export default function Home() {
               href="https://linkedin.com/in/michaelpotter" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-full text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-full text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />

@@ -76,16 +76,31 @@ html {
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 
-/* Global link styling - muted underline */
-a:not(.no-underline):not([class*="rounded"]):not([class*="nav-"]) {
+/* Global link styling */
+a:not(.no-underline):not([class*="rounded"]) {
+  color: #2A3132; /* Primary text color */
   text-decoration: underline;
-  text-decoration-color: #CCCCCC;
+  text-decoration-color: #CCCCCC; /* Muted underline */
   text-underline-offset: 4px;
+  text-decoration-skip-ink: auto; /* Skip descenders */
+  text-decoration-thickness: 1px;
   transition: text-decoration-color 0.2s ease;
 }
 
-a:not(.no-underline):not([class*="rounded"]):not([class*="nav-"]):hover {
-  text-decoration-color: currentColor;
+a:not(.no-underline):not([class*="rounded"]):hover {
+  text-decoration-color: #0066FF; /* Blue on hover */
+}
+
+/* Link icons - secondary text color */
+a svg,
+a .link-icon {
+  color: #5F6566; /* Secondary/tertiary text color */
+  transition: color 0.2s ease;
+}
+
+a:hover svg,
+a:hover .link-icon {
+  color: #0066FF; /* Blue on hover */
 }
 
 /* Prose improvements */

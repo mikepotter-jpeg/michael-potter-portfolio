@@ -16,7 +16,7 @@ export default function WorkCard({ slug, title, description, categories = [], co
   return (
     <Link 
       href={`/work/${slug}`}
-      className="group block bg-background-secondary rounded-3xl overflow-hidden card-hover"
+      className="no-underline group block bg-background-secondary rounded-3xl overflow-hidden card-hover"
     >
       <div className="flex flex-col lg:flex-row">
         {/* Cover Image */}
@@ -64,8 +64,8 @@ export default function WorkCard({ slug, title, description, categories = [], co
             </div>
 
             {/* View Project Link */}
-            <div className="flex items-center gap-2 text-action font-medium pt-2">
-              <span>View project</span>
+            <div className="flex items-center gap-2 text-text-primary font-medium pt-2">
+              <span className="underline underline-offset-4 decoration-border group-hover:decoration-action transition-colors">View project</span>
               <svg 
                 width="20" 
                 height="20" 
@@ -73,7 +73,7 @@ export default function WorkCard({ slug, title, description, categories = [], co
                 fill="none" 
                 stroke="currentColor" 
                 strokeWidth="2"
-                className="transition-transform group-hover:translate-x-2"
+                className="text-text-tertiary group-hover:text-action transition-colors"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
