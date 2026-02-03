@@ -66,6 +66,7 @@ export default function WorkPage() {
             href="/" 
             className="inline-flex items-center gap-2 text-text-tertiary hover:text-text-primary transition-colors group"
           >
+            Back to home
             <svg 
               width="20" 
               height="20" 
@@ -79,7 +80,6 @@ export default function WorkPage() {
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            Back to home
           </Link>
         </div>
       </section>

@@ -145,10 +145,12 @@ export default function ProjectPage({ params }: Props) {
                   dangerouslySetInnerHTML={{ __html: section.content }}
                 />
                 {/* Back to top link - Following Agriculture Design System pattern */}
+                {/* Icon after text since arrow indicates direction */}
                 <a 
                   href="#top"
                   className="inline-flex items-center gap-2 mt-8 text-action hover:opacity-70 transition-opacity group"
                 >
+                  <span className="underline underline-offset-4">Back to top</span>
                   <svg 
                     width="16" 
                     height="16" 
@@ -159,7 +161,6 @@ export default function ProjectPage({ params }: Props) {
                   >
                     <path d="M8 13V3M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className="underline underline-offset-4">Back to top</span>
                 </a>
               </article>
             ))}
