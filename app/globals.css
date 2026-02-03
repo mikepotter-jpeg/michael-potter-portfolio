@@ -76,6 +76,18 @@ html {
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 
+/* Global link styling - muted underline */
+a:not(.no-underline):not([class*="rounded"]):not([class*="nav-"]) {
+  text-decoration: underline;
+  text-decoration-color: #CCCCCC;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+a:not(.no-underline):not([class*="rounded"]):not([class*="nav-"]):hover {
+  text-decoration-color: currentColor;
+}
+
 /* Prose improvements */
 .prose-custom h2 {
   @apply text-2xl font-semibold mt-12 mb-4 text-text-primary;
