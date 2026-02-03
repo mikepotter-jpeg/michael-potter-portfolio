@@ -99,11 +99,11 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16 px-5">
-        <div className="w-full max-w-content mx-auto">
-          <div className="relative">
-            {/* Sticky Sidebar TOC - Positioned in left margin on large screens */}
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="flex gap-16 justify-center">
+            {/* Sticky Sidebar TOC - Left column on large screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
-              <aside className="hidden lg:block absolute -left-56 w-44 top-0">
+              <aside className="hidden lg:block w-44 shrink-0">
                 <nav 
                   aria-label="Page contents" 
                   className="sticky top-32"
@@ -135,7 +135,7 @@ export default function ProjectPage({ params }: Props) {
             )}
 
             {/* Main content */}
-            <div className="max-w-3xl space-y-20">
+            <div className="max-w-3xl w-full space-y-20">
               {project.sections.map((section) => (
                 <article key={section.id} id={section.id} className="scroll-mt-24">
                   <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
