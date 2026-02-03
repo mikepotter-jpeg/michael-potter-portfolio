@@ -76,28 +76,6 @@ export default function ProjectPage({ params }: Props) {
                 <p className="text-text-secondary">{project.years}</p>
               </div>
             </div>
-
-            {/* Inpage Nav - Following Agriculture Design System pattern */}
-            {project.tableOfContents && project.tableOfContents.length > 0 && (
-              <nav 
-                aria-label="Page contents" 
-                className="border-l-4 border-action pl-6 py-1"
-                id="page-contents"
-              >
-                <h2 className="text-base font-semibold text-text-primary mb-3">
-                  On this page
-                </h2>
-                <ul className="space-y-2">
-                  {project.tableOfContents.map((item) => (
-                    <li key={item.id}>
-                      <a href={`#${item.id}`}>
-                        {item.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            )}
           </div>
         </div>
       </section>
@@ -119,46 +97,82 @@ export default function ProjectPage({ params }: Props) {
         </section>
       )}
 
-      {/* Content Sections */}
+      {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16 px-5">
         <div className="w-full max-w-content mx-auto">
-          <div className="max-w-3xl space-y-20">
-            {project.sections.map((section, index) => (
-              <article key={section.id} id={section.id} className="scroll-mt-24">
-                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
-                  {section.title}
-                </h2>
-                <div 
-                  className="prose prose-lg max-w-none
-                    prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-text-primary
-                    prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
-                    prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
-                    prose-ul:text-text-secondary prose-ul:my-6 prose-ul:space-y-2
-                    prose-li:leading-relaxed
-                    prose-strong:text-text-primary prose-strong:font-semibold
-                    prose-img:rounded-2xl prose-img:my-8
-                    prose-figure:my-10"
-                  dangerouslySetInnerHTML={{ __html: section.content }}
-                />
-                {/* Back to top link - Icon after text since arrow indicates direction */}
-                <a 
-                  href="#top"
-                  className="inline-flex items-center gap-2 mt-8"
+          <div className="flex gap-16">
+            {/* Sticky Sidebar TOC - Hidden on mobile, visible on xl screens */}
+            {project.tableOfContents && project.tableOfContents.length > 0 && (
+              <aside className="hidden xl:block w-48 shrink-0">
+                <nav 
+                  aria-label="Page contents" 
+                  className="sticky top-32"
                 >
-                  Back to top
-                  <svg 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 16 16" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2"
+                  {/* Back to top */}
+                  <a 
+                    href="#top" 
+                    className="no-underline block text-text-tertiary hover:text-action transition-colors mb-6 text-xl"
+                    aria-label="Back to top"
                   >
-                    <path d="M8 13V3M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </article>
-            ))}
+                    ⌃
+                  </a>
+                  
+                  {/* Section links */}
+                  <ul className="space-y-3 text-sm">
+                    {project.tableOfContents.map((item) => (
+                      <li key={item.id}>
+                        <a 
+                          href={`#${item.id}`}
+                          className="text-text-tertiary hover:text-text-primary transition-colors"
+                        >
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </aside>
+            )}
+
+            {/* Main content */}
+            <div className="flex-1 max-w-3xl space-y-20">
+              {project.sections.map((section) => (
+                <article key={section.id} id={section.id} className="scroll-mt-24">
+                  <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+                    {section.title}
+                  </h2>
+                  <div 
+                    className="prose prose-lg max-w-none
+                      prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-text-primary
+                      prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
+                      prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
+                      prose-ul:text-text-secondary prose-ul:my-6 prose-ul:space-y-2
+                      prose-li:leading-relaxed
+                      prose-strong:text-text-primary prose-strong:font-semibold
+                      prose-img:rounded-2xl prose-img:my-8
+                      prose-figure:my-10"
+                    dangerouslySetInnerHTML={{ __html: section.content }}
+                  />
+                  {/* Back to top link - visible on smaller screens without sidebar */}
+                  <a 
+                    href="#top"
+                    className="xl:hidden inline-flex items-center gap-2 mt-8"
+                  >
+                    Back to top
+                    <svg 
+                      width="16" 
+                      height="16" 
+                      viewBox="0 0 16 16" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2"
+                    >
+                      <path d="M8 13V3M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
