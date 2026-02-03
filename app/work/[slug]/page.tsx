@@ -100,10 +100,10 @@ export default function ProjectPage({ params }: Props) {
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16 px-5">
         <div className="w-full max-w-content mx-auto">
-          <div className="flex gap-16">
-            {/* Sticky Sidebar TOC - Hidden on mobile, visible on xl screens */}
+          <div className="relative">
+            {/* Sticky Sidebar TOC - Positioned in left margin on large screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
-              <aside className="hidden xl:block w-48 shrink-0">
+              <aside className="hidden lg:block absolute -left-56 w-44 top-0">
                 <nav 
                   aria-label="Page contents" 
                   className="sticky top-32"
@@ -111,19 +111,19 @@ export default function ProjectPage({ params }: Props) {
                   {/* Back to top */}
                   <a 
                     href="#top" 
-                    className="no-underline block text-text-tertiary hover:text-action transition-colors mb-6 text-xl"
+                    className="no-underline block text-text-tertiary hover:text-action transition-colors mb-5 text-lg leading-none"
                     aria-label="Back to top"
                   >
                     ⌃
                   </a>
                   
                   {/* Section links */}
-                  <ul className="space-y-3 text-sm">
+                  <ul className="space-y-2.5 text-sm">
                     {project.tableOfContents.map((item) => (
                       <li key={item.id}>
                         <a 
                           href={`#${item.id}`}
-                          className="text-text-tertiary hover:text-text-primary transition-colors"
+                          className="block text-text-tertiary hover:text-text-primary transition-colors leading-snug"
                         >
                           {item.title}
                         </a>
@@ -135,7 +135,7 @@ export default function ProjectPage({ params }: Props) {
             )}
 
             {/* Main content */}
-            <div className="flex-1 max-w-3xl space-y-20">
+            <div className="max-w-3xl space-y-20">
               {project.sections.map((section) => (
                 <article key={section.id} id={section.id} className="scroll-mt-24">
                   <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
@@ -156,7 +156,7 @@ export default function ProjectPage({ params }: Props) {
                   {/* Back to top link - visible on smaller screens without sidebar */}
                   <a 
                     href="#top"
-                    className="xl:hidden inline-flex items-center gap-2 mt-8"
+                    className="lg:hidden inline-flex items-center gap-2 mt-8"
                   >
                     Back to top
                     <svg 
