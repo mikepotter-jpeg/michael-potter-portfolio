@@ -7,65 +7,75 @@ interface WorkCardProps {
   description: string
   categories?: string[]
   coverImage?: string
+  index?: number
 }
 
-export default function WorkCard({ slug, title, description, categories = [], coverImage }: WorkCardProps) {
+export default function WorkCard({ slug, title, description, categories = [], coverImage, index = 0 }: WorkCardProps) {
   return (
     <Link 
       href={`/work/${slug}`}
-      className="group block bg-background-secondary rounded-2xl p-6 transition-all hover:shadow-lg"
+      className="group block bg-background-secondary rounded-3xl overflow-hidden card-hover"
     >
-      {/* Cover Image */}
-      {coverImage && (
-        <div className="relative aspect-video rounded-lg overflow-hidden mb-6 bg-border/20">
-          <Image
-            src={coverImage}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
-      )}
-      
-      {/* Content */}
-      <div className="space-y-5">
-        <div className="space-y-4">
-          <h3 className="text-h3 group-hover:text-accent transition-colors">
-            {title}
-          </h3>
-          <p className="text-body text-text-secondary">
-            {description}
-          </p>
-        </div>
-
-        {/* Categories & Arrow */}
-        <div className="flex items-center justify-between gap-4">
-          {categories.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <span
-                  key={category}
-                  className="px-3 py-1 text-body-sm bg-background-primary rounded-full"
-                >
-                  {category}
-                </span>
-              ))}
+      <div className="flex flex-col lg:flex-row">
+        {/* Cover Image */}
+        <div className="relative lg:w-1/2 aspect-[4/3] lg:aspect-auto bg-border/10 overflow-hidden">
+          {coverImage ? (
+            <Image
+              src={coverImage}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-8xl font-bold text-border/30">
+                {String(index + 1).padStart(2, '0')}
+              </div>
             </div>
           )}
-          
-          {/* Arrow indicator */}
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-text-primary/0 group-hover:bg-text-primary transition-all">
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2"
-              className="text-text-primary group-hover:text-background-secondary transition-colors"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+        </div>
+        
+        {/* Content */}
+        <div className="lg:w-1/2 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+          <div className="space-y-6">
+            {/* Categories */}
+            {categories.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <span
+                    key={category}
+                    className="px-3 py-1 text-sm bg-background-primary rounded-full text-text-tertiary"
+                  >
+                    {category}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <div className="space-y-4">
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight group-hover:text-accent transition-colors">
+                {title}
+              </h3>
+              <p className="text-lg text-text-secondary leading-relaxed">
+                {description}
+              </p>
+            </div>
+
+            {/* View Project Link */}
+            <div className="flex items-center gap-2 text-action font-medium pt-2">
+              <span>View project</span>
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                className="transition-transform group-hover:translate-x-2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>

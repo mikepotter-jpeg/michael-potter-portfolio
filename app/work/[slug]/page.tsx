@@ -38,46 +38,61 @@ export default function ProjectPage({ params }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-full max-w-content px-5 py-10">
-        <article className="space-y-12 pt-10">
-          
-          {/* Header */}
-          <header className="max-w-text space-y-6">
-            <Link 
-              href="/work" 
-              className="inline-flex items-center gap-2 text-body-sm text-text-tertiary hover:text-text-primary transition-colors"
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="py-20 md:py-32 px-5">
+        <div className="w-full max-w-content mx-auto">
+          <Link 
+            href="/work" 
+            className="inline-flex items-center gap-2 text-sm text-text-tertiary hover:text-text-primary transition-colors mb-8 group"
+          >
+            <svg 
+              width="16" 
+              height="16" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="transition-transform group-hover:-translate-x-1"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              Back to work
-            </Link>
-            
-            <h1 className="text-h1">{project.title}</h1>
-            
-            <p className="text-body-lg text-text-secondary">
-              {project.description}
-            </p>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to work
+          </Link>
 
+          <div className="max-w-3xl">
             {/* Categories */}
             {project.categories.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.categories.map((category) => (
                   <span
                     key={category}
-                    className="px-3 py-1 text-body-sm bg-background-secondary rounded-full"
+                    className="px-3 py-1 text-sm bg-background-secondary rounded-full text-text-tertiary"
                   >
                     {category}
                   </span>
                 ))}
               </div>
             )}
-          </header>
 
-          {/* Cover Image */}
-          {project.coverImage && (
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-border/20">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-8">
+              {project.title}
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Cover Image */}
+      {project.coverImage && (
+        <section className="px-5 pb-16">
+          <div className="w-full max-w-content mx-auto">
+            <div className="relative aspect-video rounded-3xl overflow-hidden bg-background-secondary">
               <Image
                 src={project.coverImage}
                 alt={project.title}
@@ -86,18 +101,37 @@ export default function ProjectPage({ params }: Props) {
                 priority
               />
             </div>
-          )}
+          </div>
+        </section>
+      )}
 
-          {/* Content */}
-          {project.content && (
+      {/* Content */}
+      {project.content && (
+        <section className="py-16 px-5">
+          <div className="w-full max-w-content mx-auto">
             <div 
-              className="max-w-text prose prose-lg prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-action prose-ul:text-text-secondary"
+              className="max-w-3xl prose-custom"
               dangerouslySetInnerHTML={{ __html: project.content }}
             />
-          )}
+          </div>
+        </section>
+      )}
 
-        </article>
-      </div>
+      {/* Next Project / CTA */}
+      <section className="py-20 md:py-28 px-5 border-t border-border">
+        <div className="w-full max-w-content mx-auto text-center">
+          <p className="text-text-tertiary mb-4">Interested in working together?</p>
+          <a 
+            href="mailto:michaelsavagepotter@gmail.com" 
+            className="inline-flex items-center gap-2 text-2xl font-semibold text-action hover:opacity-70 transition-opacity"
+          >
+            Get in touch
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </section>
     </div>
   )
 }

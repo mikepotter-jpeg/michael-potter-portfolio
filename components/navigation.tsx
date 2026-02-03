@@ -9,22 +9,24 @@ export default function Navigation() {
   
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/work', label: 'My work' },
-    { href: '/about', label: 'About me' },
+    { href: '/work', label: 'Work' },
+    { href: '/about', label: 'About' },
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-background-primary/95 backdrop-blur-sm">
-      <nav className="max-w-nav mx-auto px-5 py-3">
+    <header className="sticky top-0 z-50 bg-background-primary/80 backdrop-blur-md border-b border-border/50">
+      <nav className="max-w-content mx-auto px-5 py-4">
         <div className="flex items-center justify-between">
           {/* Navigation Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-body-sm transition-opacity hover:opacity-70 ${
-                  pathname === link.href ? 'font-semibold' : ''
+                className={`px-4 py-2 rounded-full text-sm transition-all ${
+                  pathname === link.href 
+                    ? 'bg-text-primary text-background-primary font-medium' 
+                    : 'text-text-primary hover:bg-text-primary/5'
                 }`}
               >
                 {link.label}
@@ -33,7 +35,7 @@ export default function Navigation() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1">
             <SocialIcon 
               href="https://linkedin.com/in/michaelpotter" 
               icon="linkedin"

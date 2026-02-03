@@ -6,17 +6,20 @@ interface RecommendationProps {
 
 export default function Recommendation({ quote, name, role }: RecommendationProps) {
   return (
-    <div className="bg-background-secondary rounded-2xl p-8 space-y-8">
+    <div className="bg-background-primary rounded-3xl p-8 md:p-10 flex flex-col h-full">
+      {/* Quote mark */}
+      <div className="text-5xl text-accent/30 font-serif leading-none mb-4">&ldquo;</div>
+      
       {/* Quote */}
       <div 
-        className="text-body text-text-secondary prose prose-p:mb-4 last:prose-p:mb-0"
+        className="text-lg text-text-secondary leading-relaxed flex-1 [&>p]:mb-4 [&>p:last-child]:mb-0"
         dangerouslySetInnerHTML={{ __html: quote }}
       />
       
       {/* Attribution */}
-      <div className="space-y-1">
-        <h4 className="text-h3 text-text-primary">{name}</h4>
-        <p className="text-body text-text-tertiary">{role}</p>
+      <div className="mt-8 pt-6 border-t border-border">
+        <p className="font-semibold text-text-primary text-lg">{name}</p>
+        <p className="text-text-tertiary mt-1">{role}</p>
       </div>
     </div>
   )
