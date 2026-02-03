@@ -10,7 +10,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section - Full width, dramatic */}
       <section className="min-h-[70vh] flex items-center justify-center px-5 py-20 md:py-32">
-        <div className="w-full max-w-content">
+        <div className="w-full max-w-7xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] max-w-4xl animate-fade-in-up">
             Hi, I&apos;m Michael, a product designer in Sydney.
           </h1>
@@ -19,7 +19,7 @@ export default function Home() {
 
       {/* About Snippet - Distinct section */}
       <section className="bg-background-secondary py-20 md:py-28 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-3xl space-y-8">
             <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed tracking-tight text-text-primary font-normal">
               I specialise in enterprise product design, with experience in account systems, 
@@ -53,7 +53,7 @@ export default function Home() {
 
       {/* Work Section */}
       <section className="py-20 md:py-28 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div className="space-y-4">
@@ -88,7 +88,7 @@ export default function Home() {
 
       {/* Recommendations Section */}
       <section className="bg-background-secondary py-20 md:py-28 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="mb-16">
             <p className="text-sm uppercase tracking-widest text-text-tertiary font-medium mb-4">Testimonials</p>
@@ -116,7 +116,7 @@ export default function Home() {
 
       {/* Contact CTA - Bold and simple */}
       <section className="py-20 md:py-32 px-5">
-        <div className="w-full max-w-content mx-auto text-center">
+        <div className="w-full max-w-7xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8">
             Let&apos;s catch up
           </h2>

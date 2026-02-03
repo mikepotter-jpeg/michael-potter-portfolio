@@ -15,7 +15,7 @@ export default function WorkPage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="py-20 md:py-32 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           <div className="max-w-3xl">
             <p className="text-sm uppercase tracking-widest text-text-tertiary font-medium mb-6">Portfolio</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
@@ -31,7 +31,7 @@ export default function WorkPage() {
 
       {/* Project Grid */}
       <section className="pb-20 md:pb-28 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           <div className="space-y-6">
             {projects.map((project, index) => (
               <WorkCard
@@ -61,7 +61,7 @@ export default function WorkPage() {
 
       {/* Back Link */}
       <section className="pb-20 px-5">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           <Link 
             href="/" 
             className="inline-flex items-center gap-2"

@@ -15,7 +15,7 @@ export default function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 bg-background-primary/80 backdrop-blur-md border-b border-border/50">
-      <nav className="max-w-content mx-auto px-5 py-4">
+      <nav className="max-w-7xl mx-auto px-5 py-4">
         <div className="flex items-center justify-between">
           {/* Navigation Links */}
           <div className="flex items-center gap-1">

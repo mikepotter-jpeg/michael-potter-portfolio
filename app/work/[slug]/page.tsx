@@ -46,7 +46,7 @@ export default function ProjectPage({ params }: Props) {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section id="top" className="py-16 md:py-24 px-5 bg-background-secondary scroll-mt-20">
-        <div className="w-full max-w-content mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-3 text-sm text-text-tertiary mb-8">
             <Link href="/work" className="hover:text-text-primary transition-colors">
@@ -83,7 +83,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Cover Image */}
       {project.coverImage && (
         <section className="px-5 py-16">
-          <div className="w-full max-w-content mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
             <div className="relative aspect-video rounded-3xl overflow-hidden bg-background-secondary">
               <Image
                 src={project.coverImage}
@@ -180,7 +180,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Next Project */}
       {nextProject && nextProject.slug !== project.slug && (
         <section className="py-16 px-5 border-t border-border bg-background-secondary">
-          <div className="w-full max-w-content mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
             <p className="text-sm font-semibold text-text-tertiary mb-2">Next Project</p>
             <Link 
               href={`/work/${nextProject.slug}`}
@@ -205,7 +205,7 @@ export default function ProjectPage({ params }: Props) {
 
       {/* CTA */}
       <section className="py-20 md:py-28 px-5">
-        <div className="w-full max-w-content mx-auto text-center">
+        <div className="w-full max-w-7xl mx-auto text-center">
           <p className="text-text-tertiary mb-4">Interested in working together?</p>
           <a 
             href="mailto:michaelsavagepotter@gmail.com" 
