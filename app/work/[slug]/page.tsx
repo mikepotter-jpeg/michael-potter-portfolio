@@ -77,23 +77,29 @@ export default function ProjectPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Table of Contents */}
+            {/* Inpage Nav - Following Agriculture Design System pattern */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
-              <div className="pt-4 pl-6 border-l-2 border-border">
-                <p className="text-sm font-semibold text-text-primary mb-3">On this page:</p>
+              <nav 
+                aria-label="Page contents" 
+                className="border-l-4 border-action pl-6 py-1"
+                id="page-contents"
+              >
+                <h2 className="text-base font-semibold text-text-primary mb-3">
+                  On this page
+                </h2>
                 <ul className="space-y-2">
                   {project.tableOfContents.map((item) => (
                     <li key={item.id}>
                       <a 
                         href={`#${item.id}`}
-                        className="text-text-secondary hover:text-action transition-colors"
+                        className="text-action underline underline-offset-4 hover:opacity-70 transition-opacity"
                       >
                         {item.title}
                       </a>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
             )}
           </div>
         </div>
@@ -120,7 +126,7 @@ export default function ProjectPage({ params }: Props) {
       <section className="py-16 px-5">
         <div className="w-full max-w-content mx-auto">
           <div className="max-w-3xl space-y-20">
-            {project.sections.map((section) => (
+            {project.sections.map((section, index) => (
               <article key={section.id} id={section.id} className="scroll-mt-24">
                 <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
                   {section.title}
@@ -138,6 +144,24 @@ export default function ProjectPage({ params }: Props) {
                     prose-figure:my-10"
                   dangerouslySetInnerHTML={{ __html: section.content }}
                 />
+                {/* Back to top link - Following Agriculture Design System pattern */}
+                <a 
+                  href="#page-contents"
+                  className="inline-flex items-center gap-2 mt-8 text-action hover:opacity-70 transition-opacity group"
+                >
+                  <svg 
+                    width="16" 
+                    height="16" 
+                    viewBox="0 0 16 16" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2"
+                    className="rotate-180"
+                  >
+                    <path d="M8 3v10M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="underline underline-offset-4">Back to top</span>
+                </a>
               </article>
             ))}
           </div>
