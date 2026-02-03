@@ -18,7 +18,7 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-5 py-4">
         <div className="flex items-center justify-between">
           {/* Navigation Links */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 -ml-4">
             {links.map((link) => (
               <Link
                 key={link.href}
