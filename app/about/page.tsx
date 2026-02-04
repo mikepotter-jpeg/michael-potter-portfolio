@@ -16,20 +16,19 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 px-5">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-widest text-text-tertiary font-medium mb-6">About</p>
+      <section className="py-20 md:py-32">
+        <div className="w-full max-w-7xl mx-auto px-5">
+          <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
-              About me
+              Designer, problem-solver, collaborator
             </h1>
           </div>
         </div>
       </section>
 
       {/* Highlights Bar */}
-      <section className="bg-background-secondary py-8 px-5 border-y border-border">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="bg-background-secondary py-8 border-y border-border">
+        <div className="w-full max-w-7xl mx-auto px-5">
           <div className="flex flex-wrap gap-8 md:gap-16">
             {highlights.map((item) => (
               <div key={item.label}>
@@ -42,35 +41,35 @@ export default function AboutPage() {
       </section>
 
       {/* Bio Content */}
-      <section className="py-20 md:py-28 px-5">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="py-20 md:py-28">
+        <div className="w-full max-w-7xl mx-auto px-5">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Main bio */}
-            <div className="space-y-8">
-              <p className="text-xl md:text-2xl leading-relaxed text-text-primary">
+            <article className="space-y-6">
+              <p className="text-lead">
                 I&apos;m a product designer with 5+ years&apos; experience building digital products 
                 across government, energy, and retail.
               </p>
               
-              <p className="text-lg leading-relaxed text-text-secondary">
+              <p className="text-body">
                 I started in industrial design, which grounded me in designing for people. 
                 Today, I focus on turning complex business challenges into intuitive, user-centred 
                 solutions that deliver real outcomes.
               </p>
               
-              <p className="text-lg leading-relaxed text-text-secondary">
+              <p className="text-body">
                 I work best in close partnership with developers and stakeholders, shaping ideas 
                 into scalable, elegant products that simplify complexity.
               </p>
-            </div>
+            </article>
 
             {/* CTA Card */}
-            <div className="lg:pt-4">
-              <div className="bg-background-secondary rounded-3xl p-8 md:p-10 space-y-6">
+            <aside className="lg:pt-4">
+              <div className="bg-background-secondary rounded-3xl p-8 md:p-10 space-y-5">
                 <h2 className="text-2xl font-semibold tracking-tight">
                   Let&apos;s work together
                 </h2>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-body">
                   If I sound like a fit for your team, I&apos;d love to hear from you. 
                   I&apos;m currently exploring new opportunities.
                 </p>
@@ -85,19 +84,18 @@ export default function AboutPage() {
                   Get in touch
                 </a>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
 
       {/* Back Link */}
-      <section className="pb-20 px-5">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="pb-20">
+        <div className="w-full max-w-7xl mx-auto px-5">
           <Link 
             href="/" 
             className="inline-flex items-center gap-2"
           >
-            Back to home
             <svg 
               width="20" 
               height="20" 
@@ -110,6 +108,7 @@ export default function AboutPage() {
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
+            Back to home
           </Link>
         </div>
       </section>

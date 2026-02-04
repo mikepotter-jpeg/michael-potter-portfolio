@@ -20,12 +20,12 @@ const config: Config = {
           tertiary: '#5F6566',
         },
         accent: {
-          DEFAULT: '#FF6B00',
-          light: 'rgba(255, 106, 0, 0.3)',
+          DEFAULT: '#555B5C',
+          light: 'rgba(85, 91, 92, 0.3)',
         },
         action: {
-          DEFAULT: '#0066FF',
-          light: 'rgba(0, 102, 255, 0.3)',
+          DEFAULT: '#555B5C',
+          light: 'rgba(85, 91, 92, 0.3)',
         },
         border: '#CCCCCC',
       },

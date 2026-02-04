@@ -19,7 +19,19 @@ html {
 
 /* Selection color */
 ::selection {
-  background-color: rgba(255, 107, 0, 0.2);
+  background-color: rgba(85, 91, 92, 0.2);
+}
+
+/* Global focus-visible styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px #7C3AED;
+  border-radius: 4px;
 }
 
 /* Custom section styling */
@@ -88,7 +100,7 @@ a:not(.no-underline):not([class*="rounded"]) {
 }
 
 a:not(.no-underline):not([class*="rounded"]):hover {
-  text-decoration-color: #0066FF; /* Blue on hover */
+  text-decoration-color: #555B5C; /* Neutral on hover */
 }
 
 /* Link icons - secondary text color */
@@ -100,18 +112,135 @@ a .link-icon {
 
 a:hover svg,
 a:hover .link-icon {
-  color: #0066FF; /* Blue on hover */
+  color: #555B5C; /* Neutral on hover */
 }
 
-/* Prose improvements */
-.prose-custom h2 {
-  @apply text-2xl font-semibold mt-12 mb-4 text-text-primary;
+/* ===========================================
+   TYPOGRAPHY & PROSE STYLES
+   =========================================== */
+
+/* Lead paragraph - larger intro text */
+.text-lead {
+  @apply text-xl md:text-2xl leading-relaxed text-text-primary;
 }
 
-.prose-custom p {
-  @apply mb-6 text-text-secondary leading-relaxed;
+/* Body paragraph - standard text */
+.text-body {
+  @apply text-lg leading-relaxed text-text-secondary;
 }
 
-.prose-custom ul {
-  @apply list-disc pl-6 mb-6 space-y-2 text-text-secondary;
+/* Small text */
+.text-small {
+  @apply text-base leading-relaxed text-text-secondary;
+}
+
+/* Section label - uppercase eyebrow text */
+.section-label {
+  @apply text-sm uppercase tracking-widest text-text-tertiary font-medium;
+}
+
+/* ===========================================
+   PROSE CONTENT BLOCKS
+   =========================================== */
+
+.prose-custom {
+  /* Headings */
+  & h2 {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight mt-16 mb-6 text-text-primary;
+  }
+  
+  & h2:first-child {
+    @apply mt-0;
+  }
+  
+  & h3 {
+    @apply text-xl md:text-2xl font-semibold tracking-tight mt-12 mb-4 text-text-primary;
+  }
+  
+  & h4 {
+    @apply text-lg font-semibold mt-8 mb-3 text-text-primary;
+  }
+  
+  /* Paragraphs */
+  & p {
+    @apply mb-6 text-text-secondary leading-[1.75] text-lg;
+  }
+  
+  & p:last-child {
+    @apply mb-0;
+  }
+  
+  /* Lead paragraph - first p after heading or first in section */
+  & > p:first-child,
+  & h2 + p,
+  & h3 + p {
+    @apply text-text-primary;
+  }
+  
+  /* Lists */
+  & ul {
+    @apply list-disc pl-6 mb-6 space-y-3 text-text-secondary;
+  }
+  
+  & ol {
+    @apply list-decimal pl-6 mb-6 space-y-3 text-text-secondary;
+  }
+  
+  & li {
+    @apply leading-[1.75] text-lg;
+  }
+  
+  & li p {
+    @apply mb-0;
+  }
+  
+  /* Strong/bold text */
+  & strong {
+    @apply font-semibold text-text-primary;
+  }
+  
+  /* Block quotes */
+  & blockquote {
+    @apply border-l-4 border-accent pl-6 my-8 italic text-text-secondary;
+  }
+  
+  & blockquote p {
+    @apply mb-4;
+  }
+  
+  /* Figures and images */
+  & figure {
+    @apply my-10;
+  }
+  
+  & figure img {
+    @apply rounded-2xl w-full;
+  }
+  
+  & figcaption {
+    @apply text-sm text-text-tertiary mt-3 text-center;
+  }
+  
+  /* Horizontal rules */
+  & hr {
+    @apply border-t border-border my-12;
+  }
+  
+  /* Code */
+  & code {
+    @apply bg-background-secondary px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+  
+  & pre {
+    @apply bg-background-secondary p-4 rounded-xl overflow-x-auto my-6;
+  }
+  
+  & pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+/* Spacing between consecutive paragraphs in articles */
+article p + p {
+  @apply mt-0;
 }

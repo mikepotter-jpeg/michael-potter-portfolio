@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
-interface TocItem {
+interface TOCItem {
   id: string
   title: string
 }
 
 interface TableOfContentsProps {
-  items: TocItem[]
+  items: TOCItem[]
 }
 
 export default function TableOfContents({ items }: TableOfContentsProps) {
@@ -17,19 +17,26 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
+        // Find the first section that is intersecting
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting)
+        
+        if (visibleEntries.length > 0) {
+          // Get the topmost visible section
+          const topEntry = visibleEntries.reduce((prev, current) => {
+            return prev.boundingClientRect.top < current.boundingClientRect.top
+              ? prev
+              : current
+          })
+          setActiveId(topEntry.target.id)
+        }
       },
       {
-        rootMargin: '-80px 0px -80% 0px',
+        rootMargin: '-80px 0px -60% 0px',
         threshold: 0,
       }
     )
 
-    // Observe all section elements
+    // Observe all sections
     items.forEach((item) => {
       const element = document.getElementById(item.id)
       if (element) {
@@ -37,45 +44,36 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
       }
     })
 
-    return () => {
-      items.forEach((item) => {
-        const element = document.getElementById(item.id)
-        if (element) {
-          observer.unobserve(element)
-        }
-      })
-    }
+    return () => observer.disconnect()
   }, [items])
 
   return (
-    <nav 
-      aria-label="Page contents" 
-      className="sticky top-32"
-    >
-      {/* Back to top */}
-      <a 
-        href="#top" 
-        className="no-underline block text-text-tertiary hover:text-action transition-colors mb-5 text-lg leading-none"
-        aria-label="Back to top"
-      >
-        ⌃
-      </a>
-      
+    <nav aria-label="Page contents" className="sticky top-32">
       {/* Section links */}
-      <ul className="space-y-1 text-sm border-l border-border">
+      <ul className="space-y-1 text-sm">
+        {/* Back to top */}
+        <li>
+          <a
+            href="#top"
+            className="no-underline inline-flex items-center gap-1.5 py-1.5 transition-all duration-200 leading-snug text-text-tertiary hover:text-text-primary"
+          >
+            <span>Top</span>
+            <span aria-hidden="true">⌃</span>
+          </a>
+        </li>
         {items.map((item) => {
           const isActive = activeId === item.id
+
           return (
             <li key={item.id}>
-              <a 
+              <a
                 href={`#${item.id}`}
-                className={`
-                  no-underline block pl-4 py-1.5 -ml-px border-l-2 transition-colors leading-snug
-                  ${isActive 
-                    ? 'border-action text-text-primary font-medium' 
-                    : 'border-transparent text-text-tertiary hover:text-text-primary hover:border-text-tertiary'
-                  }
-                `}
+                aria-current={isActive ? 'true' : undefined}
+                className={`no-underline block py-1.5 transition-all duration-200 leading-snug ${
+                  isActive
+                    ? 'text-text-primary font-medium'
+                    : 'text-text-tertiary hover:text-text-primary'
+                }`}
               >
                 {item.title}
               </a>

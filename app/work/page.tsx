@@ -14,24 +14,23 @@ export default function WorkPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 px-5">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-widest text-text-tertiary font-medium mb-6">Portfolio</p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
+      <section className="py-20 md:py-32">
+        <div className="w-full max-w-7xl mx-auto px-5">
+          <header className="max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] mb-8">
               My work
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed">
+            <p className="text-lead text-text-secondary">
               Selected projects from my career designing for government, energy, and retail. 
-              Each project represents a unique challenge in turning complexity into clarity.
+              Each represents a unique challenge in turning complexity into clarity.
             </p>
-          </div>
+          </header>
         </div>
       </section>
 
       {/* Project Grid */}
-      <section className="pb-20 md:pb-28 px-5">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="pb-20 md:pb-28">
+        <div className="w-full max-w-7xl mx-auto px-5">
           <div className="space-y-6">
             {projects.map((project, index) => (
               <WorkCard
@@ -60,13 +59,12 @@ export default function WorkPage() {
       </section>
 
       {/* Back Link */}
-      <section className="pb-20 px-5">
-        <div className="w-full max-w-7xl mx-auto">
+      <section className="pb-20">
+        <div className="w-full max-w-7xl mx-auto px-5">
           <Link 
             href="/" 
             className="inline-flex items-center gap-2"
           >
-            Back to home
             <svg 
               width="20" 
               height="20" 
@@ -79,6 +77,7 @@ export default function WorkPage() {
             >
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
+            Back to home
           </Link>
         </div>
       </section>
