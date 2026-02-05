@@ -46,6 +46,8 @@ const config: Config = {
         'content': '1048px',
         'text': '802px',
         'nav': '1280px',
+        'prose': '65ch',      // Optimal reading length (~50-75 chars)
+        'prose-wide': '75ch', // Upper limit for comfortable reading
       },
       spacing: {
         '18': '4.5rem',
@@ -53,6 +55,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }
 export default config

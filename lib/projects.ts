@@ -201,10 +201,12 @@ export const recommendations = [
     quote: `<p>I highly recommend Michael for any role requiring a thoughtful and technically adept and user focused interaction designer.</p><p>Throughout our time working together, Michael consistently demonstrated a deep commitment to advocating for the customer. He skillfully balanced user needs with technical constraints, often negotiating solutions that elevated both the experience and the feasibility of delivery. His ability to understand and adapt to technical limitations made him an invaluable bridge between design and engineering…</p>`,
     name: 'Emma-Grace Turek',
     role: 'Senior Specialist at Microsoft (formerly Director, Digital Identity and Account, DAFF)',
+    linkedinUrl: 'https://www.linkedin.com/in/michael-potter/#recommendations',
   },
   {
     quote: `<p>I had the pleasure of working alongside Michael while he was in a product team and I was in the design system team. Our paths crossed often, as I supported with design system advice and governance while also offering suggestions for the products he was working on.</p><p>Michael was an excellent design system practitioner. He consistently followed governance, actively participated in design community sessions, and had a sharp eye for spotting bugs or opportunities to improve the system. His feedback and contributions made a real difference to the quality and growth of the design system…</p>`,
     name: 'Paul Maher',
     role: 'UX Designer, Design System Lead, DAFF',
+    linkedinUrl: 'https://www.linkedin.com/in/michael-potter/#recommendations',
   },
 ]
