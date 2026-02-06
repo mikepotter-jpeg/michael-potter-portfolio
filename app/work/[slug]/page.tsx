@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { getProjectBySlug, getAllProjects } from '@/lib/projects'
 import TableOfContents from '@/components/table-of-contents'
 import { Button } from '@/components/ui/button'
+import { ChevronUp, ArrowRight } from 'lucide-react'
 
 interface Props {
   params: { slug: string }
@@ -99,6 +100,29 @@ export default function ProjectPage({ params }: Props) {
         </section>
       )}
 
+      {/* Static Table of Contents - visible below xl */}
+      {project.tableOfContents && project.tableOfContents.length > 0 && (
+        <section className="xl:hidden py-8 border-t border-border">
+          <div className="w-full max-w-7xl mx-auto px-5">
+            <nav aria-label="Page contents">
+              <p className="section-label mb-4">On this page</p>
+              <ul className="flex flex-col gap-2 text-sm">
+                {project.tableOfContents.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      className="text-text-primary underline-offset-4 hover:underline transition-colors"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </section>
+      )}
+
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16">
         <div className="w-full max-w-7xl mx-auto px-5">
@@ -125,16 +149,7 @@ export default function ProjectPage({ params }: Props) {
                   <Button asChild variant="ghost" size="sm" className="xl:hidden mt-10">
                     <a href="#top" className="no-underline">
                       Top
-                      <svg 
-                        width="14" 
-                        height="14" 
-                        viewBox="0 0 16 16" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2"
-                      >
-                        <path d="M8 13V3M3 8l5-5 5 5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <ChevronUp size={14} />
                     </a>
                   </Button>
                 </article>
@@ -152,17 +167,10 @@ export default function ProjectPage({ params }: Props) {
             <Button asChild variant="link" className="text-xl md:text-2xl font-semibold h-auto p-0 group">
               <Link href={`/work/${nextProject.slug}`} className="no-underline">
                 {nextProject.title}
-                <svg 
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2"
+                <ArrowRight 
+                  size={24} 
                   className="transition-transform group-hover:translate-x-1"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                />
               </Link>
             </Button>
           </div>
@@ -176,17 +184,10 @@ export default function ProjectPage({ params }: Props) {
           <Button asChild variant="link" className="text-2xl font-semibold h-auto p-0 group">
             <a href="mailto:michaelsavagepotter@gmail.com" className="no-underline">
               Get in touch
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
+              <ArrowRight 
+                size={24} 
                 className="transition-transform group-hover:translate-x-1"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              />
             </a>
           </Button>
         </div>

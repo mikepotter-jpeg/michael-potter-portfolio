@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 
 interface WorkCardProps {
   slug: string
@@ -66,17 +67,10 @@ export default function WorkCard({ slug, title, description, categories = [], co
             {/* View Project Link */}
             <div className="flex items-center gap-2 text-text-primary font-medium pt-2">
               <span className="underline underline-offset-4 decoration-border group-hover:decoration-action transition-colors">View project</span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
+              <ArrowRight 
+                size={20} 
                 className="text-text-tertiary group-hover:text-action transition-colors"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              />
             </div>
           </div>
         </div>

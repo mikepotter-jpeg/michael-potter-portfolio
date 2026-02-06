@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { ChevronUp } from 'lucide-react'
 
 interface TOCItem {
   id: string
@@ -58,7 +59,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
             className="no-underline inline-flex items-center gap-1.5 py-1.5 transition-all duration-200 leading-snug text-text-tertiary hover:text-text-primary"
           >
             <span>Top</span>
-            <span aria-hidden="true">⌃</span>
+            <ChevronUp size={14} aria-hidden="true" />
           </a>
         </li>
         {items.map((item) => {

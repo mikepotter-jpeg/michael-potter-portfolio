@@ -2,6 +2,7 @@ import Link from 'next/link'
 import WorkCard from '@/components/work-card'
 import Recommendation from '@/components/recommendation'
 import { getAllProjects, recommendations } from '@/lib/projects'
+import { ArrowRight, ArrowUpRight, Mail, Linkedin } from 'lucide-react'
 
 export default function Home() {
   const projects = getAllProjects()
@@ -35,16 +36,7 @@ export default function Home() {
                 className="inline-flex items-center gap-3 text-lg"
               >
                 Learn more about me
-                <svg 
-                  width="20" 
-                  height="20" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ArrowRight size={20} />
               </Link>
             </div>
           </div>
@@ -52,7 +44,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section className="py-20 md:py-28">
+      <section id="work-section" className="py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-5">
           {/* Section Header */}
           <div className="flex flex-col gap-6 mb-16">
@@ -104,6 +96,7 @@ export default function Home() {
                 quote={rec.quote}
                 name={rec.name}
                 role={rec.role}
+                linkedinUrl={rec.linkedinUrl}
               />
             ))}
           </div>
@@ -124,10 +117,7 @@ export default function Home() {
               href="mailto:michaelsavagepotter@gmail.com" 
               className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
+              <Mail size={20} />
               Email me
             </a>
             <a 
@@ -136,12 +126,9 @@ export default function Home() {
               rel="noopener noreferrer"
               className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-full text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
+              <Linkedin size={20} />
               LinkedIn
+              <ArrowUpRight size={18} />
             </a>
           </div>
         </div>
