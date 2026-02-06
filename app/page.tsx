@@ -22,6 +22,7 @@ export default function Home() {
       <section className="bg-background-secondary py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-5">
           <div className="max-w-4xl space-y-6">
+            <h2 className="sr-only">About</h2>
             <p className="text-xl sm:text-2xl md:text-3xl leading-[1.4] tracking-tight text-text-primary">
               I specialise in enterprise product design, with experience in account systems, 
               permissions, and identity workflows where clarity matters.
@@ -47,14 +48,14 @@ export default function Home() {
       <section id="work-section" className="py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-5">
           {/* Section Header */}
-          <div className="flex flex-col gap-6 mb-16">
+          <header className="flex flex-col gap-6 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
               Some of my work
             </h2>
             <p className="text-body max-w-xl">
               End-to-end product design for government, energy, and retail—serving thousands of users.
             </p>
-          </div>
+          </header>
 
           {/* Project Cards */}
           <div className="space-y-6">
@@ -106,12 +107,14 @@ export default function Home() {
       {/* Contact CTA - Bold and simple */}
       <section className="py-20 md:py-32">
         <div className="w-full max-w-7xl mx-auto px-5 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
-            Let&apos;s connect
-          </h2>
-          <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-10 max-w-xl mx-auto">
-            I&apos;m exploring new opportunities and would love to hear about what you&apos;re building.
-          </p>
+          <header className="mb-10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
+              Let&apos;s connect
+            </h2>
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-xl mx-auto">
+              I&apos;m exploring new opportunities and would love to hear about what you&apos;re building.
+            </p>
+          </header>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="mailto:michaelsavagepotter@gmail.com" 
