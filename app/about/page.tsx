@@ -8,6 +8,12 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
+  const highlights = [
+    { label: 'Location', value: 'Sydney, Australia' },
+    { label: 'Role', value: 'Product Designer' },
+    { label: 'Experience', value: '5+ years' },
+  ]
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -15,106 +21,68 @@ export default function AboutPage() {
         <div className="w-full max-w-7xl mx-auto px-5">
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
-              About
+              Designer, problem-solver, collaborator
             </h1>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Highlights Bar */}
+      <section className="bg-background-secondary py-8 border-y border-border">
+        <div className="w-full max-w-7xl mx-auto px-5">
+          <div className="flex flex-wrap gap-8 md:gap-16">
+            {highlights.map((item) => (
+              <div key={item.label}>
+                <p className="text-sm text-text-tertiary mb-1">{item.label}</p>
+                <p className="text-lg font-medium text-text-primary">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bio Content */}
       <section className="py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-5">
-          <div className="max-w-4xl prose-custom">
-            <p className="text-lead">
-              I am a product and experience designer based in Sydney, with a decade of turning complex problems into simple, usable solutions.
-            </p>
-            
-            <p>
-              I started in industrial design, which shaped how I think about design: understand the problem, focus on people, and make things work in the real world. I now apply that same mindset to digital products.
-            </p>
-            
-            <p>
-              Over the past five years I have led experience design on a national export platform, partnered with Australian brands to rethink their digital services, and worked closely with engineers and stakeholders to deliver accessible, user centred outcomes.
-            </p>
-            
-            <p>
-              I enjoy translating messy business challenges into clear products that serve both organisations and the people who use them.
-            </p>
-            
-            <p>
-              If you are building something meaningful and need a thoughtful design partner, let&apos;s talk.
-            </p>
-          </div>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Main bio */}
+            <article className="space-y-6">
+              <p className="text-lead">
+                I&apos;m a product designer with 5+ years&apos; experience building digital products 
+                across government, energy, and retail.
+              </p>
+              
+              <p className="text-body">
+                I started in industrial design, which grounded me in designing for people. 
+                Today, I focus on turning complex business challenges into intuitive, user-centred 
+                solutions that deliver real outcomes.
+              </p>
+              
+              <p className="text-body">
+                I work best in close partnership with developers and stakeholders, shaping ideas 
+                into scalable, elegant products that simplify complexity.
+              </p>
+            </article>
 
-      {/* What I Do Section */}
-      <section className="bg-background-secondary py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
-          <header className="mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
-              What I Do
-            </h2>
-          </header>
-          
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
-            <div className="prose-custom">
-              <h3>Product design</h3>
-              <ul>
-                <li>User research and discovery</li>
-                <li>Interaction design and prototyping</li>
-                <li>Design systems</li>
-                <li>Usability testing and iteration</li>
-              </ul>
-            </div>
-            
-            <div className="prose-custom">
-              <h3>Collaboration</h3>
-              <ul>
-                <li>Working with engineers to align implementation and design</li>
-                <li>Facilitating workshops and co-design sessions</li>
-                <li>Communicating decisions with clarity and transparency</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
-          <div className="max-w-4xl prose-custom">
-            <header className="mb-8">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
-                Experience
-              </h2>
-            </header>
-            <p>
-              I have worked on cross-discipline teams to solve design problems in high growth and regulated environments. My work spans early stage discovery through to launch and continuous improvement.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Let's Talk Section */}
-      <section className="bg-background-secondary py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-5 text-center">
-          <header className="mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
-              Let&apos;s Talk
-            </h2>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-xl mx-auto">
-              If you think we might be a good fit, I&apos;d love to hear from you.
-            </p>
-          </header>
-          <div className="flex justify-center">
-            <a 
-              href="mailto:michaelsavagepotter@gmail.com" 
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-md text-lg font-medium hover:opacity-90 transition-opacity"
-            >
-              <Mail size={20} />
-              Email me
-            </a>
+            {/* CTA Card */}
+            <aside className="lg:pt-4">
+              <div className="bg-background-secondary rounded-3xl p-8 md:p-10 space-y-5">
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  Let&apos;s work together
+                </h2>
+                <p className="text-body">
+                  If I sound like a fit for your team, I&apos;d love to hear from you. 
+                  I&apos;m currently exploring new opportunities.
+                </p>
+                <a 
+                  href="mailto:michaelsavagepotter@gmail.com" 
+                  className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-md font-medium hover:opacity-90 transition-opacity"
+                >
+                  <Mail size={18} />
+                  Get in touch
+                </a>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
