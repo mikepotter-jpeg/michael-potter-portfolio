@@ -122,6 +122,18 @@ a:hover .link-icon {
   color: #555B5C; /* Neutral on hover */
 }
 
+/* External link arrow icons in prose - proper baseline alignment */
+.prose-custom a svg {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.15em;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.05em;
+  flex-shrink: 0;
+}
+
 /* ===========================================
    TYPOGRAPHY & PROSE STYLES
    =========================================== */

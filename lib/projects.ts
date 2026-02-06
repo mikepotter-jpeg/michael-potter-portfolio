@@ -21,6 +21,7 @@ export const projects: Project[] = [
     coverImage: 'https://framerusercontent.com/images/CvXpoQTp5MB9iFXaiJgtActjIY.png',
     tableOfContents: [
       { id: 'overview', title: 'Overview' },
+      { id: 'constraints', title: 'Constraints' },
       { id: 'designing-for-efficiency-and-clarity', title: 'Designing for efficiency and clarity' },
       { id: 'designing-for-secure-access', title: 'Designing for secure access' },
       { id: 'impact', title: 'Impact' },
@@ -29,23 +30,28 @@ export const projects: Project[] = [
       {
         id: 'overview',
         title: 'Overview',
-        content: `<p>Exporters struggled with fragmented department systems that required multiple logins, duplicate forms, and offered limited visibility into application status. This created frequent support calls and administrative burden for both exporters and department staff, who found it difficult to validate information and make timely decisions. A centralised platform was needed, but consolidating protected business data and updating legacy systems introduced security challenges.</p>
+        content: `<p>Australia's export industry depends on government certification at every step. But the systems exporters used to manage that relationship were fragmented across multiple departments, each with its own login, its own forms, and no shared view of status. For the 2,000+ businesses that rely on timely approvals, delays meant cargo sitting in port.</p>
+
+<p>A centralised platform was needed, but consolidating protected business data and replacing legacy systems introduced real security challenges. The core tension throughout this project was balancing security requirements with usability.</p>
         
 <h3>What we built</h3>
 <p>The Export Service provides a single platform for exporters to manage documentation and regulatory obligations. Users can onboard, set communication preferences, verify business authorisations, manage staff permissions, update account details, and track application status, streamlining previously fragmented workflows.</p>
 
-<h3>Role and responsibilities</h3>
-<p>As design lead for a 16+ person multidisciplinary team, I drove product innovation through collaboration with business units and digital specialists:</p>
-<ul>
-  <li>Created UI designs supporting user testing and development handover</li>
-  <li>Led research that defined build requirements through user feedback and data</li>
-  <li>Prioritised design backlogs with the product manager to align with business objectives</li>
-  <li>Facilitated stakeholder collaboration to maintain platform consistency and product vision</li>
-</ul>
+<h3>Role</h3>
+<p>I was design lead on a 16-person delivery team for three years, reporting to the Director of Digital Identity and Account. I owned the end-to-end design process, from early wireframes tested with exporters through to production specifications built within the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>.</p>
 
-<p>The core challenge was balancing security requirements with usability. Working with user researchers and business analysts, I produced wireframes and prototypes tested with exporters and department stakeholders. Insights directly informed iterations and shaped the product roadmap.</p>
+<p>I shaped the product roadmap through research. Usability findings directly influenced which features were prioritised across quarters. I worked with business analysts to map complex journeys, with content designers to translate regulatory language into plain English, and with developers to resolve implementation gaps in the Azure B2C authentication layer.</p>
 
-<p>I delivered responsive, WCAG 2.1 conforming interfaces using the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System</a> aligned to the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard</a>. I contributed to the design and developer community through forums and guilds, sharing concepts and incorporating peer feedback.</p>`,
+<p>I delivered responsive, WCAG 2.1 conforming interfaces aligned to the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, and contributed new components back to the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>.</p>`,
+      },
+      {
+        id: 'constraints',
+        title: 'Constraints',
+        content: `<p>This project operated within several layers of government requirements. All interfaces had to conform to WCAG 2.1 AA, the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, and the Information Security Manual including Essential Eight security controls.</p>
+
+<p>The authentication UI had to be built in HTML and CSS because Azure B2C (the white-label authentication solution) couldn't use the Design System's React component library. This meant creating detailed design documentation and working closely with developers to maintain visual consistency and accessibility without our usual tooling.</p>
+
+<p>Business verification required integration with the Relationship Authorisation Manager (RAM), a whole-of-government service. The linking process involved multiple redirects between government applications, which could easily disorient users.</p>`,
       },
       {
         id: 'designing-for-efficiency-and-clarity',
@@ -57,32 +63,32 @@ export const projects: Project[] = [
 <p>Next, we developed a research script and ran moderated usability sessions with exporters to gather feedback. Participants were recruited through Askable, giving us direct access to real users and ensuring insights reflected actual user needs.</p>
 
 <h3>Navigation</h3>
-<p>The user's profile and account settings are always accessible via persistent navigation in the top-right corner of the interface. I designed new components to support this, including a <a href="https://design-system.agriculture.gov.au/components/dropdown-menu" target="_blank" rel="noopener noreferrer">Dropdown menu</a> for switching between multiple businesses and a navigation system that remains consistent across the platform.</p>
+<p>Users managing a single business didn't need a context switcher cluttering their interface, but users managing five entities needed to change context constantly. The challenge was supporting both without compromising either.</p>
 
-<p>Because the platform is context-driven, users needed to clearly see which business they were acting on behalf of when making decisions or completing tasks. This visibility helps reduce errors and builds confidence in their actions.</p>
+<p>I designed a dropdown component that shows which business the user is acting on behalf of, accessible from persistent navigation across the platform. For single-business users, the switcher stays out of the way. For multi-business users, it's always within reach. Testing confirmed that surfacing the active business context reduced errors and gave users more confidence in their actions.</p>
+
+<p>This component was contributed back to the <a href="https://design-system.agriculture.gov.au/components/dropdown-menu" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a> and is now used across other areas of the department.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/0cqVpzxBz6niSB5Rzl8bV6Klzo.png" alt="Navigation design showing business context switcher" class="rounded-2xl w-full" />
 </figure>
 
-<h3>Sign in with email (known as Email sign-in)</h3>
-<p><strong>User feedback showed people needed an alternative to Digital ID for signing in or creating accounts.</strong> While the department wanted to offer this secondary option, it created confusion—users assumed both sign-in methods gave them equal access to services.</p>
+<h3>Sign in with email</h3>
+<p>We expected most users to choose Digital ID since it offered fuller access to services. In testing, users reached for email sign-in first. It felt more familiar and less risky.</p>
 
-<p><strong>Our solution:</strong> We added clear callouts and help content explaining that Digital ID unlocks access to more services within the Export Service than the alternative method.</p>
+<p>The problem was that both options sat side by side with no indication of what each unlocked. Users assumed they were equal. Rather than pushing users toward Digital ID, we redesigned the sign-in screen with clear callouts explaining what additional access Digital ID would provide. We also worked with content designers to create help articles that walked users through the difference.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/gk5YVikymwVEBC9Q9d7uu215OiM.png" alt="Email sign-in interface with Digital ID callout" class="rounded-2xl w-full" />
 </figure>
 
-<p>To deliver the 'Email sign-in' feature, I worked with a business analyst in Mural to map out the multi-factor authentication user journey and ensure it met essential security requirements. To do this we baselined it against the product offered by Microsoft Azure B2C.</p>
+<p>I translated the multi-factor authentication journey into screen designs, which were implemented using Microsoft Azure B2C (a white-label authentication solution).</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/TZrWYbpQmDPu45zxMCTyIH5NSQ.png" alt="Multi-factor authentication user journey map" class="rounded-2xl w-full" />
 </figure>
 
-<p><strong>I translated the multi-factor authentication journey into screen designs, which were implemented using Microsoft Azure B2C (a white-label authentication solution).</strong></p>
-
-<p>Since we couldn't use the Design System's React UI library, the interface had to be built in HTML and CSS. I created detailed design documentation to guide development. The solution initially produced inconsistent layouts and elements, so I worked closely with developers—providing specific feedback to refine visual hierarchy, improve usability, and strengthen accessibility.</p>
+<p>Since we couldn't use the Design System's React UI library, the interface had to be built in HTML and CSS. I created detailed design documentation to guide development. The solution initially produced inconsistent layouts and elements, so I worked closely with developers, providing specific feedback to refine visual hierarchy, improve usability, and strengthen accessibility.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/DNjkjYV8VmRb9N1TxkFDcNGQ.png" alt="Multi-factor authentication screen designs" class="rounded-2xl w-full" />
@@ -91,7 +97,7 @@ export const projects: Project[] = [
       {
         id: 'designing-for-secure-access',
         title: 'Designing for secure access',
-        content: `<p>While onboarding, business managers needed a way to seamlessly verify their business while preventing unauthorised access. Our solution integrates with the whole-of-government capability, Relationship Authorisation Manager (RAM). Because the business linking process involves multiple redirects between government applications, which could easily disorient users, we introduced a task overview to set expectations and guide them through the process.</p>
+        content: `<p>While onboarding, business managers needed a way to seamlessly verify their business while preventing unauthorised access. We introduced a task overview to set expectations and guide them through the verification process.</p>
 
 <p><strong>Other key user requirements:</strong></p>
 <ul>
@@ -110,7 +116,7 @@ export const projects: Project[] = [
 <p>I collaborated with content designers to create 20+ help articles that translated technical requirements into plain language.</p>
 
 <h3>Form validation and designing for errors</h3>
-<p><strong>As a security requirement, invited users had to verify their invitation with an email code rather than a clickable link.</strong> Several issues could occur when redeeming a code—it might be expired, cancelled by the sender, or already used.</p>
+<p><strong>As a security requirement, invited users had to verify their invitation with an email code rather than a clickable link.</strong> Several issues could occur when redeeming a code: it might be expired, cancelled by the sender, or already used.</p>
 
 <p>Error messages needed to strike a careful balance: general enough to avoid exposing system vulnerabilities to bad actors, while still being specific enough to help legitimate users resolve the issue.</p>
 
@@ -118,16 +124,21 @@ export const projects: Project[] = [
   <img src="https://framerusercontent.com/images/wF3bDlQX34jUrjpkBOWKYuUmxw.png" alt="Error message design for invitation codes" class="rounded-2xl w-full" />
 </figure>
 
-<p><strong>To design effective error handling, I worked with the technical team to catalogue all possible error states and classify them as either system-generated or user-generated.</strong> This classification informed how we wrote and displayed each message.</p>
+<p>Error states fell into two categories: system-generated or user-generated. This classification informed how we wrote and displayed each message, ensuring we balanced security with helpful guidance.</p>
 
 <p>Our front-end developers preferred having error state mockups positioned directly next to the main user flow designs in Figma. We also documented these rules and messages in detailed build tickets to support implementation and testing.</p>`,
       },
       {
         id: 'impact',
         title: 'Impact',
-        content: `<p>Our team delivered a comprehensive web and mobile solution that transformed how exporters interact with government services. Exporters now have a single login and centralised profile management, eliminating the frustration of managing multiple accounts. Businesses can onboard faster and operate with confidence.</p>
+        content: `<h3>Business impact</h3>
+<p>The Export Service now serves over 2,000 regulated businesses. Secure onboarding and access pathways reduced department processing by over 40%, and registration times dropped from weeks to days.</p>
 
-<p>The department gains digital assurance, while regulators have secure access to verified, up-to-date user information. This enables faster onboarding, more efficient service delivery, and higher user satisfaction.</p>`,
+<h3>Design influence</h3>
+<p>Navigation components I designed were adopted platform-wide. Several components I contributed to the Agriculture Design System are used by other areas of the department. Accessibility practices I introduced were picked up by the development team and applied to ongoing work.</p>
+
+<h3>Growth</h3>
+<p>When the Product Manager left the program, I stepped into the Experience Lead role, setting priorities and managing workflow across the 16-person delivery team. Over three years I went from Interaction Designer to leading the experience design function.</p>`,
       },
     ],
   },
@@ -149,7 +160,7 @@ export const projects: Project[] = [
         title: 'Overview',
         content: `<p>The surge in online ordering during COVID-19 created an opportunity for Dan Murphy's to reimagine how customers discover wine. The business needed a digital solution to engage loyal customers and make wine selection more intuitive and enjoyable.</p>
 
-<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino</a>, I partnered with the product manager to refine design concepts, creating wireframes and developing detailed design specifications.</p>
+<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, I partnered with the product manager to refine design concepts, creating wireframes and developing detailed design specifications.</p>
 
 <p>With a focus on speed to market, I worked to understand both staff needs and customer desires while delivering an innovative subscription product. This included the added challenge of integrating a new recurring payment platform.</p>
 
