@@ -115,7 +115,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
               href="mailto:michaelsavagepotter@gmail.com" 
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-full text-lg font-medium hover:opacity-90 transition-opacity"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-md text-lg font-medium hover:opacity-90 transition-opacity"
             >
               <Mail size={20} />
               Email me
@@ -124,7 +124,7 @@ export default function Home() {
               href="https://linkedin.com/in/michaelpotter" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-full text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-md text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
             >
               <Linkedin size={20} />
               LinkedIn

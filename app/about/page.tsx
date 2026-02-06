@@ -76,7 +76,7 @@ export default function AboutPage() {
                 </p>
                 <a 
                   href="mailto:michaelsavagepotter@gmail.com" 
-                  className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
+                  className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-md font-medium hover:opacity-90 transition-opacity"
                 >
                   <Mail size={18} />
                   Get in touch

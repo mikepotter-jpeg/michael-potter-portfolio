@@ -14,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link 
           href="/" 
-          className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-full font-medium hover:opacity-90 transition-opacity"
+          className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-md font-medium hover:opacity-90 transition-opacity"
         >
           <ArrowLeft size={18} />
           Back to home
