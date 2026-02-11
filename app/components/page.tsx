@@ -239,8 +239,8 @@ export default function ComponentsPage() {
                 </div>
                 
                 <div>
-                  <p className="text-sm text-text-tertiary mb-2">Section label (.section-label)</p>
-                  <p className="section-label">Section label</p>
+                  <p className="text-sm text-text-tertiary mb-2">Section label</p>
+                  <p className="text-sm text-text-tertiary">Next project</p>
                 </div>
               </div>
             </section>

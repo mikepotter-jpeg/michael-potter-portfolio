@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Mail, ArrowLeft } from 'lucide-react'
+import ContactSection from '@/components/contact-section'
+import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Me | Michael Potter',
@@ -8,12 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
-  const highlights = [
-    { label: 'Location', value: 'Sydney, Australia' },
-    { label: 'Role', value: 'Product Designer' },
-    { label: 'Experience', value: '5+ years' },
-  ]
-
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -21,74 +16,48 @@ export default function AboutPage() {
         <div className="w-full max-w-7xl mx-auto px-5">
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
-              Designer, problem-solver, collaborator
+              About me
             </h1>
           </div>
         </div>
       </section>
 
-      {/* Highlights Bar */}
-      <section className="bg-background-secondary py-8 border-y border-border">
-        <div className="w-full max-w-7xl mx-auto px-5">
-          <div className="flex flex-wrap gap-8 md:gap-16">
-            {highlights.map((item) => (
-              <div key={item.label}>
-                <p className="text-sm text-text-tertiary mb-1">{item.label}</p>
-                <p className="text-lg font-medium text-text-primary">{item.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bio Content */}
+      {/* About Content */}
       <section className="py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-5">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Main bio */}
-            <article className="space-y-6">
-              <p className="text-lead">
-                I&apos;m a product designer with 5+ years&apos; experience building digital products 
-                across government, energy, and retail.
-              </p>
-              
-              <p className="text-body">
-                I started in industrial design, which grounded me in designing for people. 
-                Today, I focus on turning complex business challenges into intuitive, user-centred 
-                solutions that deliver real outcomes.
-              </p>
-              
-              <p className="text-body">
-                I work best in close partnership with developers and stakeholders, shaping ideas 
-                into scalable, elegant products that simplify complexity.
-              </p>
-            </article>
-
-            {/* CTA Card */}
-            <aside className="lg:pt-4">
-              <div className="bg-background-secondary rounded-3xl p-8 md:p-10 space-y-5">
-                <h2 className="text-2xl font-semibold tracking-tight">
-                  Let&apos;s work together
-                </h2>
-                <p className="text-body">
-                  If I sound like a fit for your team, I&apos;d love to hear from you. 
-                  I&apos;m currently exploring new opportunities.
-                </p>
-                <a 
-                  href="mailto:michaelsavagepotter@gmail.com" 
-                  className="no-underline inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-background-primary rounded-md font-medium hover:opacity-90 transition-opacity"
-                >
-                  <Mail size={18} />
-                  Get in touch
-                </a>
-              </div>
-            </aside>
+          <div className="max-w-4xl prose-custom">
+            <p className="text-lead">
+              I&apos;m a product designer who started out designing physical things. Furniture, objects, things you hold in your hands. That background in industrial design taught me to pay attention to how people actually use what you put in front of them, and it still carries through in my digital work.
+            </p>
+            
+            <p>
+              After studying industrial design, I shifted into digital products and found the same thinking applied: understand the person, reduce complexity, make the thing feel obvious. Over the past decade I&apos;ve designed enterprise platforms across government, energy, and retail. Systems where thousands of people need things to work clearly, first time.
+            </p>
+            
+            <p>
+              Most of my recent work has been in government digital services. At the Department of Agriculture, I led experience design for the Export Service, a platform used by over 2,000 regulated businesses. I was the design lead in a 16-person delivery team, working across authentication, account management, and regulatory compliance. A lot of that work was about balancing serious security requirements with the need for things to actually make sense to the people using them.
+            </p>
+            
+            <p>
+              I care about accessibility, design systems, and understanding how something will actually get built. I do my best work when I&apos;m close to developers and stakeholders, not handing off screens but shaping the product together.
+            </p>
+            
+            <p>
+              Outside of work, I bake sourdough (cold fermentation, always), collect mid-century furniture, and walk my dog Mango around Sydney.
+            </p>
           </div>
         </div>
       </section>
 
+      {/* Contact Section */}
+      <ContactSection 
+        heading="Let's work together"
+        description="If you are building something meaningful and need a thoughtful design partner, I'd love to hear from you."
+        className="pt-20 md:pt-28 pb-12"
+      />
+
       {/* Back Link */}
-      <section className="pb-20">
+      <section className="pt-16 pb-20">
         <div className="w-full max-w-7xl mx-auto px-5">
           <Link 
             href="/" 

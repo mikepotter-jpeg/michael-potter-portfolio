@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import WorkCard from '@/components/work-card'
 import Recommendation from '@/components/recommendation'
+import ContactSection from '@/components/contact-section'
 import { getAllProjects, recommendations } from '@/lib/projects'
-import { ArrowRight, ArrowUpRight, Mail, Linkedin } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 
 export default function Home() {
   const projects = getAllProjects()
@@ -53,7 +54,7 @@ export default function Home() {
               Some of my work
             </h2>
             <p className="text-body max-w-xl">
-              End-to-end product design for government, energy, and retail—serving thousands of users.
+              End-to-end product design for government, energy, and retail, serving thousands of users.
             </p>
           </header>
 
@@ -104,38 +105,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact CTA - Bold and simple */}
-      <section className="py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-5 text-center">
-          <header className="mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
-              Let&apos;s connect
-            </h2>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-xl mx-auto">
-              I&apos;m exploring new opportunities and would love to hear about what you&apos;re building.
-            </p>
-          </header>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="mailto:michaelsavagepotter@gmail.com" 
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-md text-lg font-medium hover:opacity-90 transition-opacity"
-            >
-              <Mail size={20} />
-              Email me
-            </a>
-            <a 
-              href="https://linkedin.com/in/michaelpotter" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-md text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all"
-            >
-              <Linkedin size={20} />
-              LinkedIn
-              <ArrowUpRight size={18} />
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Contact CTA */}
+      <ContactSection className="py-20 md:py-32" />
     </div>
   )
 }

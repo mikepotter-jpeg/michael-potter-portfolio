@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProjectBySlug, getAllProjects } from '@/lib/projects'
 import TableOfContents from '@/components/table-of-contents'
+import ContactSection from '@/components/contact-section'
 import { Button } from '@/components/ui/button'
 import { ChevronUp, ArrowRight } from 'lucide-react'
 
@@ -105,7 +106,7 @@ export default function ProjectPage({ params }: Props) {
         <section className="xl:hidden py-8 border-t border-border">
           <div className="w-full max-w-7xl mx-auto px-5">
             <nav aria-label="Page contents">
-              <p className="section-label mb-4">On this page</p>
+              <p className="text-sm text-text-tertiary mb-4">On this page</p>
               <ul className="flex flex-col gap-2 text-sm">
                 {project.tableOfContents.map((item) => (
                   <li key={item.id}>
@@ -163,7 +164,7 @@ export default function ProjectPage({ params }: Props) {
       {nextProject && nextProject.slug !== project.slug && (
         <section className="py-16 border-t border-border bg-background-secondary">
           <div className="w-full max-w-7xl mx-auto px-5">
-            <p className="section-label mb-3">Next Project</p>
+            <p className="text-sm text-text-tertiary mb-3">Next project</p>
             <Button asChild variant="link" className="text-xl md:text-2xl font-semibold h-auto p-0 group">
               <Link href={`/work/${nextProject.slug}`} className="no-underline">
                 {nextProject.title}
@@ -178,20 +179,7 @@ export default function ProjectPage({ params }: Props) {
       )}
 
       {/* CTA */}
-      <section className="py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5 text-center">
-          <p className="text-body mb-4">Interested in working together?</p>
-          <Button asChild variant="link" className="text-2xl font-semibold h-auto p-0 group">
-            <a href="mailto:michaelsavagepotter@gmail.com" className="no-underline">
-              Get in touch
-              <ArrowRight 
-                size={24} 
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </a>
-          </Button>
-        </div>
-      </section>
+      <ContactSection />
     </div>
   )
 }

@@ -152,47 +152,92 @@ export const projects: Project[] = [
     coverImage: 'https://framerusercontent.com/images/IqYIH7nyFzuZ6wqTIJRVd9BCQXE.png',
     tableOfContents: [
       { id: 'overview', title: 'Overview' },
+      { id: 'constraints', title: 'Constraints' },
+      { id: 'designing-the-checkout', title: 'Designing the checkout' },
+      { id: 'designing-the-staff-portal', title: 'Designing the staff portal' },
       { id: 'impact', title: 'Impact' },
     ],
     sections: [
       {
         id: 'overview',
         title: 'Overview',
-        content: `<p>The surge in online ordering during COVID-19 created an opportunity for Dan Murphy's to reimagine how customers discover wine. The business needed a digital solution to engage loyal customers and make wine selection more intuitive and enjoyable.</p>
+        content: `<p>The surge in online ordering during COVID-19 created an opportunity for Dan Murphy's to reimagine how customers discover wine. The business wanted to deepen engagement with its My Dan's loyalty members through a curated subscription service, giving customers a reason to return each month while introducing them to wines they wouldn't normally choose.</p>
 
-<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, I partnered with the product manager to refine design concepts, creating wireframes and developing detailed design specifications.</p>
-
-<p>With a focus on speed to market, I worked to understand both staff needs and customer desires while delivering an innovative subscription product. This included the added challenge of integrating a new recurring payment platform.</p>
+<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, I partnered with the product manager to design the end-to-end experience across two audiences: customers subscribing and managing their account, and internal staff curating monthly wine selections.</p>
 
 <h3>What we built</h3>
 <ul>
-  <li><strong>New checkout wizard</strong> designed specifically for subscription purchases</li>
-  <li><strong>Digital wallet</strong> enabling users to securely save and manage payment methods</li>
-  <li><strong>Recurring payment system</strong> for subscription management</li>
+  <li><strong>Subscription checkout wizard</strong> guiding customers through plan selection, delivery preferences, and payment in a single focused flow</li>
+  <li><strong>Digital wallet</strong> enabling users to save, switch, and manage payment methods for recurring charges</li>
+  <li><strong>Staff curation portal</strong> giving the Dan Murphy's team control over monthly selections, descriptions, and stock adjustments</li>
 </ul>
 
+<h3>Role</h3>
+<p>I owned the design process from early wireframes through to production specifications. I ran regular critique sessions with Dan Murphy's internal design team and presented progress to stakeholders fortnightly. I advocated for a phased release strategy, launching first to a friends-and-family group before the wider rollout to 500,000+ members, incorporating feedback iteratively to reduce risk.</p>`,
+      },
+      {
+        id: 'constraints',
+        title: 'Constraints',
+        content: `<p>This project operated under several pressures that shaped the design approach throughout.</p>
+
+<p><strong>Speed to market.</strong> The subscription needed to launch while online ordering demand was high. Every design decision was weighed against delivery timeline. This meant working closely with developers to understand what was feasible within each sprint, and sometimes simplifying flows to ship a solid experience rather than a perfect one.</p>
+
+<p><strong>New payment platform.</strong> The business was integrating a recurring payment provider it hadn't used before. The checkout and wallet had to accommodate the platform's capabilities and limitations, which weren't always clear upfront. I worked with the engineering team to map technical constraints early so we could design around them rather than discover issues late in development.</p>
+
+<p><strong>Consultant access.</strong> As an external consultant, I had limited direct access to existing customer research and behavioural data. I leaned on the product manager and internal team for context, and used stakeholder critique sessions to pressure-test assumptions I couldn't validate with data directly.</p>
+
+<p><strong>Two audiences, one timeline.</strong> The customer-facing subscription experience and the internal staff portal needed to ship together. Both had to work well, but the staff tool was at risk of being deprioritised. I made the case that a poor curation experience would undermine the quality of the customer-facing product.</p>`,
+      },
+      {
+        id: 'designing-the-checkout',
+        title: 'Designing the checkout',
+        content: `<p>The core challenge was designing a checkout flow for a commitment that felt unfamiliar to most customers. Unlike a one-off wine purchase, a subscription asks users to hand over payment details for recurring charges with wines they haven't chosen themselves. The flow needed to build trust at every step.</p>
+
+<h3>Digital wallet and saved cards</h3>
+<p>The trickiest interaction design problem was the digital wallet. Customers needed to add, remove, and switch between payment methods — but the mental model for managing saved cards in a subscription context is different from a standard e-commerce checkout. Users aren't just paying once; they're trusting that the right card will be charged next month.</p>
+
+<p>I designed the wallet to make the active payment method visually prominent, with clear confirmation when switching cards. Removing a card that was linked to an active subscription triggered a warning and guided the user to select a replacement before confirming, preventing accidental failed charges. Each state — adding, editing, removing, switching — was mapped and documented so developers could implement edge cases consistently.</p>
+
 <figure class="my-8">
-  <img src="https://framerusercontent.com/images/ZLluDzThN6hfyGWAxvLB4c98QqU.png" alt="Subscription checkout wizard interface" class="rounded-2xl w-full" />
+  <img src="https://framerusercontent.com/images/ZLluDzThN6hfyGWAxvLB4c98QqU.png" alt="Subscription checkout wizard showing plan selection and payment steps" class="rounded-2xl w-full" />
 </figure>
 
-<h3>My approach</h3>
-<ul>
-  <li>Ran regular critique sessions with the internal design team and presented to stakeholders fortnightly</li>
-  <li>Advocated for a phased release strategy, launching first to friends and family for real-world testing</li>
-  <li>Incorporated feedback iteratively to reduce risk before public launch</li>
-</ul>
+<h3>Wizard structure</h3>
+<p>I structured the checkout as a step-by-step wizard rather than a single long form. Each step had a focused task: choose your plan, set delivery preferences, enter payment. This reduced cognitive load and gave users a sense of progress. A persistent summary sidebar showed selections so far, reinforcing confidence as they moved through the flow.</p>
+
+<p>The wizard also needed to handle returning users who wanted to modify their subscription. Rather than forcing them back through the full flow, I designed direct entry points to individual steps — change your plan, update delivery, swap payment — accessible from the subscription dashboard.</p>
 
 <figure class="my-8">
-  <img src="https://framerusercontent.com/images/ndC8308WUM4XjjQK7X5lTbGyHag.png" alt="Design iteration process" class="rounded-2xl w-full" />
+  <img src="https://framerusercontent.com/images/ndC8308WUM4XjjQK7X5lTbGyHag.png" alt="Design iterations showing checkout flow progression and refinement" class="rounded-2xl w-full" />
 </figure>`,
+      },
+      {
+        id: 'designing-the-staff-portal',
+        title: 'Designing the staff portal',
+        content: `<p>The subscription's value depended on the quality of each month's wine selection. If staff couldn't curate efficiently, the customer experience would suffer — so the internal portal wasn't a back-office afterthought but a core part of the product.</p>
+
+<h3>What staff needed</h3>
+<p>Through conversations with the Dan Murphy's team, the clearest need was flexibility. Staff needed to swap wines in and out of a selection quickly — whether because of stock shortages, seasonal availability, or a last-minute quality decision. The original assumption was a simple list-based picker, but feedback revealed that staff also needed to adjust descriptions, reorder selections, and handle edge cases like a wine being discontinued after a selection was already built.</p>
+
+<p>I designed the curation interface around a card-based layout where each wine in a selection could be individually edited, reordered, or replaced without disrupting the rest. A status indicator showed whether a selection was in draft, ready for review, or published, giving staff confidence about what customers would see and when.</p>
+
+<h3>Connecting the two experiences</h3>
+<p>A key design decision was making the staff portal preview match the customer-facing display as closely as possible. Staff could see exactly how their curation would appear to subscribers, which reduced back-and-forth with the product team and caught layout or copy issues before they reached customers. This tight feedback loop between the internal tool and the customer experience was something I pushed for early because it directly improved the quality of what shipped each month.</p>`,
       },
       {
         id: 'impact',
         title: 'Impact',
-        content: `<p>Over 8 months, my team delivered a subscription checkout with integrated recurring payments that met tight market deadlines. The phased release reduced risk and ensured the solution worked for both staff and customers.</p>
+        content: `<h3>Delivery</h3>
+<p>Over 8 months, the team shipped a complete subscription product — checkout wizard, digital wallet, recurring payments, and staff curation portal — on schedule and within the market window the business needed. The phased release to a friends-and-family group before the full rollout caught usability issues early and gave the team confidence in the payment integration before it reached the wider member base.</p>
+
+<h3>Product quality</h3>
+<p>The digital wallet's handling of card management edge cases — switching, removing, and replacing active payment methods — meant fewer failed charges and support tickets at launch. The staff portal's preview functionality reduced the gap between what was curated internally and what customers received, leading to faster monthly turnaround and fewer last-minute corrections.</p>
+
+<h3>Approach</h3>
+<p>Advocating for the phased release strategy and investing in the staff portal early were the two decisions that shaped the project's outcome most. Both required making the case to stakeholders that short-term effort would reduce long-term risk — a pattern I've carried into subsequent projects.</p>
 
 <figure class="my-8">
-  <img src="https://framerusercontent.com/images/WFTCLQ2dT6CqacggV7JodMfAnok.png" alt="Final subscription product" class="rounded-2xl w-full" />
+  <img src="https://framerusercontent.com/images/WFTCLQ2dT6CqacggV7JodMfAnok.png" alt="The launched Dan Picked subscription product" class="rounded-2xl w-full" />
 </figure>`,
       },
     ],
