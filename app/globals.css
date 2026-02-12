@@ -37,8 +37,17 @@ textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px #7C3AED;
+  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px #7C3AED !important;
   border-radius: 4px;
+}
+
+/* Navigation menu items - ensure purple focus overrides Radix UI */
+[role="menuitem"]:focus-visible,
+[role="menuitemcheckbox"]:focus-visible,
+[role="menuitemradio"]:focus-visible {
+  outline: 2px solid #7C3AED !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
 }
 
 /* Custom section styling */

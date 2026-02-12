@@ -90,6 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
+                          "focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >
