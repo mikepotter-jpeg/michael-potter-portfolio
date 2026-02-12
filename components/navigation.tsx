@@ -52,19 +52,28 @@ export default function Navigation() {
   }, [isHomepage])
 
   return (
-    <header 
-      className={cn(
-        "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-all duration-300 ease-in-out",
-        isVisible 
-          ? 'translate-y-0 opacity-100' 
-          : '-translate-y-full opacity-0 pointer-events-none'
-      )}
-    >
+    <>
+      {/* Skip to content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-text-primary focus:text-background-primary focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+      >
+        Skip to main content
+      </a>
+
+      <header
+        className={cn(
+          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-all duration-300 ease-in-out",
+          isVisible
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0 pointer-events-none'
+        )}
+      >
       <nav className="mx-auto flex h-14 max-w-7xl items-center px-4 sm:px-6 lg:px-8">
         <div className="mr-6 flex items-center gap-8">
-          <Link 
-            href="/" 
-            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80"
+          <Link
+            href="/"
+            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-accent rounded"
             aria-label="Home"
           >
             <Move3d size={32} className="text-text-primary" />
@@ -81,6 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
+                          "focus:outline-2 focus:outline-offset-2 focus:outline-accent",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >
@@ -106,6 +116,7 @@ export default function Navigation() {
           />
         </div>
       </nav>
-    </header>
+      </header>
+    </>
   )
 }
