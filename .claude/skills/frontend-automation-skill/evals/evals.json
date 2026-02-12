@@ -1,0 +1,75 @@
+{
+  "skill_name": "frontend-automation",
+  "description": "Automation for Next.js build pipelines and WCAG 2.1 AA accessibility auditing",
+  "evals": [
+    {
+      "id": 1,
+      "name": "Build Pipeline Success",
+      "prompt": "Run the full build pipeline (lint, test, build) on my Next.js project and tell me if everything passes.",
+      "expected_output": "A structured report showing pass/fail status for linting, testing, and build stages with execution times",
+      "files": [],
+      "assertions": [
+        "The output clearly indicates whether lint passed or failed",
+        "The output clearly indicates whether tests passed or failed",
+        "The output clearly indicates whether build passed or failed",
+        "The report includes execution time for each stage",
+        "The overall status (all passed or failed) is explicitly stated"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Build Pipeline Error Handling",
+      "prompt": "Run the build pipeline but simulate a failing linting step. Show me what errors are reported and how to fix them.",
+      "expected_output": "A report that captures linting errors and provides suggestions for fixing them",
+      "files": [],
+      "assertions": [
+        "The error from the failing linting step is captured and displayed",
+        "The report suggests at least one way to fix the error",
+        "The report indicates which specific files have linting violations",
+        "The overall pipeline status shows FAIL"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Accessibility Audit - WCAG AA Compliance",
+      "prompt": "Run a full accessibility audit on my website to check for WCAG 2.1 AA compliance.",
+      "expected_output": "A comprehensive accessibility report categorizing issues by severity and providing remediation steps",
+      "files": [],
+      "assertions": [
+        "The report categorizes issues by severity (critical, serious, moderate, minor)",
+        "The report indicates WCAG 2.1 AA compliance status (pass/fail)",
+        "The report includes multiple accessibility categories (color contrast, alt text, keyboard nav, ARIA, etc.)",
+        "Specific violations include recommended fixes or remediation steps",
+        "The report lists the pages that were audited"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Accessibility Audit - Specific Issues",
+      "prompt": "Check my website for accessibility issues focusing on color contrast, missing alt text, and keyboard navigation.",
+      "expected_output": "A focused accessibility report highlighting issues in the requested categories with specific recommendations",
+      "files": [],
+      "assertions": [
+        "Color contrast issues are identified and scored against WCAG AA standards",
+        "Missing alt text on images is detected and listed",
+        "Keyboard navigation problems are identified",
+        "For each issue, a specific fix is recommended",
+        "The report is actionable (clear steps to remediate)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Pre-Deployment Checklist",
+      "prompt": "I'm about to deploy to production. Run the pre-deployment checklist: build pipeline success, accessibility audit, and give me a go/no-go decision.",
+      "expected_output": "A pre-deployment summary with build status, accessibility status, and a clear deployment recommendation",
+      "files": [],
+      "assertions": [
+        "Build pipeline status is clearly reported",
+        "Accessibility audit results are summarized",
+        "Critical accessibility issues (if any) are flagged",
+        "A clear recommendation (GO/NO-GO) is provided based on the checks",
+        "The report is suitable for deployment decision-making"
+      ]
+    }
+  ]
+}

@@ -56,7 +56,7 @@ export default function Navigation() {
       {/* Skip to content link for keyboard users */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-text-primary focus:text-background-primary focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-text-primary focus:text-background-primary focus:rounded-md focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple"
       >
         Skip to main content
       </a>
@@ -73,7 +73,7 @@ export default function Navigation() {
         <div className="mr-6 flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:rounded-md rounded-md"
+            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple focus:rounded-md rounded-md"
             aria-label="Home"
           >
             <Move3d size={32} className="text-text-primary" />
@@ -90,7 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:rounded-md",
+                          "focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple focus:rounded-md",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >

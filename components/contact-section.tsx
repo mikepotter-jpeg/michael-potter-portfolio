@@ -26,7 +26,7 @@ export default function ContactSection({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:michaelsavagepotter@gmail.com"
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-md text-lg font-medium hover:opacity-90 transition-opacity focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 bg-text-primary text-background-primary rounded-md text-lg font-medium hover:opacity-90 transition-opacity focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple"
             >
               <Mail size={20} />
               Email me
@@ -35,7 +35,7 @@ export default function ContactSection({
               href="https://www.linkedin.com/in/michael-potter/"
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-md text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+              className="no-underline inline-flex items-center gap-2 px-8 py-4 border-2 border-text-primary text-text-primary rounded-md text-lg font-medium hover:bg-text-primary hover:text-background-primary transition-all focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple"
             >
               <Linkedin size={20} />
               LinkedIn
