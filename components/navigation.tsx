@@ -73,7 +73,7 @@ export default function Navigation() {
         <div className="mr-6 flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-accent rounded"
+            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:rounded-md rounded-md"
             aria-label="Home"
           >
             <Move3d size={32} className="text-text-primary" />
@@ -90,7 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "focus:outline-2 focus:outline-offset-2 focus:outline-accent",
+                          "focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:rounded-md",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >
