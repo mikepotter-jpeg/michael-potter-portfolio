@@ -63,7 +63,7 @@ export default function Navigation() {
 
       <header
         className={cn(
-          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-all duration-300 ease-in-out",
+          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-all duration-300 ease-in-out focus-within:translate-y-0 focus-within:opacity-100",
           isVisible
             ? 'translate-y-0 opacity-100'
             : '-translate-y-full opacity-0 pointer-events-none'
