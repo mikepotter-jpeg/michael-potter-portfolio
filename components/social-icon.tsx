@@ -20,7 +20,7 @@ export default function SocialIcon({ href, icon, label }: SocialIconProps) {
       href={href}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      className="no-underline p-2 text-text-tertiary hover:text-action transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple focus:rounded-md rounded-md"
+      className="no-underline p-2 text-text-tertiary hover:text-action transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md rounded-md"
       aria-label={label}
     >
       {icons[icon]}

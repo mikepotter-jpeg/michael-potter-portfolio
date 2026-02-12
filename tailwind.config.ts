@@ -27,7 +27,6 @@ const config: Config = {
           DEFAULT: '#555B5C',
           light: 'rgba(85, 91, 92, 0.3)',
         },
-        'focus-purple': '#7C3AED',
         border: '#CCCCCC',
       },
       fontFamily: {
