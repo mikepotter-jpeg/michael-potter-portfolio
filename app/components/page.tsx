@@ -290,7 +290,7 @@ export default function ComponentsPage() {
             {/* Unused Styles Section */}
             <section id="unused-styles" className="scroll-mt-24">
               <h2 className="text-2xl font-semibold tracking-tight mb-2">Unused Styles</h2>
-              <p className="text-text-tertiary mb-6">CSS classes defined in globals.css that aren't currently used in the site</p>
+              <p className="text-text-tertiary mb-6">CSS classes defined that are not currently used on the site</p>
 
               <div className="space-y-6 max-w-2xl">
                 <div className="p-6 bg-background-secondary rounded-xl">
@@ -298,11 +298,11 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.text-small</code>
-                      <p className="text-text-tertiary mt-1">Small text style - defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Small text style for future use</p>
                     </li>
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-label</code>
-                      <p className="text-text-tertiary mt-1">Uppercase eyebrow text - defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Uppercase eyebrow text for future use</p>
                     </li>
                   </ul>
                 </div>
@@ -312,11 +312,11 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.link-animate</code>
-                      <p className="text-text-tertiary mt-1">Underline animation on hover - defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Underline animation on hover for future use</p>
                     </li>
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.animate-delay-*</code>
-                      <p className="text-text-tertiary mt-1">Animation delay utilities (100, 200, 300, 400) - defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Animation delay utilities for future use</p>
                     </li>
                   </ul>
                 </div>
@@ -326,13 +326,13 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-container</code>
-                      <p className="text-text-tertiary mt-1">Section wrapper with top border - defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Section wrapper with top border for future use</p>
                     </li>
                   </ul>
                 </div>
 
                 <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary">
-                  <p><strong>Note:</strong> These styles are kept as part of the design system for potential future use or as reference. Remove them from globals.css if you prefer to keep only active styles.</p>
+                  <p>These styles are kept as part of the design system. They can be removed from globals.css if you prefer to keep only active styles.</p>
                 </div>
               </div>
             </section>
