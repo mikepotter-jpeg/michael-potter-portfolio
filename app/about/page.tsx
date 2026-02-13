@@ -13,7 +13,7 @@ export default function AboutPage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
               About me
@@ -24,7 +24,7 @@ export default function AboutPage() {
 
       {/* About Content */}
       <section className="py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <div className="max-w-4xl prose-custom">
             <p className="text-lead">
               I&apos;m a product designer who started out designing physical things. Furniture, objects, things you hold in your hands. That background in industrial design taught me to pay attention to how people actually use what you put in front of them, and it still carries through in my digital work.
@@ -58,7 +58,7 @@ export default function AboutPage() {
 
       {/* Back Link */}
       <section className="pt-16 pb-20">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <Link 
             href="/" 
             className="inline-flex items-center gap-2"

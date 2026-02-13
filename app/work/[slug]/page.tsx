@@ -50,7 +50,7 @@ export default function ProjectPage({ params }: Props) {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section id="top" className="py-16 md:py-24 bg-background-secondary scroll-mt-20">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-3 text-sm text-text-tertiary mb-8" aria-label="Breadcrumb">
             <Link href="/#work-section" className="hover:text-text-primary transition-colors">
@@ -87,7 +87,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Cover Image */}
       {project.coverImage && (
         <section className="py-16">
-          <div className="w-full max-w-7xl mx-auto px-5">
+          <div className="w-full max-w-7xl mx-auto px-6">
             <div className="relative aspect-video rounded-3xl overflow-hidden bg-background-secondary">
               <Image
                 src={project.coverImage}
@@ -104,7 +104,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Static Table of Contents - visible below xl */}
       {project.tableOfContents && project.tableOfContents.length > 0 && (
         <section className="xl:hidden py-8 border-t border-border">
-          <div className="w-full max-w-7xl mx-auto px-5">
+          <div className="w-full max-w-7xl mx-auto px-6">
             <nav aria-label="Page contents">
               <p className="text-sm text-text-tertiary mb-4">On this page</p>
               <ul className="flex flex-col gap-2 text-sm">
@@ -126,7 +126,7 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-16">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <div className="flex gap-12 xl:gap-20">
             {/* Sticky Sidebar TOC - Left column on xl screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
@@ -163,7 +163,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Next Project */}
       {nextProject && nextProject.slug !== project.slug && (
         <section className="py-16 border-t border-border bg-background-secondary">
-          <div className="w-full max-w-7xl mx-auto px-5">
+          <div className="w-full max-w-7xl mx-auto px-6">
             <p className="text-sm text-text-tertiary mb-3">Next project</p>
             <Button asChild variant="link" className="text-xl md:text-2xl font-semibold h-auto p-0 group">
               <Link href={`/work/${nextProject.slug}`} className="no-underline">

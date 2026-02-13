@@ -13,7 +13,7 @@ export default function ContactSection({
 }: ContactSectionProps) {
   return (
     <section className={className}>
-      <div className="w-full max-w-7xl mx-auto px-5">
+      <div className="w-full max-w-7xl mx-auto px-6">
         <div className="text-center">
           <header className="mb-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">

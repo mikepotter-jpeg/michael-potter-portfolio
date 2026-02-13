@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Move3d } from 'lucide-react'
+import MPLogo from './logo'
 import SocialIcon from './social-icon'
 import {
   NavigationMenu,
@@ -69,14 +69,14 @@ export default function Navigation() {
             : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
-      <nav className="mx-auto flex h-14 max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-auto max-w-7xl items-center px-6 sm:px-6 lg:px-6 py-3">
         <div className="mr-6 flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline transition-opacity hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md rounded-md"
+            className="flex items-center space-x-2 no-underline py-3 focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md rounded-md hover:bg-background-primary/50 transition-colors"
             aria-label="Home"
           >
-            <Move3d size={32} className="text-text-primary" />
+            <MPLogo size={48} />
           </Link>
           <NavigationMenu>
             <NavigationMenuList>

@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section - Full width, dramatic */}
       <section className="min-h-[70vh] flex items-center justify-center py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] max-w-4xl animate-fade-in-up">
             Hi, I&apos;m Michael, a product designer in Sydney.
           </h1>
@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* About Snippet - Distinct section */}
       <section className="bg-background-secondary py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           <div className="max-w-4xl space-y-6">
             <h2 className="sr-only">About</h2>
             <p className="text-xl sm:text-2xl md:text-3xl leading-[1.4] tracking-tight text-text-primary">
@@ -47,7 +47,7 @@ export default function Home() {
 
       {/* Work Section */}
       <section id="work-section" className="py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           {/* Section Header */}
           <header className="flex flex-col gap-6 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
@@ -79,7 +79,7 @@ export default function Home() {
 
       {/* Recommendations Section */}
       <section className="bg-background-secondary py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-5">
+        <div className="w-full max-w-7xl mx-auto px-6">
           {/* Section Header */}
           <header className="mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
