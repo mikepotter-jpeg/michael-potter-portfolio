@@ -298,11 +298,11 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.text-small</code>
-                      <p className="text-text-tertiary mt-1">Small text style – defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Small text style &ndash; defined but not currently used</p>
                     </li>
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-label</code>
-                      <p className="text-text-tertiary mt-1">Uppercase eyebrow text – defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Uppercase eyebrow text &ndash; defined but not currently used</p>
                     </li>
                   </ul>
                 </div>
@@ -312,11 +312,11 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.link-animate</code>
-                      <p className="text-text-tertiary mt-1">Underline animation on hover – defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Underline animation on hover &ndash; defined but not currently used</p>
                     </li>
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.animate-delay-*</code>
-                      <p className="text-text-tertiary mt-1">Animation delay utilities (100, 200, 300, 400) – defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Animation delay utilities (100, 200, 300, 400) &ndash; defined but not currently used</p>
                     </li>
                   </ul>
                 </div>
@@ -326,7 +326,7 @@ export default function ComponentsPage() {
                   <ul className="space-y-3 text-sm">
                     <li>
                       <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-container</code>
-                      <p className="text-text-tertiary mt-1">Section wrapper with top border – defined but not currently used</p>
+                      <p className="text-text-tertiary mt-1">Section wrapper with top border &ndash; defined but not currently used</p>
                     </li>
                   </ul>
                 </div>
