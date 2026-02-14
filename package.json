@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:a11y": "bash .claude/skills/frontend-automation-skill/scripts/run-a11y-audit.sh . ./a11y-report",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "deploy": "npm run check"
   },
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.14",
@@ -22,6 +28,13 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "jest-axe": "^9.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",

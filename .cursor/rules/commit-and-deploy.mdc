@@ -1,0 +1,14 @@
+---
+description: Run build pipeline before commit and deploy
+alwaysApply: true
+---
+
+# Commit and Deploy Workflow
+
+When the user asks to **commit and deploy** (or similar: "deploy", "ship it", "push and deploy"):
+
+1. **Run the full check pipeline first**: `npm run check` (runs lint → typecheck → test → build). All stages must pass.
+2. **Only if check passes**: stage changes, commit with a clear message, then `git push origin main` (or the appropriate branch).
+3. If any stage fails, report the failure and suggested fixes; do not commit or push until the pipeline passes.
+
+Do not commit and push without running the pipeline first.
