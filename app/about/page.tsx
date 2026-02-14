@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
 import ContactSection from '@/components/contact-section'
-import { Link } from '@/components/ui/link'
-import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Me | Michael Potter',
@@ -10,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white">
       {/* Hero Section - reduced bottom padding so it doesn't stack with content section */}
       <section className="pt-section-lg md:pt-section-xl pb-section-sm">
         <div className="w-full max-w-container mx-auto px-6">
@@ -57,18 +55,8 @@ export default function AboutPage() {
       <ContactSection
         heading="Let's work together"
         description="If you're building something meaningful and need a thoughtful design partner, I'd love to hear from you."
-        className="pt-section-lg md:pt-section-lg pb-12"
+        className="pt-section-lg md:pt-section-lg pb-12 bg-background-primary"
       />
-
-      {/* Back Link */}
-      <section className="pt-16 pb-section-lg">
-        <div className="w-full max-w-container mx-auto px-6">
-          <Link href="/">
-            <ArrowLeft size={16} />
-            Back to home
-          </Link>
-        </div>
-      </section>
     </div>
   )
 }

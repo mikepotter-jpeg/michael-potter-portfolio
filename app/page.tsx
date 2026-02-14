@@ -51,7 +51,7 @@ export default function Home() {
               Some of my work
             </h2>
             <p className="text-body max-w-prose">
-              End-to-end product design for government, energy and retail, serving thousands of users.
+              Selected projects spanning product strategy and systems design.
             </p>
           </header>
 

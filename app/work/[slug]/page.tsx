@@ -163,7 +163,7 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Next Project */}
       {nextProject && nextProject.slug !== project.slug && (
-        <section className="py-section-md border-t border-border bg-background-secondary">
+        <section className="py-section-md bg-background-secondary">
           <div className="w-full max-w-container mx-auto px-6">
             <p className="text-ui text-text-tertiary mb-3">Next project</p>
             <Link 
