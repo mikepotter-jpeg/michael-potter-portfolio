@@ -1,69 +1,70 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import ContactSection from '@/components/contact-section'
+import { Link } from '@/components/ui/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Me | Michael Potter',
-  description: 'Product designer with 5+ years experience building digital products across government, energy, and retail.',
+  description: 'Product designer with 5+ years experience building digital products across government, energy and retail.',
 }
 
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="py-20 md:py-32">
-        <div className="w-full max-w-7xl mx-auto px-6">
+      {/* Hero Section - reduced bottom padding so it doesn't stack with content section */}
+      <section className="pt-section-lg md:pt-section-xl pb-section-sm">
+        <div className="w-full max-w-container mx-auto px-6">
           <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
+            <h1 className="text-heading-2 md:text-heading-1">
               About me
             </h1>
           </div>
         </div>
       </section>
 
-      {/* About Content */}
-      <section className="py-20 md:py-28">
-        <div className="w-full max-w-7xl mx-auto px-6">
+      {/* About Content - no top padding; gap is from hero's pb-section-sm */}
+      <section className="pt-0 pb-section-lg md:pb-section-lg">
+        <div className="w-full max-w-container mx-auto px-6">
           <div className="max-w-4xl prose-custom">
             <p className="text-lead">
-              I&apos;m a product designer who started out designing physical things. Furniture, objects, things you hold in your hands. That background in industrial design taught me to pay attention to how people actually use what you put in front of them, and it still carries through in my digital work.
+              I started in industrial design: furniture, lighting, joinery. That work taught me to observe how people actually use what you build, and that discipline defines everything I do now.
             </p>
             
             <p>
-              After studying industrial design, I shifted into digital products and found the same thinking applied: understand the person, reduce complexity, make the thing feel obvious. Over the past decade I&apos;ve designed enterprise platforms across government, energy, and retail. Systems where thousands of people need things to work clearly, first time.
+              I shifted into digital products and found the same principles apply: understand your users, eliminate unnecessary complexity, make the system obvious. Over the past decade I&apos;ve designed enterprise platforms across government, energy and retail.
+            </p>
+
+            <p>
+              These systems serve thousands of users who need reliability and precision from day one.
             </p>
             
             <p>
-              Most of my recent work has been in government digital services. At the Department of Agriculture, I led experience design for the Export Service, a platform used by over 2,000 regulated businesses. I was the design lead in a 16-person delivery team, working across authentication, account management, and regulatory compliance. A lot of that work was about balancing serious security requirements with the need for things to actually make sense to the people using them.
+              Most of my recent work has been in government digital services. At the Department of Agriculture, I led experience design for the Export Service platform serving over 2,000 regulated businesses. I was design lead in a 16-person delivery team, working across authentication, account management and regulatory compliance. Balancing strict security requirements with usable, coherent interfaces.
             </p>
             
             <p>
-              I care about accessibility, design systems, and understanding how something will actually get built. I do my best work when I&apos;m close to developers and stakeholders, not handing off screens but shaping the product together.
+              I&apos;m focused on accessibility, design systems and buildability. I work best when distilling high ambition into what&apos;s feasible, embedded with developers and stakeholders, actively shaping the product rather than handing off deliverables.
             </p>
             
             <p>
-              Outside of work, I bake sourdough (cold fermentation, always), collect mid-century furniture, and walk my dog Mango around Sydney.
+              Outside work: fermentation (sourdough, kefir and pickles), swimming, walking Mango in Sydney.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <ContactSection 
+      <ContactSection
         heading="Let's work together"
-        description="If you are building something meaningful and need a thoughtful design partner, I'd love to hear from you."
-        className="pt-20 md:pt-28 pb-12"
+        description="If you're building something meaningful and need a thoughtful design partner, I'd love to hear from you."
+        className="pt-section-lg md:pt-section-lg pb-12"
       />
 
       {/* Back Link */}
-      <section className="pt-16 pb-20">
-        <div className="w-full max-w-7xl mx-auto px-6">
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2"
-          >
-            <ArrowLeft size={20} />
+      <section className="pt-16 pb-section-lg">
+        <div className="w-full max-w-container mx-auto px-6">
+          <Link href="/">
+            <ArrowLeft size={16} />
             Back to home
           </Link>
         </div>

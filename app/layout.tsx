@@ -6,7 +6,7 @@ import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Michael Potter | Product Designer',
-  description: 'Product designer specialising in enterprise product design, with experience in account systems, permissions, and identity workflows.',
+  description: 'Product designer specialising in enterprise product design, with experience in account systems, permissions and identity workflows.',
 }
 
 export default function RootLayout({

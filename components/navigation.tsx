@@ -63,17 +63,17 @@ export default function Navigation() {
 
       <header
         className={cn(
-          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-all duration-300 ease-in-out focus-within:translate-y-0 focus-within:opacity-100",
+          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-medium ease-in-out focus-within:translate-y-0 focus-within:opacity-100",
           isVisible
             ? 'translate-y-0 opacity-100'
             : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
-      <nav className="mx-auto flex h-auto max-w-7xl items-center px-6 sm:px-6 lg:px-6 py-3">
+      <nav className="mx-auto flex h-auto max-w-container items-center px-6 py-3">
         <div className="mr-6 flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline py-3 focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md rounded-md hover:bg-background-primary/50 transition-colors"
+            className="flex items-center space-x-2 no-underline py-3 rounded-button hover:bg-background-primary/50 transition-medium"
             aria-label="Home"
           >
             <MPLogo size={48} />
@@ -90,7 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "focus:outline-2 focus:outline-offset-2 focus:outline-purple-600 focus:rounded-md",
+                          "transition-medium rounded-button",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >

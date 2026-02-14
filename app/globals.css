@@ -29,58 +29,65 @@ html {
   background-color: rgba(85, 91, 92, 0.2);
 }
 
+/* ===========================================
+   TRANSITION & TIMING UTILITIES
+   =========================================== */
+
+@layer utilities {
+  /* Fast transitions for color changes */
+  .transition-fast {
+    @apply transition-colors duration-fast;
+  }
+
+  /* Normal transitions */
+  .transition-normal {
+    @apply transition-all duration-normal;
+  }
+
+  /* Medium transitions for transforms and complex changes */
+  .transition-medium {
+    @apply transition-all duration-medium;
+  }
+
+  /* Slow transitions for complex animations */
+  .transition-slow {
+    @apply transition-all duration-slow;
+  }
+}
+
 /* Global focus-visible styles for accessibility */
-a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px #7C3AED !important;
-  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px theme('colors.focus.ring') !important;
+  border-radius: theme('borderRadius.button');
 }
 
-/* Navigation menu items - ensure purple focus overrides Radix UI */
+/* Links get outline-style focus without border-radius */
+a:focus-visible {
+  outline: 2px solid theme('colors.focus.ring');
+  outline-offset: 2px;
+}
+
+/* Navigation menu items - ensure focus ring overrides Radix UI */
 [role="menuitem"]:focus-visible,
 [role="menuitemcheckbox"]:focus-visible,
 [role="menuitemradio"]:focus-visible {
-  outline: 2px solid #7C3AED !important;
+  outline: 2px solid theme('colors.focus.ring') !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
 
-/* Custom section styling */
-.section-container {
-  @apply relative;
-}
-
-.section-container::before {
-  content: '';
-  @apply absolute top-0 left-0 right-0 h-px bg-border;
-}
-
-/* Animated gradient background for cards */
+/* Card hover effect - consistent elevation */
 .card-hover {
-  @apply transition-all duration-300;
+  @apply transition-medium;
 }
 
 .card-hover:hover {
   @apply shadow-xl -translate-y-1;
-}
-
-/* Link underline animation */
-.link-animate {
-  @apply relative inline-block;
-}
-
-.link-animate::after {
-  content: '';
-  @apply absolute bottom-0 left-0 w-full h-[1px] bg-current origin-right scale-x-0 transition-transform duration-300;
-}
-
-.link-animate:hover::after {
-  @apply origin-left scale-x-100;
 }
 
 /* Fade in animation */
@@ -99,36 +106,34 @@ select:focus-visible,
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.animate-delay-100 { animation-delay: 0.1s; }
-.animate-delay-200 { animation-delay: 0.2s; }
-.animate-delay-300 { animation-delay: 0.3s; }
-.animate-delay-400 { animation-delay: 0.4s; }
+/* ===========================================
+   LINK STYLES
+   =========================================== */
 
-/* Global link styling */
-a:not(.no-underline):not([class*="rounded"]) {
-  color: #2A3132; /* Primary text color */
+/* Default link styling - underline that passes behind descenders */
+a {
   text-decoration: underline;
-  text-decoration-color: #CCCCCC; /* Muted underline */
-  text-underline-offset: 4px;
-  text-decoration-skip-ink: auto; /* Skip descenders */
+  text-decoration-color: theme('colors.border.DEFAULT');
+  text-underline-offset: 0.15em;
   text-decoration-thickness: 1px;
-  transition: text-decoration-color 0.2s ease;
+  text-decoration-skip-ink: auto;
+  transition: text-decoration-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-a:not(.no-underline):not([class*="rounded"]):hover {
-  text-decoration-color: #555B5C; /* Neutral on hover */
+a:hover {
+  text-decoration-color: theme('colors.accent.DEFAULT');
 }
 
-/* Link icons - secondary text color */
-a svg,
-a .link-icon {
-  color: #5F6566; /* Secondary/tertiary text color */
-  transition: color 0.2s ease;
+/* Remove underline for interactive components */
+.no-underline,
+a[class*="rounded"],
+a[class*="button"] {
+  text-decoration: none;
 }
 
-a:hover svg,
-a:hover .link-icon {
-  color: #555B5C; /* Neutral on hover */
+/* Link icons - inherit color from link, transition with link */
+a svg {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* External link arrow icons in prose - proper baseline alignment */
@@ -149,25 +154,22 @@ a:hover .link-icon {
 
 /* Lead paragraph - larger intro text */
 .text-lead {
-  @apply text-xl md:text-2xl leading-relaxed text-text-primary;
-  max-width: 65ch; /* Optimal line length for readability */
+  @apply text-xl md:text-2xl leading-relaxed text-text-primary max-w-prose;
 }
 
 /* Body paragraph - standard text */
 .text-body {
-  @apply text-lg leading-relaxed text-text-secondary;
-  max-width: 65ch; /* Optimal line length: 50-75 chars */
+  @apply text-lg leading-relaxed text-text-secondary max-w-prose;
 }
 
 /* Small text */
 .text-small {
-  @apply text-base leading-relaxed text-text-secondary;
-  max-width: 70ch; /* Slightly wider for smaller text */
+  @apply text-base leading-relaxed text-text-secondary max-w-prose;
 }
 
 /* Section label - uppercase eyebrow text */
 .section-label {
-  @apply text-sm uppercase tracking-widest text-text-tertiary font-medium;
+  @apply text-ui uppercase tracking-widest text-text-tertiary font-medium;
 }
 
 /* ===========================================
@@ -175,12 +177,11 @@ a:hover .link-icon {
    =========================================== */
 
 .prose-custom {
-  /* Optimal line length for all prose content */
-  max-width: 65ch;
+  @apply max-w-prose;
   
   /* Headings */
   & h2 {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight mt-16 mb-6 text-text-primary;
+    @apply text-heading-3 mt-16 mb-6 text-text-primary;
   }
   
   & h2:first-child {
@@ -188,17 +189,16 @@ a:hover .link-icon {
   }
   
   & h3 {
-    @apply text-xl md:text-2xl font-semibold tracking-tight mt-12 mb-4 text-text-primary;
+    @apply text-heading-4 mt-12 mb-4 text-text-primary;
   }
   
   & h4 {
-    @apply text-lg font-semibold mt-8 mb-3 text-text-primary;
+    @apply text-body-xl font-semibold mt-8 mb-3 text-text-primary;
   }
   
-  /* Paragraphs - optimal reading: 50-75 chars, ~66 ideal */
+  /* Paragraphs */
   & p {
-    @apply mb-6 text-text-secondary leading-[1.75] text-lg;
-    max-width: 65ch;
+    @apply mb-6 text-text-secondary leading-[1.75] text-body max-w-prose;
   }
   
   & p:last-child {
@@ -214,17 +214,15 @@ a:hover .link-icon {
   
   /* Lists */
   & ul {
-    @apply list-disc pl-6 mb-6 space-y-3 text-text-secondary;
-    max-width: 65ch;
+    @apply list-disc pl-6 mb-6 space-y-3 text-text-secondary max-w-prose;
   }
   
   & ol {
-    @apply list-decimal pl-6 mb-6 space-y-3 text-text-secondary;
-    max-width: 65ch;
+    @apply list-decimal pl-6 mb-6 space-y-3 text-text-secondary max-w-prose;
   }
   
   & li {
-    @apply leading-[1.75] text-lg;
+    @apply leading-[1.75] text-body;
   }
   
   & li p {
@@ -238,8 +236,7 @@ a:hover .link-icon {
   
   /* Block quotes */
   & blockquote {
-    @apply border-l-4 border-accent pl-6 my-8 italic text-text-secondary;
-    max-width: 60ch; /* Slightly narrower for emphasis */
+    @apply border-l-4 border-accent pl-6 my-8 italic text-text-secondary max-w-[60ch];
   }
   
   & blockquote p {
@@ -252,11 +249,11 @@ a:hover .link-icon {
   }
   
   & figure img {
-    @apply rounded-2xl w-full;
+    @apply rounded-card-lg w-full;
   }
   
   & figcaption {
-    @apply text-sm text-text-tertiary mt-3 text-center;
+    @apply text-ui-sm text-text-tertiary mt-3 text-center;
   }
   
   /* Horizontal rules */
@@ -266,11 +263,11 @@ a:hover .link-icon {
   
   /* Code */
   & code {
-    @apply bg-background-secondary px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-background-secondary px-1.5 py-0.5 rounded text-ui font-mono;
   }
   
   & pre {
-    @apply bg-background-secondary p-4 rounded-xl overflow-x-auto my-6;
+    @apply bg-background-secondary p-4 rounded-card overflow-x-auto my-6;
   }
   
   & pre code {

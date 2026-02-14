@@ -1,28 +1,30 @@
+import { Link } from '@/components/ui/link'
+
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-background-secondary">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <p className="text-sm text-text-secondary text-center">
+      <div className="max-w-container mx-auto px-6 py-12">
+        <p className="text-ui text-text-secondary text-center">
           Crafted with{' '}
-          <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">
+          <Link href="https://nextjs.org" variant="inherit" size="small" external>
             Next.js
-          </a>
+          </Link>
           {' & '}
-          <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">
+          <Link href="https://tailwindcss.com" variant="inherit" size="small" external>
             Tailwind CSS
-          </a>
+          </Link>
           {' | Designed with '}
-          <a href="https://vercel.com/font/geist" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">
+          <Link href="https://vercel.com/font/geist" variant="inherit" size="small" external>
             Geist Sans
-          </a>
+          </Link>
           {' | Icons from '}
-          <a href="https://lucide.dev" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">
+          <Link href="https://lucide.dev" variant="inherit" size="small" external>
             lucide-react
-          </a>
+          </Link>
           {' | Deployed to '}
-          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">
+          <Link href="https://vercel.com" variant="inherit" size="small" external>
             Vercel
-          </a>
+          </Link>
           {' | © Michael Potter 2026 · Made in Sydney'}
         </p>
       </div>

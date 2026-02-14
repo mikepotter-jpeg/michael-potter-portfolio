@@ -1,6 +1,7 @@
-import Link from 'next/link'
+import NextLink from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { Link } from '@/components/ui/link'
 
 interface WorkCardProps {
   slug: string
@@ -15,9 +16,9 @@ interface WorkCardProps {
 
 export default function WorkCard({ slug, title, description, categories = [], coverImage, index = 0 }: WorkCardProps) {
   return (
-    <Link 
+    <NextLink
       href={`/work/${slug}`}
-      className="no-underline group block bg-background-secondary rounded-3xl overflow-hidden card-hover"
+      className="no-underline group block bg-background-secondary rounded-card-lg overflow-hidden card-hover border border-border"
     >
       <div className="flex flex-col lg:flex-row">
         {/* Cover Image */}
@@ -27,7 +28,7 @@ export default function WorkCard({ slug, title, description, categories = [], co
               src={coverImage}
               alt={title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover group-hover:scale-105 transition-medium"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -39,7 +40,7 @@ export default function WorkCard({ slug, title, description, categories = [], co
         </div>
         
         {/* Content */}
-        <div className="lg:w-1/2 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+        <div className="lg:w-1/2 p-card md:p-card-lg lg:p-card-xl flex flex-col justify-center">
           <div className="space-y-6">
             {/* Categories */}
             {categories.length > 0 && (
@@ -47,7 +48,7 @@ export default function WorkCard({ slug, title, description, categories = [], co
                 {categories.map((category) => (
                   <span
                     key={category}
-                    className="px-3 py-1 text-sm bg-background-primary rounded-full text-text-tertiary"
+                    className="px-3 py-1 text-ui bg-background-primary rounded-full text-text-tertiary"
                   >
                     {category}
                   </span>
@@ -56,25 +57,24 @@ export default function WorkCard({ slug, title, description, categories = [], co
             )}
 
             <div className="space-y-4">
-              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight group-hover:text-accent transition-colors">
+              <h3 className="text-heading-4 md:text-heading-3 group-hover:text-accent transition-medium">
                 {title}
               </h3>
-              <p className="text-lg text-text-secondary leading-relaxed">
+              <p className="text-body text-text-secondary leading-relaxed">
                 {description}
               </p>
             </div>
 
             {/* View Project Link */}
-            <div className="flex items-center gap-2 text-text-primary font-medium pt-2">
-              <span className="underline underline-offset-4 decoration-border group-hover:decoration-action transition-colors">View project</span>
-              <ArrowRight 
-                size={20} 
-                className="text-text-tertiary group-hover:text-action transition-colors"
-              />
+            <div className="pt-2">
+              <Link href={`/work/${slug}`} className="font-medium">
+                View project
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </NextLink>
   )
 }

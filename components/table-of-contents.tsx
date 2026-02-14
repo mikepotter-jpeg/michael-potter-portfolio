@@ -51,12 +51,12 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   return (
     <nav aria-label="Page contents" className="sticky top-32">
       {/* Section links */}
-      <ul className="space-y-1 text-sm">
+      <ul className="space-y-1 text-ui">
         {/* Back to top */}
         <li>
           <a
             href="#top"
-            className="no-underline inline-flex items-center gap-1.5 py-1.5 transition-all duration-200 leading-snug text-text-tertiary hover:text-text-primary"
+            className="no-underline inline-flex items-center gap-1.5 py-1.5 transition-fast leading-snug text-text-tertiary hover:text-text-primary"
           >
             <span>Top</span>
             <ChevronUp size={14} aria-hidden="true" />
@@ -70,7 +70,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
               <a
                 href={`#${item.id}`}
                 aria-current={isActive ? 'true' : undefined}
-                className={`no-underline block py-1.5 transition-all duration-200 leading-snug ${
+                className={`no-underline block py-1.5 transition-fast leading-snug ${
                   isActive
                     ? 'text-text-primary font-medium'
                     : 'text-text-tertiary hover:text-text-primary'

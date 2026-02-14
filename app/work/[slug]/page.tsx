@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProjectBySlug, getAllProjects } from '@/lib/projects'
+import { Link } from '@/components/ui/link'
 import TableOfContents from '@/components/table-of-contents'
 import ContactSection from '@/components/contact-section'
 import { Button } from '@/components/ui/button'
@@ -49,19 +50,19 @@ export default function ProjectPage({ params }: Props) {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section id="top" className="py-16 md:py-24 bg-background-secondary scroll-mt-20">
-        <div className="w-full max-w-7xl mx-auto px-6">
+      <section id="top" className="py-section-md md:py-section-lg bg-background-secondary scroll-mt-20">
+        <div className="w-full max-w-container mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-3 text-sm text-text-tertiary mb-8" aria-label="Breadcrumb">
-            <Link href="/#work-section" className="hover:text-text-primary transition-colors">
+          <nav className="flex items-center gap-3 text-ui text-text-tertiary mb-8" aria-label="Breadcrumb">
+            <NextLink href="/#work-section" className="hover:text-text-primary transition-fast">
               My work
-            </Link>
+            </NextLink>
             <span aria-hidden="true">›</span>
             <span className="text-text-primary">{project.title}</span>
           </nav>
 
           <header className="max-w-4xl space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
+            <h1 className="text-heading-2 md:text-heading-1">
               {project.title}
             </h1>
             
@@ -72,11 +73,11 @@ export default function ProjectPage({ params }: Props) {
             {/* Meta info */}
             <dl className="flex flex-wrap gap-8 pt-4">
               <div>
-                <dt className="text-sm font-semibold text-text-primary mb-1">Client</dt>
+                <dt className="text-ui font-semibold text-text-primary mb-1">Client</dt>
                 <dd className="text-text-secondary">{project.client}</dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-text-primary mb-1">Timeline</dt>
+                <dt className="text-ui font-semibold text-text-primary mb-1">Timeline</dt>
                 <dd className="text-text-secondary">{project.years}</dd>
               </div>
             </dl>
@@ -86,9 +87,9 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Cover Image */}
       {project.coverImage && (
-        <section className="py-16">
-          <div className="w-full max-w-7xl mx-auto px-6">
-            <div className="relative aspect-video rounded-3xl overflow-hidden bg-background-secondary">
+        <section className="py-section-md">
+          <div className="w-full max-w-container mx-auto px-6">
+            <div className="relative aspect-video rounded-card-lg overflow-hidden bg-background-secondary">
               <Image
                 src={project.coverImage}
                 alt={project.title}
@@ -104,15 +105,15 @@ export default function ProjectPage({ params }: Props) {
       {/* Static Table of Contents - visible below xl */}
       {project.tableOfContents && project.tableOfContents.length > 0 && (
         <section className="xl:hidden py-8 border-t border-border">
-          <div className="w-full max-w-7xl mx-auto px-6">
+          <div className="w-full max-w-container mx-auto px-6">
             <nav aria-label="Page contents">
-              <p className="text-sm text-text-tertiary mb-4">On this page</p>
-              <ul className="flex flex-col gap-2 text-sm">
+              <p className="text-ui text-text-tertiary mb-4">On this page</p>
+              <ul className="flex flex-col gap-2 text-ui">
                 {project.tableOfContents.map((item) => (
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="text-text-primary underline-offset-4 hover:underline transition-colors"
+                      className="text-text-primary underline-offset-4 hover:underline transition-fast"
                     >
                       {item.title}
                     </a>
@@ -125,8 +126,8 @@ export default function ProjectPage({ params }: Props) {
       )}
 
       {/* Content Sections with Sticky Sidebar TOC */}
-      <section className="py-16">
-        <div className="w-full max-w-7xl mx-auto px-6">
+      <section className="py-section-md">
+        <div className="w-full max-w-container mx-auto px-6">
           <div className="flex gap-12 xl:gap-20">
             {/* Sticky Sidebar TOC - Left column on xl screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
@@ -139,7 +140,7 @@ export default function ProjectPage({ params }: Props) {
             <div className="max-w-4xl w-full space-y-20">
               {project.sections.map((section) => (
                 <article key={section.id} id={section.id} className="scroll-mt-24">
-                  <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+                  <h2 className="text-heading-3 md:text-heading-2 mb-8">
                     {section.title}
                   </h2>
                   <div 
@@ -162,18 +163,16 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Next Project */}
       {nextProject && nextProject.slug !== project.slug && (
-        <section className="py-16 border-t border-border bg-background-secondary">
-          <div className="w-full max-w-7xl mx-auto px-6">
-            <p className="text-sm text-text-tertiary mb-3">Next project</p>
-            <Button asChild variant="link" className="text-xl md:text-2xl font-semibold h-auto p-0 group">
-              <Link href={`/work/${nextProject.slug}`} className="no-underline">
-                {nextProject.title}
-                <ArrowRight 
-                  size={24} 
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </Link>
-            </Button>
+        <section className="py-section-md border-t border-border bg-background-secondary">
+          <div className="w-full max-w-container mx-auto px-6">
+            <p className="text-ui text-text-tertiary mb-3">Next project</p>
+            <Link 
+              href={`/work/${nextProject.slug}`} 
+              className="text-body-xl md:text-heading-4 font-semibold"
+            >
+              {nextProject.title}
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </section>
       )}
