@@ -20,8 +20,8 @@ export const projects: Project[] = [
     categories: ['Product', 'Design Systems', 'Government'],
     coverImage: 'https://framerusercontent.com/images/CvXpoQTp5MB9iFXaiJgtActjIY.png',
     tableOfContents: [
-      { id: 'challenges', title: 'Challenges' },
       { id: 'overview', title: 'Overview' },
+      { id: 'challenges', title: 'Challenges' },
       { id: 'designing-for-efficiency-and-clarity', title: 'Designing for efficiency and clarity' },
       { id: 'designing-for-secure-access', title: 'Designing for secure access' },
       { id: 'impact', title: 'Impact' },
