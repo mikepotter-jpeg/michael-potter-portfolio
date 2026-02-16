@@ -7,9 +7,8 @@ alwaysApply: true
 
 When the user asks to **commit and deploy** (or similar: "deploy", "ship it", "push and deploy"):
 
-1. **Run the full check pipeline**: `npm run check` (runs lint → typecheck → test → build). All stages must pass.
-2. **Run the accessibility audit**: `npm run test:a11y` (WCAG 2.1 AA compliance). Must pass with no critical violations.
-3. **Only if both pass**: stage changes, commit with a clear message, then `git push origin main` (or the appropriate branch).
-4. If any stage fails, report the failure and suggested fixes; do not commit or push until the pipeline passes.
+1. **Run the full check pipeline**: `npm run check` (runs lint → typecheck → test → build → Playwright a11y audit). All stages must pass.
+2. **Only if check passes**: stage changes, commit with a clear message, then `git push origin main` (or the appropriate branch).
+3. If any stage fails, report the failure and suggested fixes; do not commit or push until the pipeline passes.
 
 Do not commit and push without running the pipeline first.

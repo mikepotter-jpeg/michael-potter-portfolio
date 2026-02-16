@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Accessibility Audit Script
-# Runs WCAG 2.1 AA compliance checks using Axe DevTools
+# Runs WCAG 2.1 AA compliance checks using Playwright + axe-core
 
 PROJECT_DIR="${1:-.}"
 OUTPUT_DIR="${2:-./a11y-report}"
-PORT="${3:-3000}"
+PORT="${3:-${PORT:-3099}}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -23,15 +23,16 @@ echo ""
 
 cd "$PROJECT_DIR" || exit 1
 
-# Check if node_modules has axe-core
-if [ ! -d "node_modules/@axe-core" ]; then
-    echo -e "${YELLOW}Installing @axe-core/cli for accessibility testing...${NC}"
-    npm install --save-dev @axe-core/cli 2>/dev/null || true
+# Ensure Playwright and axe-core are installed
+if [ ! -d "node_modules/playwright" ] || [ ! -d "node_modules/@axe-core/playwright" ]; then
+    echo -e "${YELLOW}Installing Playwright and @axe-core/playwright...${NC}"
+    npm install --save-dev @axe-core/playwright playwright 2>/dev/null || true
+    npx playwright install chromium 2>/dev/null || true
 fi
 
-# Start dev server in background
+# Start dev server in background on specified port (avoid conflicts with other dev servers)
 echo -e "${BLUE}Starting dev server on port $PORT...${NC}"
-npm run dev > "$OUTPUT_DIR/dev-server.log" 2>&1 &
+npx next dev -p "$PORT" > "$OUTPUT_DIR/dev-server.log" 2>&1 &
 DEV_PID=$!
 
 # Wait for server to be ready
@@ -50,93 +51,36 @@ for i in {1..30}; do
 done
 
 echo ""
-echo -e "${BLUE}Running accessibility audit...${NC}"
+echo -e "${BLUE}Running accessibility audit (Playwright + axe-core)...${NC}"
 
-# Run Axe audit
-REPORT_FILE="$OUTPUT_DIR/a11y-report.json"
-SUMMARY_FILE="$OUTPUT_DIR/a11y-summary.md"
+# Resolve path to the audit runner (script lives in skill, runs from project dir)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RUNNER="$SCRIPT_DIR/a11y-audit-runner.mjs"
 
-# Pages to audit
-PAGES=("/" "/about" "/contact")
+# Pages to audit (customize per project; /contact may 404 on some sites)
+PAGES="/,/about,/work/export-service"
 
-# Initialize report
-cat > "$SUMMARY_FILE" << 'EOF'
-# Accessibility Audit Report (WCAG 2.1 AA)
-
-## Summary
-EOF
-
-TOTAL_VIOLATIONS=0
-TOTAL_PASSES=0
-
-# Audit each page
-for page in "${PAGES[@]}"; do
-    echo -e "${YELLOW}Auditing: $page${NC}"
-
-    # Run axe audit via Node.js script (more reliable than CLI)
-    node << SCRIPT > "$OUTPUT_DIR/audit_${page//\//_}.json"
-const axios = require('axios');
-const { AxeResults } = require('axe-core');
-
-(async () => {
-    try {
-        // Note: This is a simplified version
-        // In production, use Playwright + axe-core for full testing
-        console.log(JSON.stringify({
-            page: '$page',
-            timestamp: new Date().toISOString(),
-            violations: [],
-            passes: [],
-            status: 'success'
-        }, null, 2));
-    } catch (e) {
-        console.error('Error:', e.message);
-    }
-})();
-SCRIPT
-done
-
-# Generate final report (with mock data for demonstration)
-cat >> "$SUMMARY_FILE" << 'EOF'
-
-## Issues by Category
-
-### Critical Issues (must fix)
-- None found ✅
-
-### Serious Issues (should fix)
-- None found ✅
-
-### Moderate Issues
-- None found ✅
-
-## Compliance Status
-- **WCAG 2.1 Level AA**: PASS ✅
-- **Color Contrast**: PASS ✅
-- **Semantic HTML**: PASS ✅
-- **Keyboard Navigation**: PASS ✅
-- **ARIA Implementation**: PASS ✅
-- **Image Alt Text**: PASS ✅
-
-## Recommendations
-1. Continue monitoring accessibility as you add new features
-2. Run this audit regularly (weekly recommended)
-3. Test with keyboard navigation manually
-4. Use screen reader testing for complex components
-
-## Pages Audited
-EOF
-
-for page in "${PAGES[@]}"; do
-    echo "- $page" >> "$SUMMARY_FILE"
-done
+# Run the audit
+if [ -f "$RUNNER" ]; then
+    node "$RUNNER" --url "http://localhost:$PORT" --output "$OUTPUT_DIR" --pages "$PAGES"
+    AUDIT_EXIT=$?
+else
+    echo -e "${RED}❌ Audit runner not found: $RUNNER${NC}"
+    AUDIT_EXIT=1
+fi
 
 # Kill dev server
 kill $DEV_PID 2>/dev/null || true
 wait $DEV_PID 2>/dev/null || true
 
 echo ""
-echo -e "${GREEN}✅ Accessibility audit complete${NC}"
+if [ $AUDIT_EXIT -eq 0 ]; then
+    echo -e "${GREEN}✅ Accessibility audit complete - no critical/serious violations${NC}"
+else
+    echo -e "${RED}❌ Accessibility audit found critical or serious violations${NC}"
+fi
 echo "Report saved to: $OUTPUT_DIR/a11y-summary.md"
 echo ""
-cat "$SUMMARY_FILE"
+[ -f "$OUTPUT_DIR/a11y-summary.md" ] && cat "$OUTPUT_DIR/a11y-summary.md"
+
+exit $AUDIT_EXIT
