@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        touch: { raw: '(any-pointer: coarse)' },
+      },
       colors: {
         background: {
           primary: '#F8F6F3',

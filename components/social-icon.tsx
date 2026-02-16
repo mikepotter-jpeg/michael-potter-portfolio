@@ -20,7 +20,7 @@ export default function SocialIcon({ href, icon, label }: SocialIconProps) {
       href={href}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      className="no-underline p-2 text-text-primary hover:text-accent hover:bg-accent-lighter rounded-full transition-medium"
+      className="no-underline flex items-center justify-center min-w-12 min-h-12 text-text-primary hover:text-accent hover:bg-accent-lighter rounded-full transition-medium"
       aria-label={label}
     >
       {icons[icon]}

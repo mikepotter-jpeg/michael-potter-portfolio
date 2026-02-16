@@ -2,8 +2,8 @@ import { Link } from '@/components/ui/link'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-background-secondary">
-      <div className="max-w-container mx-auto px-6 py-12">
+    <footer className="border-t border-border bg-background-secondary pb-[var(--safe-area-bottom)]">
+      <div className="max-w-container mx-auto px-4 sm:px-6 py-12">
         <p className="text-ui text-text-secondary text-center">
           Crafted with{' '}
           <Link href="https://nextjs.org" variant="inherit" size="small" external>

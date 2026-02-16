@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="flex flex-col bg-white">
       {/* Hero Section - reduced bottom padding so it doesn't stack with content section */}
       <section className="pt-section-lg md:pt-section-xl pb-section-sm">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl">
             <h1 className="text-heading-2 md:text-heading-1">
               About me
@@ -22,7 +22,7 @@ export default function AboutPage() {
 
       {/* About Content - no top padding; gap is from hero's pb-section-sm */}
       <section className="pt-0 pb-section-lg md:pb-section-lg">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl prose-custom">
             <p className="text-lead">
               I started in industrial design: furniture, lighting, joinery. That work taught me to observe how people actually use what you build, and that discipline defines everything I do now.

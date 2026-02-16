@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import { Link } from '@/components/ui/link'
 
 interface WorkCardProps {
   slug: string
@@ -16,10 +15,12 @@ interface WorkCardProps {
 
 export default function WorkCard({ slug, title, description, categories = [], coverImage, index = 0 }: WorkCardProps) {
   return (
-    <NextLink
-      href={`/work/${slug}`}
-      className="no-underline group block bg-background-secondary rounded-card-lg overflow-hidden card-hover border border-border"
-    >
+    <div className="group relative bg-background-secondary rounded-card-lg overflow-hidden card-hover border border-border active:scale-[0.99]">
+      <NextLink
+        href={`/work/${slug}`}
+        className="absolute inset-0 z-20 no-underline"
+        aria-label={`View ${title} project`}
+      />
       <div className="flex flex-col lg:flex-row">
         {/* Cover Image */}
         <div className="relative lg:w-1/2 aspect-[4/3] lg:aspect-auto bg-border/10 overflow-hidden">
@@ -38,9 +39,9 @@ export default function WorkCard({ slug, title, description, categories = [], co
             </div>
           )}
         </div>
-        
+
         {/* Content */}
-        <div className="lg:w-1/2 p-card md:p-card-lg lg:p-card-xl flex flex-col justify-center">
+        <div className="lg:w-1/2 p-card md:p-card-lg lg:p-card-xl flex flex-col justify-center relative z-10">
           <div className="space-y-6">
             {/* Categories */}
             {categories.length > 0 && (
@@ -65,16 +66,14 @@ export default function WorkCard({ slug, title, description, categories = [], co
               </p>
             </div>
 
-            {/* View Project Link */}
-            <div className="pt-2">
-              <Link href={`/work/${slug}`} className="font-medium">
-                View project
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            {/* View Project - styled as link, parent card handles navigation */}
+            <span className="inline-flex items-center gap-1 pt-2 font-medium text-text-primary group-hover:text-accent transition-medium">
+              View project
+              <ArrowRight size={16} />
+            </span>
           </div>
         </div>
       </div>
-    </NextLink>
+    </div>
   )
 }

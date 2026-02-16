@@ -63,17 +63,17 @@ export default function Navigation() {
 
       <header
         className={cn(
-          "sticky top-0 z-50 w-full border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-medium ease-in-out focus-within:translate-y-0 focus-within:opacity-100",
+          "sticky top-0 z-50 w-full overflow-x-hidden border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-medium ease-in-out focus-within:translate-y-0 focus-within:opacity-100 pt-[var(--safe-area-top)]",
           isVisible
             ? 'translate-y-0 opacity-100'
             : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
-      <nav className="mx-auto flex h-auto max-w-container items-center px-6 py-3">
-        <div className="mr-6 flex items-center gap-8">
+      <nav className="mx-auto flex h-auto max-w-container items-center px-4 py-3 sm:px-6">
+        <div className="mr-4 flex min-w-0 flex-1 items-center gap-4 sm:mr-6 sm:gap-8">
           <Link
             href="/"
-            className="flex items-center space-x-2 no-underline py-3 rounded-button hover:bg-background-primary/50 transition-medium"
+            className="flex shrink-0 items-center space-x-2 no-underline py-3 rounded-button hover:bg-background-primary/50 transition-medium [&>svg]:origin-left [&>svg]:scale-[0.75] sm:[&>svg]:scale-100"
             aria-label="Home"
           >
             <MPLogo size={48} />
@@ -90,7 +90,7 @@ export default function Navigation() {
                         href={link.href}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "transition-medium rounded-button",
+                          "px-2 sm:px-4 transition-medium rounded-button",
                           isActive && "bg-text-primary text-background-primary font-medium"
                         )}
                       >
@@ -103,7 +103,7 @@ export default function Navigation() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex shrink-0 items-center gap-1">
           <SocialIcon 
             href="https://www.linkedin.com/in/michael-potter/" 
             icon="linkedin"

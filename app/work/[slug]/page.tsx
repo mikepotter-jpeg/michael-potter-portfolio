@@ -51,7 +51,7 @@ export default function ProjectPage({ params }: Props) {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section id="top" className="py-section-md md:py-section-lg bg-background-secondary scroll-mt-20">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-3 text-ui text-text-tertiary mb-8" aria-label="Breadcrumb">
             <NextLink href="/#work-section" className="hover:text-text-primary transition-fast">
@@ -88,7 +88,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Cover Image */}
       {project.coverImage && (
         <section className="py-section-md">
-          <div className="w-full max-w-container mx-auto px-6">
+          <div className="w-full max-w-container mx-auto px-4 sm:px-6">
             <div className="relative aspect-video rounded-card-lg overflow-hidden bg-background-secondary">
               <Image
                 src={project.coverImage}
@@ -105,7 +105,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Static Table of Contents - visible below xl */}
       {project.tableOfContents && project.tableOfContents.length > 0 && (
         <section className="xl:hidden py-8 border-t border-border">
-          <div className="w-full max-w-container mx-auto px-6">
+          <div className="w-full max-w-container mx-auto px-4 sm:px-6">
             <nav aria-label="Page contents">
               <p className="text-ui text-text-tertiary mb-4">On this page</p>
               <ul className="flex flex-col gap-2 text-ui">
@@ -113,7 +113,7 @@ export default function ProjectPage({ params }: Props) {
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="text-text-primary underline-offset-4 hover:underline transition-fast"
+                      className="block py-2.5 min-h-[44px] text-text-primary underline-offset-4 hover:underline transition-fast"
                     >
                       {item.title}
                     </a>
@@ -127,7 +127,7 @@ export default function ProjectPage({ params }: Props) {
 
       {/* Content Sections with Sticky Sidebar TOC */}
       <section className="py-section-md">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <div className="flex gap-12 xl:gap-20">
             {/* Sticky Sidebar TOC - Left column on xl screens */}
             {project.tableOfContents && project.tableOfContents.length > 0 && (
@@ -164,7 +164,7 @@ export default function ProjectPage({ params }: Props) {
       {/* Next Project */}
       {nextProject && nextProject.slug !== project.slug && (
         <section className="py-section-md bg-background-secondary">
-          <div className="w-full max-w-container mx-auto px-6">
+          <div className="w-full max-w-container mx-auto px-4 sm:px-6">
             <p className="text-ui text-text-tertiary mb-3">Next project</p>
             <Link 
               href={`/work/${nextProject.slug}`} 

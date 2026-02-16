@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section - Full width, dramatic */}
-      <section className="min-h-[70vh] flex items-center justify-center py-section-lg md:py-section-xl">
-        <div className="w-full max-w-container mx-auto px-6">
+      <section className="min-h-dvh-70 flex items-center justify-center py-section-lg md:py-section-xl">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-hero font-semibold tracking-tight leading-[1.1] max-w-4xl animate-fade-in-up">
             Hi, I&apos;m Michael, a product designer in Sydney.
           </h1>
@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* About Snippet - Distinct section */}
       <section className="bg-background-secondary py-section-lg md:py-section-lg">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl space-y-6">
             <h2 className="sr-only">About</h2>
             <p className="text-heading-4 md:text-heading-3 text-text-primary">
@@ -44,7 +44,7 @@ export default function Home() {
 
       {/* Work Section */}
       <section id="work-section" className="py-section-lg md:py-section-lg">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           {/* Section Header */}
           <header className="flex flex-col gap-6 mb-16">
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1">
@@ -76,7 +76,7 @@ export default function Home() {
 
       {/* Recommendations Section */}
       <section className="bg-background-secondary py-section-lg md:py-section-lg">
-        <div className="w-full max-w-container mx-auto px-6">
+        <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           {/* Section Header */}
           <header className="mb-16">
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1">
