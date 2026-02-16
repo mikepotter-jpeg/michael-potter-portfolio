@@ -4,7 +4,7 @@
 # Runs WCAG 2.1 AA compliance checks using Axe DevTools
 
 PROJECT_DIR="${1:-.}"
-OUTPUT_DIR="${2:./a11y-report}"
+OUTPUT_DIR="${2:-./a11y-report}"
 PORT="${3:-3000}"
 
 RED='\033[0;31m'
