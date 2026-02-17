@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
