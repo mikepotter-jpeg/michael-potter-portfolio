@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'motion/react'
 import NextLink from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
@@ -18,12 +17,8 @@ interface WorkCardProps {
 
 export default function WorkCard({ slug, title, description, categories = [], coverImage, index = 0 }: WorkCardProps) {
   return (
-    <motion.div
+    <div
       className="group relative bg-background-secondary rounded-card-lg overflow-hidden card-hover border border-border active:scale-[0.99]"
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
-      viewport={{ once: true, amount: 0.2 }}
     >
       <NextLink
         href={`/work/${slug}`}
@@ -84,6 +79,6 @@ export default function WorkCard({ slug, title, description, categories = [], co
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

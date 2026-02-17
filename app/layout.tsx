@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import ScrollToTop from '@/components/scroll-to-top'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.className} ${GeistMono.variable}`}>
       <body className="font-sans bg-background-primary text-text-primary min-h-screen flex flex-col">
+        <ScrollToTop />
         <Navigation />
         <main id="main-content" className="flex-1">
           {children}

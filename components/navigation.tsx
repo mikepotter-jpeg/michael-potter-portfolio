@@ -59,7 +59,9 @@ export default function Navigation() {
 
       <header
         className={cn(
-          "sticky top-0 z-50 w-full overflow-x-hidden border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 transition-medium ease-in-out focus-within:translate-y-0 focus-within:opacity-100 pt-[var(--safe-area-top)]",
+          "sticky top-0 z-50 w-full overflow-x-hidden border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 focus-within:translate-y-0 focus-within:opacity-100 pt-[var(--safe-area-top)]",
+          // Only animate on homepage scroll reveal, not on page navigation
+          isHomepage && 'transition-medium ease-in-out',
           isVisible
             ? 'translate-y-0 opacity-100'
             : '-translate-y-full opacity-0 pointer-events-none'
