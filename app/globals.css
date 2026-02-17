@@ -23,13 +23,14 @@ h1,
 h2 {
   font-family: var(--font-geist-pixel-square, monospace);
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 /* Geist Sans headings (H3 & H4) — semibold for hierarchy */
 h3,
 h4 {
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 body {
@@ -188,17 +189,12 @@ a svg {
 
 /* Lead paragraph - larger intro text */
 .text-lead {
-  @apply text-xl md:text-2xl leading-relaxed text-text-primary max-w-prose;
-}
-
-/* Body paragraph - standard text */
-.text-body {
-  @apply text-lg leading-relaxed text-text-secondary max-w-prose;
+  @apply text-body-lg md:text-body-xl leading-relaxed text-text-primary max-w-prose;
 }
 
 /* Small text */
 .text-small {
-  @apply text-base leading-relaxed text-text-secondary max-w-prose;
+  @apply text-body-sm leading-relaxed text-text-secondary max-w-prose;
 }
 
 /* Section label - uppercase eyebrow text */
@@ -227,7 +223,7 @@ a svg {
   }
   
   & h4 {
-    @apply text-body-xl font-semibold mt-8 mb-3 text-text-primary;
+    @apply text-heading-4 mt-8 mb-3 text-text-primary;
   }
   
   /* Paragraphs */

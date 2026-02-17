@@ -168,7 +168,7 @@ export default function ProjectPage({ params }: Props) {
             <p className="text-ui text-text-tertiary mb-3">Next project</p>
             <Link 
               href={`/work/${nextProject.slug}`} 
-              className="text-body-xl md:text-heading-4 font-semibold"
+              className="text-heading-4 md:text-heading-3 font-semibold"
             >
               {nextProject.title}
               <ArrowRight size={16} />

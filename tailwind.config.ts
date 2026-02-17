@@ -41,23 +41,21 @@ const config: Config = {
         'pixel': ['var(--font-geist-pixel-square)', 'monospace'],
       },
       fontSize: {
-        // Display & Hero
-        'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        // Headings (h1-h4) — size/line-height only
+        // font-weight set in globals.css; letter-spacing on h1/h2 set in globals.css
+        'heading-1': ['3rem',   { lineHeight: '1.1' }],
+        'heading-2': ['2.5rem', { lineHeight: '1.15' }],
+        'heading-3': ['2rem',   { lineHeight: '1.25' }],
+        'heading-4': ['1.5rem', { lineHeight: '1.35' }],
 
-        // Headings (h1-h4) — size/spacing only, font-weight set explicitly in CSS or component
-        'heading-1': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
-        'heading-2': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.025em' }],
-        'heading-3': ['2rem', { lineHeight: '1.3', letterSpacing: '-0.02em' }],
-        'heading-4': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.015em' }],
-        
         // Body text
-        'body-xl': ['1.5rem', { lineHeight: '1.6', letterSpacing: '-0.015em' }],
-        'body-lg': ['1.25rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
-        'body': ['1.125rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
-        'body-sm': ['1rem', { lineHeight: '1.5', letterSpacing: '0' }],
-        
+        'body-xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
+        'body':    ['1rem',    { lineHeight: '1.75', letterSpacing: '0' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.6', letterSpacing: '0' }],
+
         // UI elements
-        'ui': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0' }],
+        'ui':    ['0.875rem',  { lineHeight: '1.5', letterSpacing: '0' }],
         'ui-sm': ['0.8125rem', { lineHeight: '1.5', letterSpacing: '0.01em' }],
       },
       maxWidth: {
