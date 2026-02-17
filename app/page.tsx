@@ -13,7 +13,7 @@ export default function Home() {
       {/* Hero Section - Full width, dramatic */}
       <section className="min-h-dvh-70 flex items-center justify-center py-section-lg md:py-section-xl">
         <div className="w-full max-w-container mx-auto px-4 sm:px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-hero font-semibold tracking-tight leading-[1.1] max-w-4xl animate-fade-in-up">
+          <h1 className="text-heading-2 md:text-heading-1 max-w-4xl animate-fade-in-up">
             Hi, I&apos;m Michael, a product designer in Sydney.
           </h1>
         </div>
