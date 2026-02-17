@@ -16,9 +16,12 @@ import { cn } from '@/lib/utils'
 
 export default function Navigation() {
   const pathname = usePathname()
-  const [isVisible, setIsVisible] = useState(true)
   const isHomepage = pathname === '/'
-  
+  // For non-homepage routes, always visible. For homepage, controlled by scroll.
+  const [homepageVisible, setHomepageVisible] = useState(false)
+
+  const isVisible = !isHomepage || homepageVisible
+
   const links = [
     { href: '/', label: 'Home' },
     { href: '/#work-section', label: 'Work' },
@@ -26,27 +29,20 @@ export default function Navigation() {
   ]
 
   useEffect(() => {
-    // Only apply scroll-based visibility on homepage
-    if (!isHomepage) {
-      setIsVisible(true)
-      return
-    }
+    if (!isHomepage) return
 
-    // Start hidden on homepage
-    setIsVisible(false)
+    setHomepageVisible(false)
 
     const handleScroll = () => {
-      // Find the work section and check if we've scrolled to it
       const workSection = document.getElementById('work-section')
       if (workSection) {
         const rect = workSection.getBoundingClientRect()
-        // Show navbar when work section is near the top of viewport
-        setIsVisible(rect.top <= 100)
+        setHomepageVisible(rect.top <= 100)
       }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Check initial position
+    handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isHomepage])
