@@ -1,9 +1,13 @@
+'use client'
+
+import { motion } from 'motion/react'
 import WorkCard from '@/components/work-card'
 import Recommendation from '@/components/recommendation'
 import ContactSection from '@/components/contact-section'
 import { Link } from '@/components/ui/link'
 import { getAllProjects, recommendations } from '@/lib/projects'
 import { ArrowRight } from 'lucide-react'
+import { fadeInUp, ANIMATION_DURATION, STAGGER_DELAY } from '@/lib/animations'
 
 export default function Home() {
   const projects = getAllProjects()
@@ -13,9 +17,14 @@ export default function Home() {
       {/* Hero Section - Full width, dramatic */}
       <section className="min-h-dvh-70 flex items-center justify-center py-section-lg md:py-section-xl">
         <div className="w-full max-w-container mx-auto px-4 sm:px-6">
-          <h1 className="text-heading-2 md:text-heading-1 max-w-4xl animate-fade-in-up">
+          <motion.h1
+            className="text-heading-2 md:text-heading-1 max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
             Hi, I&apos;m Michael, a product designer in Sydney.
-          </h1>
+          </motion.h1>
         </div>
       </section>
 
@@ -24,20 +33,35 @@ export default function Home() {
         <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl space-y-6">
             <h2 className="sr-only">About</h2>
-            <p className="text-heading-4 md:text-heading-3 text-text-primary">
+            <motion.p
+              className="text-heading-4 md:text-heading-3 text-text-primary"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: STAGGER_DELAY.normal, ease: 'easeOut' }}
+            >
               I specialise in enterprise product design, with experience in account systems,
               permissions and identity workflows where clarity matters.
-            </p>
-            <p className="text-body-lg md:text-body-xl text-text-secondary">
+            </motion.p>
+            <motion.p
+              className="text-body-lg md:text-body-xl text-text-secondary"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: STAGGER_DELAY.normal * 2, ease: 'easeOut' }}
+            >
               I&apos;ve led design for government, energy, and retail — serving thousands of customers and businesses.
               I use research to inform decisions and partner with engineering to deliver.
-            </p>
-            <div className="pt-6">
+            </motion.p>
+            <motion.div
+              className="pt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: STAGGER_DELAY.normal * 3, ease: 'easeOut' }}
+            >
               <Link href="/about">
                 Learn more about me
                 <ArrowRight size={16} />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
