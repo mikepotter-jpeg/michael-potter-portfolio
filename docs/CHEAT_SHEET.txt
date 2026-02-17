@@ -1,0 +1,98 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      PORTFOLIO PROJECT - CHEAT SHEET                        ║
+║                    Quick reference card - Pin this! 📌                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─ 🚀 START HERE ───────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Development:         npm run dev                                           │
+│  Full Validation:     npm run check         ← RUN BEFORE GIT COMMIT       │
+│  Package Updates:     npm run check-updates                                │
+│  Tests:               npm test              OR  npm run test:watch         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 🔍 CODE QUALITY ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Lint:                npm run lint                                          │
+│  Type Check:          npm run typecheck                                     │
+│  Run Tests:           npm test                                              │
+│  Watch Tests:         npm run test:watch       ← Best for developing       │
+│  Accessibility:       npm run test:a11y                                     │
+│  Everything:          npm run check           ← The ultimate check         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 📦 PACKAGES ─────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Check Updates:       npm run check-updates                                │
+│  View Details:        npm outdated                                          │
+│  Update Safe:         npm update                                            │
+│  Update Specific:     npm install package@latest                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 🏗️  BUILD & DEPLOY ──────────────────────────────────────────────────────┐
+│                                                                             │
+│  Build for Prod:      npm run build                                         │
+│  Start Prod Local:    npm start                                             │
+│  Deploy:              npm run deploy          ← Runs check first           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 📋 BEFORE GIT COMMIT ────────────────────────────────────────────────────┐
+│                                                                             │
+│  ALWAYS:              npm run check           ✅ DO THIS                   │
+│                                                                             │
+│  Then:                git add .                                             │
+│                       git commit -m "message"                              │
+│                       git push                                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 🎯 BY SITUATION ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Starting Work       npm run dev                                            │
+│  Fixing Test Fail    npm run test:watch                                    │
+│  Updating Packages   npm run check-updates → npm install pkg@latest        │
+│  Before Commit       npm run check                                          │
+│  Before Deploy       npm run check                                          │
+│  Checking A11y       npm run test:a11y                                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 📍 KEY LOCATIONS ────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Dev Server          http://localhost:3000                                 │
+│  Commands Ref        docs/COMMANDS_REFERENCE.md                            │
+│  Quick Start         docs/QUICK_START.md                                   │
+│  A11y Results        a11y-report/a11y-summary.md                           │
+│  Config              package.json, tailwind.config.ts, tsconfig.json      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 💡 PRO TIPS ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  ✓ Run "npm run check" before EVERY commit                                 │
+│  ✓ Run "npm run check-updates" monthly                                     │
+│  ✓ Use "npm run test:watch" while coding (auto re-runs tests)             │
+│  ✓ If port 3000 busy: lsof -ti:3000 | xargs kill -9                      │
+│  ✓ Two terminals: one for "npm run dev", one for "npm run test:watch"    │
+│  ✓ Check a11y-report/ after "npm run test:a11y"                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ 🔴 EXIT CODES ──────────────────────────────────────────────────────────┐
+│                                                                             │
+│  0 = SUCCESS ✅   (no errors, command completed)                           │
+│  1 = FAILED  ❌   (errors found, fix before proceeding)                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+For detailed help:  See docs/COMMANDS_REFERENCE.md
+For quick lookup:   See docs/QUICK_START.md
+Questions?         Check scripts/README.md for script-specific help
+
+Last Updated: 2026-02-17
