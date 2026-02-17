@@ -14,8 +14,8 @@ export default function Footer() {
             Tailwind CSS
           </Link>
           {' | Designed with '}
-          <Link href="https://vercel.com/font/geist" variant="inherit" size="small" external>
-            Geist Sans
+          <Link href="https://vercel.com/font" variant="inherit" size="small" external>
+            Geist
           </Link>
           {' | Icons from '}
           <Link href="https://lucide.dev" variant="inherit" size="small" external>
