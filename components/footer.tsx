@@ -15,7 +15,7 @@ export default function Footer() {
           </Link>
           {' | Designed with '}
           <Link href="https://vercel.com/font" variant="inherit" size="small" external>
-            Geist
+            Geist (Mono & Sans)
           </Link>
           {' | Icons from '}
           <Link href="https://lucide.dev" variant="inherit" size="small" external>

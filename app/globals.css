@@ -18,10 +18,10 @@
   --safe-area-right: env(safe-area-inset-right, 0px);
 }
 
-/* Geist Pixel font for display headings (H1 & H2) */
+/* Geist Mono font for display headings (H1 & H2) */
 h1,
 h2 {
-  font-family: var(--font-geist-pixel-square, monospace);
+  font-family: var(--font-geist-mono, monospace);
   font-weight: 400;
   letter-spacing: 0.04em;
 }
