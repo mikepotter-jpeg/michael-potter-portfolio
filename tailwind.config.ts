@@ -38,7 +38,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
-        'mono-display': ['var(--font-geist-mono)', 'monospace'],
+        'pixel': ['var(--font-geist-pixel-square)', 'monospace'],
       },
       fontSize: {
         // Display & Hero

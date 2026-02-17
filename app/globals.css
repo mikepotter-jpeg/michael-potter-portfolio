@@ -21,8 +21,8 @@
 /* Geist Pixel font for display headings (H1 & H2) */
 h1,
 h2 {
-  font-family: var(--font-geist-mono, monospace);
-  letter-spacing: 0.05em;
+  font-family: var(--font-geist-pixel-square, monospace);
+  letter-spacing: 0.1em;
   font-weight: 700;
 }
 
