@@ -45,8 +45,8 @@ const config: Config = {
         'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
         
         // Headings (h1-h4)
-        'heading-1': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
-        'heading-2': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.025em', fontWeight: '600' }],
+        'heading-1': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '400' }],
+        'heading-2': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.025em', fontWeight: '400' }],
         'heading-3': ['2rem', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' }],
         'heading-4': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.015em', fontWeight: '600' }],
         

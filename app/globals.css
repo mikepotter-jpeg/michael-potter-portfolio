@@ -21,22 +21,22 @@
 /* Geist Pixel font for display headings (H1 & H2) */
 h1,
 h2 {
-  font-family: var(--font-geist-pixel-square, monospace);
-  letter-spacing: 0.05em;
-  font-weight: 400;
+  font-family: var(--font-geist-pixel-square, monospace) !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 400 !important;
 }
 
 /* Geist Pixel specific sizes and spacing */
 h1 {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  margin-bottom: 1rem;
+  font-size: 3.5rem !important;
+  line-height: 1.1 !important;
+  margin-bottom: 1rem !important;
 }
 
 h2 {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
+  font-size: 3rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
 }
 
 body {
