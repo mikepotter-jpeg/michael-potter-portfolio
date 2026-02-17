@@ -22,7 +22,14 @@
 h1,
 h2 {
   font-family: var(--font-geist-pixel-square, monospace);
+  font-weight: 400;
   letter-spacing: 0.05em;
+}
+
+/* Geist Sans headings (H3 & H4) — semibold for hierarchy */
+h3,
+h4 {
+  font-weight: 600;
 }
 
 body {

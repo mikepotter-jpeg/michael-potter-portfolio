@@ -42,13 +42,13 @@ const config: Config = {
       },
       fontSize: {
         // Display & Hero
-        'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
-        
-        // Headings (h1-h4)
-        'heading-1': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '400' }],
-        'heading-2': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.025em', fontWeight: '400' }],
-        'heading-3': ['2rem', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '600' }],
-        'heading-4': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.015em', fontWeight: '600' }],
+        'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+
+        // Headings (h1-h4) — size/spacing only, font-weight set explicitly in CSS or component
+        'heading-1': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        'heading-2': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.025em' }],
+        'heading-3': ['2rem', { lineHeight: '1.3', letterSpacing: '-0.02em' }],
+        'heading-4': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.015em' }],
         
         // Body text
         'body-xl': ['1.5rem', { lineHeight: '1.6', letterSpacing: '-0.015em' }],
