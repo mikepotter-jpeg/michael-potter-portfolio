@@ -1,3 +1,6 @@
+'use client'
+
+import { motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from '@/components/ui/link'
 
@@ -6,11 +9,18 @@ interface RecommendationProps {
   name: string
   role: string
   linkedinUrl?: string
+  index?: number
 }
 
-export default function Recommendation({ quote, name, role, linkedinUrl }: RecommendationProps) {
+export default function Recommendation({ quote, name, role, linkedinUrl, index = 0 }: RecommendationProps) {
   return (
-    <div className="bg-background-primary rounded-card-lg p-card md:p-card-lg flex flex-col h-full">
+    <motion.div
+      className="bg-background-primary rounded-card-lg p-card md:p-card-lg flex flex-col h-full"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {/* Quote mark */}
       <div className="text-5xl text-accent/30 font-serif leading-none mb-4">&ldquo;</div>
       
@@ -36,6 +46,6 @@ export default function Recommendation({ quote, name, role, linkedinUrl }: Recom
           </Link>
         )}
       </div>
-    </div>
+    </motion.div>
   )
 }

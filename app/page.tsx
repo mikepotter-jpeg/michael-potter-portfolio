@@ -70,14 +70,20 @@ export default function Home() {
       <section id="work-section" className="py-section-lg md:py-section-lg">
         <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           {/* Section Header */}
-          <header className="flex flex-col gap-6 mb-16">
+          <motion.header
+            className="flex flex-col gap-6 mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1">
               Some of my work
             </h2>
             <p className="text-body max-w-prose">
               Selected projects spanning product strategy and systems design.
             </p>
-          </header>
+          </motion.header>
 
           {/* Project Cards */}
           <div className="space-y-6">
@@ -102,14 +108,20 @@ export default function Home() {
       <section className="bg-background-secondary py-section-lg md:py-section-lg">
         <div className="w-full max-w-container mx-auto px-4 sm:px-6">
           {/* Section Header */}
-          <header className="mb-16">
+          <motion.header
+            className="mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1">
               Kind words
             </h2>
             <p className="text-body mt-6 max-w-prose">
               From colleagues I&apos;ve had the pleasure of working with over the years.
             </p>
-          </header>
+          </motion.header>
 
           {/* Testimonials Grid */}
           <div className="grid md:grid-cols-2 gap-6">
@@ -120,6 +132,7 @@ export default function Home() {
                 name={rec.name}
                 role={rec.role}
                 linkedinUrl={rec.linkedinUrl}
+                index={index}
               />
             ))}
           </div>
