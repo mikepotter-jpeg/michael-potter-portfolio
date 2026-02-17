@@ -12,6 +12,7 @@
     "test:watch": "jest --watch",
     "test:a11y": "PORT=3099 bash .claude/skills/frontend-automation-skill/scripts/run-a11y-audit.sh . ./a11y-report",
     "check": "npm run lint && npm run typecheck && npm test && npm run build && npm run test:a11y",
+    "check-updates": "bash scripts/check-updates.sh",
     "deploy": "npm run check"
   },
   "dependencies": {
