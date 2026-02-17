@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { ChevronUp, ArrowRight } from 'lucide-react'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug)
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
   
   if (!project) {
     return {
@@ -35,8 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = getProjectBySlug(params.slug)
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params
+  const project = getProjectBySlug(slug)
   const allProjects = getAllProjects()
 
   if (!project) {
