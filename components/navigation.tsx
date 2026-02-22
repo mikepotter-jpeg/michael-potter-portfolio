@@ -31,8 +31,6 @@ export default function Navigation() {
   useEffect(() => {
     if (!isHomepage) return
 
-    setHomepageVisible(false)
-
     const handleScroll = () => {
       const workSection = document.getElementById('work-section')
       if (workSection) {
