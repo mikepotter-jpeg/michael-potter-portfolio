@@ -1,10 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { Mail } from 'lucide-react'
+import LinkedinLogo from '@/components/icons/linkedin-logo'
 import MPLogo from './logo'
-import SocialIcon from './social-icon'
+import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -16,6 +18,7 @@ import { cn } from '@/lib/utils'
 
 export default function Navigation() {
   const pathname = usePathname()
+  const router = useRouter()
   const isHomepage = pathname === '/'
   // For non-homepage routes, always visible. For homepage, controlled by scroll.
   const [homepageVisible, setHomepageVisible] = useState(false)
@@ -31,7 +34,7 @@ export default function Navigation() {
   useEffect(() => {
     if (!isHomepage) return
 
-    setHomepageVisible(false)
+    queueMicrotask(() => setHomepageVisible(false))
 
     const handleScroll = () => {
       const workSection = document.getElementById('work-section')
@@ -46,6 +49,30 @@ export default function Navigation() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isHomepage])
+
+  // Scroll to hash after navigation lands on the homepage
+  useEffect(() => {
+    if (!isHomepage) return
+    const hash = window.location.hash
+    if (!hash) return
+    // Use rAF to wait for the page to render before scrolling
+    const raf = requestAnimationFrame(() => {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [isHomepage])
+
+  function handleWorkClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHomepage) {
+      e.preventDefault()
+      const el = document.getElementById('work-section')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      e.preventDefault()
+      router.push('/#work-section')
+    }
+  }
 
   return (
     <>
@@ -67,7 +94,7 @@ export default function Navigation() {
             : '-translate-y-full opacity-0 pointer-events-none'
         )}
       >
-      <nav className="mx-auto flex h-auto max-w-container items-center px-4 py-3 sm:px-6">
+      <nav className="mx-auto flex h-auto max-w-site items-center px-4 py-3 sm:px-6">
         <div className="mr-4 flex min-w-0 flex-1 items-center gap-4 sm:mr-6 sm:gap-8">
           <Link
             href="/"
@@ -81,11 +108,13 @@ export default function Navigation() {
               {links.map((link) => {
                 // For hash links, don't show as active (they scroll to a section, not a separate page)
                 const isActive = !link.href.includes('#') && pathname === link.href
+                const isWorkLink = link.href === '/#work-section'
                 return (
                   <NavigationMenuItem key={link.href}>
                     <NavigationMenuLink asChild>
                       <Link
                         href={link.href}
+                        onClick={isWorkLink ? handleWorkClick : undefined}
                         className={cn(
                           navigationMenuTriggerStyle(),
                           "px-2 sm:px-4 transition-medium rounded-button",
@@ -101,17 +130,33 @@ export default function Navigation() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="ml-auto flex shrink-0 items-center gap-1">
-          <SocialIcon 
-            href="https://www.linkedin.com/in/michael-potter/" 
-            icon="linkedin"
-            label="LinkedIn"
-          />
-          <SocialIcon 
-            href="mailto:michaelsavagepotter@gmail.com" 
-            icon="email"
-            label="Email"
-          />
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          <Button
+            size="icon"
+            variant="link"
+            asChild
+          >
+            <a
+              href="https://www.linkedin.com/in/michael-potter/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <LinkedinLogo />
+            </a>
+          </Button>
+          <Button
+            size="icon"
+            variant="link"
+            asChild
+          >
+            <a
+              href="mailto:michaelsavagepotter@gmail.com"
+              aria-label="Email"
+            >
+              <Mail size={20} />
+            </a>
+          </Button>
         </div>
       </nav>
       </header>

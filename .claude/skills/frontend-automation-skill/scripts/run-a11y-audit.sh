@@ -30,9 +30,14 @@ if [ ! -d "node_modules/playwright" ] || [ ! -d "node_modules/@axe-core/playwrig
     npx playwright install chromium 2>/dev/null || true
 fi
 
-# Start dev server in background on specified port (avoid conflicts with other dev servers)
-echo -e "${BLUE}Starting dev server on port $PORT...${NC}"
-npx next dev -p "$PORT" > "$OUTPUT_DIR/dev-server.log" 2>&1 &
+# Start server in background: use production build (next start) if available, else dev
+if [ -f ".next/BUILD_ID" ]; then
+  echo -e "${BLUE}Starting production server on port $PORT...${NC}"
+  npx next start -p "$PORT" > "$OUTPUT_DIR/dev-server.log" 2>&1 &
+else
+  echo -e "${BLUE}Starting dev server on port $PORT...${NC}"
+  npx next dev -p "$PORT" > "$OUTPUT_DIR/dev-server.log" 2>&1 &
+fi
 DEV_PID=$!
 
 # Wait for server to be ready

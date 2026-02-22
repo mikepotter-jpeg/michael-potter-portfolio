@@ -2,9 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { Link } from '@/components/ui/link'
+import { CategoryBadge } from '@/components/ui/category-badge'
 import WorkCard from '@/components/work-card'
+import NextProjectCard from '@/components/next-project-card'
 import Recommendation from '@/components/recommendation'
-import SocialIcon from '@/components/social-icon'
 import TableOfContents from '@/components/table-of-contents'
 import Footer from '@/components/footer'
 import {
@@ -15,7 +16,8 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { projects, recommendations } from '@/lib/projects'
-import { Plus, ArrowLeft, ChevronUp, Mail, Linkedin, ArrowUpRight, ArrowRight } from 'lucide-react'
+import { Plus, ArrowLeft, ArrowRight, ChevronUp, Mail, ArrowUpRight } from 'lucide-react'
+import LinkedinLogo from '@/components/icons/linkedin-logo'
 
 export default function ComponentsPage() {
   const sampleProject = projects[0]
@@ -28,9 +30,11 @@ export default function ComponentsPage() {
     { id: 'navigation-menu', title: 'Navigation Menu' },
     { id: 'table-of-contents', title: 'Table of Contents' },
     { id: 'work-card', title: 'Work Card' },
+    { id: 'next-project-card', title: 'Next Project Card' },
     { id: 'recommendation', title: 'Recommendation' },
     { id: 'footer', title: 'Footer' },
     { id: 'typography', title: 'Typography' },
+    { id: 'all-caps-labels', title: 'Labels' },
     { id: 'spacing', title: 'Spacing' },
     { id: 'colors', title: 'Colors' },
     { id: 'interactions', title: 'Interactions & Motion' },
@@ -66,72 +70,25 @@ export default function ComponentsPage() {
               <div className="space-y-8">
                 <div>
                   <p className="text-sm text-text-tertiary mb-3">Variants</p>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-4 mb-4">
                     <Button>Default</Button>
-                    <Button variant="secondary">Secondary</Button>
                     <Button variant="outline">Outline</Button>
-                    <Button variant="ghost">Ghost</Button>
                     <Button variant="link">Link</Button>
                   </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-text-tertiary">
+                    <p><strong className="block text-text-primary mb-0.5">Default</strong>Primary action. Solid dark fill.</p>
+                    <p><strong className="block text-text-primary mb-0.5">Outline</strong>Secondary action. Transparent fill, visible border.</p>
+                    <p><strong className="block text-text-primary mb-0.5">Link</strong>Inline actions. Underline only.</p>
+                  </div>
                 </div>
-                
+
                 <div>
                   <p className="text-sm text-text-tertiary mb-3">Sizes</p>
                   <div className="flex flex-wrap items-center gap-4">
                     <Button size="sm">Small</Button>
-                    <Button size="default">Default</Button>
-                    <Button size="lg">Large</Button>
-                    <Button size="icon">
-                      <Plus size={16} />
-                    </Button>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-medium text-text-primary mb-3">Icons</p>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <p className="text-sm text-text-tertiary mb-3">Large buttons with text + icons</p>
-                      <div className="flex flex-wrap gap-4">
-                        <Button size="lg" asChild>
-                          <a href="mailto:michaelsavagepotter@gmail.com">
-                            <Mail size={20} />
-                            Email me
-                          </a>
-                        </Button>
-                        <Button size="lg" variant="outline" asChild>
-                          <a href="https://www.linkedin.com/in/michael-potter/" target="_blank" rel="noopener noreferrer">
-                            <Linkedin size={20} />
-                            LinkedIn
-                            <ArrowUpRight size={20} />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div>
-                      <p className="text-sm text-text-tertiary mb-3">Icon-only buttons</p>
-                      <div className="flex flex-wrap items-center gap-4">
-                        <Button size="icon">
-                          <Mail />
-                        </Button>
-                        <Button size="icon" variant="outline">
-                          <Linkedin />
-                        </Button>
-                        <Button size="icon" variant="ghost">
-                          <Plus />
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary">
-                      <p><strong>Icon sizing:</strong> Icons are automatically sized via CSS (<code>[&_svg]:size-4</code> = 16px for default/icon sizes, <code>[&_svg]:size-5</code> = 20px for large buttons).</p>
-                      <p className="mt-2"><strong>Icon spacing:</strong> Buttons use <code>gap-2</code> (8px) between text and icons, set in the base button styles.</p>
-                      <p className="mt-2"><strong>Standard sizes:</strong> Use 14px for small indicators (ChevronUp), 16px for default links/buttons, and 20px for large buttons only.</p>
-                      <p className="mt-2"><strong>Icon-only buttons:</strong> Use <code>size=&quot;icon&quot;</code> for compact, square icon buttons.</p>
-                      <p className="mt-2"><strong>asChild pattern:</strong> Use <code>asChild</code> with Radix Slot to render buttons as links or other elements while maintaining button styling.</p>
-                    </div>
+                    <Button>Default</Button>
+                    <Button iconLeft={<Mail />} iconRight={<ArrowUpRight />}>Default</Button>
+                    <Button size="icon"><Plus /></Button>
                   </div>
                 </div>
               </div>
@@ -156,7 +113,7 @@ export default function ComponentsPage() {
                         <ArrowUpRight size={14} />
                       </Link>
                     </div>
-                    <p className="text-ui text-text-secondary pt-2">
+                    <p className="text-body-sm text-text-secondary pt-2">
                       Inline: <Link href="https://example.com" variant="inherit" size="small" external>Next.js</Link> inherits parent color
                     </p>
                   </div>
@@ -177,7 +134,7 @@ export default function ComponentsPage() {
                 <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary space-y-2">
                   <p><strong>Component:</strong> Import from <code>@/components/ui/link</code></p>
                   <p><strong>Variants:</strong> <code>default</code> (tertiary→primary), <code>inherit</code> (inherits parent)</p>
-                  <p><strong>Sizes:</strong> <code>default</code> (gap-2, text-body + 16px icons), <code>small</code> (gap-1.5, text-ui + 14px icons)</p>
+                  <p><strong>Sizes:</strong> <code>default</code> (gap-2, text-body + 16px icons), <code>small</code> (gap-1.5, text-[0.875rem] leading-none + 14px icons)</p>
                   <p><strong>External:</strong> Add <code>external</code> prop for target=&quot;_blank&quot; and rel=&quot;noopener noreferrer&quot;</p>
                   <p><strong>Underline:</strong> Enabled by default, passes behind descenders (text-decoration-skip-ink: auto)</p>
                 </div>
@@ -205,10 +162,10 @@ export default function ComponentsPage() {
                     <div className="p-4 bg-background-secondary border border-border rounded-xl">
                       <p className="text-sm font-medium mb-2">Button States</p>
                       <ul className="space-y-2 text-sm text-text-tertiary">
-                        <li><strong>Default:</strong> Dark on light (13.9:1) ✓</li>
-                        <li><strong>Outline:</strong> Dark text and border (13.9:1) → inverts on hover ✓</li>
-                        <li><strong>Secondary:</strong> Dark text with border (13.9:1) → subtle fill on hover ✓</li>
-                        <li><strong>Ghost:</strong> Dark text (13.9:1) with transparent background ✓</li>
+                        <li><strong>Default:</strong> White text on dark fill (13.9:1) → accent-hover on hover ✓</li>
+                        <li><strong>Outline:</strong> Dark text with border (13.9:1) → accent-lighter fill on hover ✓</li>
+                        <li><strong>Link:</strong> Dark text with underline on hover (13.9:1) ✓</li>
+                        <li><strong>Destructive:</strong> White text on red-500 (4.6:1) → red-600 on hover ✓</li>
                       </ul>
                     </div>
                   </div>
@@ -261,10 +218,26 @@ export default function ComponentsPage() {
             <section id="social-icons" className="scroll-mt-24">
               <h2 className="text-2xl font-semibold tracking-tight mb-2">Social Icons</h2>
               <p className="text-text-tertiary mb-6">Icon buttons for social links</p>
-              
+
               <div className="flex items-center gap-2 p-4 bg-background-secondary rounded-xl w-fit">
-                <SocialIcon href="#" icon="linkedin" label="LinkedIn" />
-                <SocialIcon href="#" icon="email" label="Email" />
+                <Button
+                  size="icon"
+                  variant="link"
+                  asChild
+                >
+                  <a href="#" aria-label="LinkedIn">
+                    <LinkedinLogo />
+                  </a>
+                </Button>
+                <Button
+                  size="icon"
+                  variant="link"
+                  asChild
+                >
+                  <a href="#" aria-label="Email">
+                    <Mail size={20} />
+                  </a>
+                </Button>
               </div>
             </section>
 
@@ -311,17 +284,17 @@ export default function ComponentsPage() {
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="no-underline block py-1.5 text-text-primary font-medium">
+                      <a href="#" className="block py-1.5 text-text-primary font-medium underline underline-offset-2 decoration-1 decoration-text-primary">
                         Overview
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="no-underline block py-1.5 text-text-tertiary hover:text-text-primary">
+                      <a href="#" className="block py-1.5 text-text-tertiary hover:text-text-primary underline underline-offset-2 decoration-1 decoration-text-tertiary/50 hover:decoration-text-primary">
                         Design Process
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="no-underline block py-1.5 text-text-tertiary hover:text-text-primary">
+                      <a href="#" className="block py-1.5 text-text-tertiary hover:text-text-primary underline underline-offset-2 decoration-1 decoration-text-tertiary/50 hover:decoration-text-primary">
                         Impact
                       </a>
                     </li>
@@ -349,6 +322,27 @@ export default function ComponentsPage() {
                   years={sampleProject.years}
                   index={0}
                 />
+              </div>
+            </section>
+
+            {/* Next Project Card Section */}
+            <section id="next-project-card" className="scroll-mt-24">
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">Next Project Card</h2>
+              <p className="text-text-tertiary mb-6">End-of-case-study teaser linking to the next project</p>
+
+              <div className="max-w-4xl">
+                <NextProjectCard
+                  slug={sampleProject.slug}
+                  title={sampleProject.title}
+                  description={sampleProject.description}
+                  coverImage={sampleProject.coverImage}
+                />
+              </div>
+
+              <div className="mt-6 p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary space-y-2">
+                <p><strong>Used in:</strong> Bottom of every project case study page (<code>app/work/[slug]/page.tsx</code>)</p>
+                <p><strong>Behaviour:</strong> Whole section is wrapped in a <code>&lt;NextLink&gt;</code>. Image scales on hover. Title animates a gradient underline.</p>
+                <p><strong>Layout:</strong> Heading with arrow above, then stacked image + content on mobile, side-by-side with <code>lg:flex-1</code> columns on desktop. Separated from content by a <code>border-t border-border-light</code>.</p>
               </div>
             </section>
 
@@ -380,40 +374,75 @@ export default function ComponentsPage() {
             {/* Typography Section */}
             <section id="typography" className="scroll-mt-24">
               <h2 className="text-2xl font-semibold tracking-tight mb-2">Typography</h2>
-              <p className="text-text-tertiary mb-6">Text styles used across the site</p>
-              
-              <div className="space-y-6 max-w-2xl">
+              <p className="text-text-tertiary mb-6">Text styles used across the site. Font: Figtree. Defined in <code>globals.css</code> via <code>@theme</code>.</p>
+
+              <div className="space-y-8 max-w-3xl">
                 <div>
-                  <p className="text-sm text-text-tertiary mb-2">Hero heading</p>
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">
-                    The quick brown fox
-                  </h1>
+                  <p className="text-sm font-medium text-text-primary mb-4">Heading Scale</p>
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-2">Display (text-heading-display) — 4rem / 64px</p>
+                      <p className="text-heading-display">The quick brown fox</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-2">Heading 1 (text-heading-1) — 3rem / 48px</p>
+                      <p className="text-heading-1">The quick brown fox</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-2">Heading 2 (text-heading-2) — 2.5rem / 40px</p>
+                      <p className="text-heading-2">The quick brown fox</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-2">Heading 3 (text-heading-3) — 2rem / 32px</p>
+                      <p className="text-heading-3">The quick brown fox</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-2">Heading 4 (text-heading-4) — 1.5rem / 24px</p>
+                      <p className="text-heading-4">The quick brown fox</p>
+                    </div>
+                  </div>
                 </div>
-                
+
                 <div>
-                  <p className="text-sm text-text-tertiary mb-2">Section heading</p>
-                  <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                    Section title here
-                  </h2>
+                  <p className="text-sm font-medium text-text-primary mb-4">Body Scale</p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">Body XL (text-body-xl) — 1.25rem / 20px</p>
+                      <p className="text-body-xl text-text-secondary">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">Body LG (text-body-lg) — 1.125rem / 18px</p>
+                      <p className="text-body-lg text-text-secondary">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">Body (text-body) — 1rem / 16px</p>
+                      <p className="text-body text-text-secondary">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">Body SM (text-body-sm) — 0.875rem / 14px</p>
+                      <p className="text-body-sm text-text-secondary">The quick brown fox jumps over the lazy dog.</p>
+                    </div>
+                  </div>
                 </div>
-                
+
                 <div>
-                  <p className="text-sm text-text-tertiary mb-2">Lead text (.text-lead)</p>
-                  <p className="text-lead">
-                    This is lead paragraph text, used for introductions and important callouts.
-                  </p>
-                </div>
-                
-                <div>
-                  <p className="text-sm text-text-tertiary mb-2">Body text (.text-body)</p>
-                  <p className="text-body">
-                    This is standard body text used for regular content throughout the site.
-                  </p>
-                </div>
-                
-                <div>
-                  <p className="text-sm text-text-tertiary mb-2">Section label</p>
-                  <p className="text-sm text-text-tertiary">Next project</p>
+                  <p className="text-sm font-medium text-text-primary mb-4">Utility Classes</p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">.text-lead — Lead paragraph</p>
+                      <p className="text-lead">
+                        This is lead paragraph text, used for introductions and important callouts.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-text-tertiary mb-1">&lt;CategoryBadge /&gt; — Small badge</p>
+                      <div className="flex flex-wrap gap-2">
+                        <CategoryBadge>Design</CategoryBadge>
+                        <CategoryBadge>Development</CategoryBadge>
+                        <CategoryBadge>Research</CategoryBadge>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -421,54 +450,57 @@ export default function ComponentsPage() {
             {/* Spacing Section */}
             <section id="spacing" className="scroll-mt-24">
               <h2 className="text-2xl font-semibold tracking-tight mb-2">Spacing</h2>
-              <p className="text-text-tertiary mb-6">Consistent spacing scale for layout and component padding</p>
+              <p className="text-text-tertiary mb-6">Semantic spacing tokens for layout and component padding</p>
 
-              <div className="space-y-6 max-w-3xl">
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-medium text-text-primary mb-3">Spacing Scale</p>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
-                          <div className="w-3 h-3 bg-background-primary rounded-full"></div>
+              <div className="space-y-8 max-w-3xl">
+                <div>
+                  <p className="text-sm font-medium text-text-primary mb-4">Section Spacing (vertical padding)</p>
+                  <div className="space-y-3">
+                    {[
+                      { token: 'section-xs', value: '3rem (48px)', width: 'w-12' },
+                      { token: 'section-sm', value: '4rem (64px)', width: 'w-16' },
+                      { token: 'section-md', value: '5rem (80px)', width: 'w-20' },
+                      { token: 'section-lg', value: '7rem (112px)', width: 'w-28' },
+                      { token: 'section-xl', value: '8rem (128px)', width: 'w-32' },
+                    ].map(({ token, value, width }) => (
+                      <div key={token} className="flex items-center gap-4">
+                        <div className={`${width} h-8 bg-accent rounded flex items-center justify-center shrink-0`}>
+                          <div className="w-2 h-2 bg-background-primary rounded-full"></div>
                         </div>
                         <div>
-                          <p className="text-sm font-medium">Compact (12px)</p>
-                          <p className="text-xs text-text-tertiary">p-2 in Tailwind</p>
+                          <p className="text-sm font-medium">py-{token}</p>
+                          <p className="text-xs text-text-tertiary">{value}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-12 bg-accent rounded-lg flex items-center justify-center">
-                          <div className="w-3 h-3 bg-background-primary rounded-full"></div>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium">Default (24px)</p>
-                          <p className="text-xs text-text-tertiary">p-6 in Tailwind</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-24 h-12 bg-accent rounded-lg flex items-center justify-center">
-                          <div className="w-3 h-3 bg-background-primary rounded-full"></div>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium">Spacious (36px)</p>
-                          <p className="text-xs text-text-tertiary">p-9 in Tailwind</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-32 h-12 bg-accent rounded-lg flex items-center justify-center">
-                          <div className="w-3 h-3 bg-background-primary rounded-full"></div>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium">Section (64px)</p>
-                          <p className="text-xs text-text-tertiary">py-16 md:py-28 in Tailwind</p>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-                <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary">
-                  <p>Use spacing consistently for padding on cards, margins between sections, and gaps within components.</p>
+
+                <div>
+                  <p className="text-sm font-medium text-text-primary mb-4">Card/Component Spacing (internal padding)</p>
+                  <div className="space-y-3">
+                    {[
+                      { token: 'card-sm', value: '1.5rem (24px)', width: 'w-6' },
+                      { token: 'card', value: '2rem (32px)', width: 'w-8' },
+                      { token: 'card-lg', value: '2.5rem (40px)', width: 'w-10' },
+                      { token: 'card-xl', value: '3rem (48px)', width: 'w-12' },
+                    ].map(({ token, value, width }) => (
+                      <div key={token} className="flex items-center gap-4">
+                        <div className={`${width} h-8 bg-accent/60 rounded flex items-center justify-center shrink-0`}>
+                          <div className="w-2 h-2 bg-background-primary rounded-full"></div>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium">p-{token}</p>
+                          <p className="text-xs text-text-tertiary">{value}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary space-y-1">
+                  <p><strong>Section spacing:</strong> Use <code>py-section-lg</code> as default. <code>py-section-xl</code> for hero sections.</p>
+                  <p><strong>Card spacing:</strong> Use <code>p-card</code> as default. Scale up with <code>p-card-lg</code> and <code>p-card-xl</code> for larger cards.</p>
                 </div>
               </div>
             </section>
@@ -499,6 +531,12 @@ export default function ComponentsPage() {
                       <p className="text-sm font-medium">Border</p>
                       <p className="text-xs text-text-tertiary mt-1">#CCCCCC</p>
                       <p className="text-xs text-text-tertiary">Dividers</p>
+                    </div>
+                    <div>
+                      <div className="h-20 bg-border-light rounded-xl mb-2"></div>
+                      <p className="text-sm font-medium">Border Light</p>
+                      <p className="text-xs text-text-tertiary mt-1">#E5E5E5</p>
+                      <p className="text-xs text-text-tertiary">Subtle dividers</p>
                     </div>
                   </div>
                 </div>
@@ -534,19 +572,37 @@ export default function ComponentsPage() {
                       <div className="h-20 bg-accent rounded-xl mb-2"></div>
                       <p className="text-sm font-medium">Accent</p>
                       <p className="text-xs text-text-tertiary mt-1">#555B5C</p>
-                      <p className="text-xs text-text-tertiary">Hover, focus</p>
+                      <p className="text-xs text-text-tertiary">Interactive elements</p>
                     </div>
                     <div>
-                      <div className="h-20 bg-accent/20 rounded-xl mb-2"></div>
+                      <div className="h-20 bg-accent-hover rounded-xl mb-2"></div>
+                      <p className="text-sm font-medium">Accent Hover</p>
+                      <p className="text-xs text-text-tertiary mt-1">#3F4445</p>
+                      <p className="text-xs text-text-tertiary">Hover state for accent</p>
+                    </div>
+                    <div>
+                      <div className="h-20 bg-accent-light rounded-xl mb-2"></div>
                       <p className="text-sm font-medium">Accent Light</p>
-                      <p className="text-xs text-text-tertiary mt-1">20% opacity</p>
-                      <p className="text-xs text-text-tertiary">Backgrounds</p>
+                      <p className="text-xs text-text-tertiary mt-1">rgba(85, 91, 92, 0.2)</p>
+                      <p className="text-xs text-text-tertiary">Subtle backgrounds</p>
                     </div>
                     <div>
-                      <div className="h-20 bg-accent/10 rounded-xl mb-2"></div>
+                      <div className="h-20 bg-accent-lighter rounded-xl mb-2"></div>
                       <p className="text-sm font-medium">Accent Lighter</p>
-                      <p className="text-xs text-text-tertiary mt-1">10% opacity</p>
-                      <p className="text-xs text-text-tertiary">Hover states</p>
+                      <p className="text-xs text-text-tertiary mt-1">rgba(85, 91, 92, 0.1)</p>
+                      <p className="text-xs text-text-tertiary">Hover fills</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-medium text-text-primary mb-4">Focus</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div>
+                      <div className="h-20 bg-focus-ring rounded-xl mb-2"></div>
+                      <p className="text-sm font-medium">Focus Ring</p>
+                      <p className="text-xs text-text-tertiary mt-1">#7C3AED</p>
+                      <p className="text-xs text-text-tertiary">Keyboard focus indicator</p>
                     </div>
                   </div>
                 </div>
@@ -610,9 +666,9 @@ export default function ComponentsPage() {
 
                     <div className="space-y-2">
                       <p className="text-sm font-medium">Accent Underline</p>
-                      <p className="text-xs text-text-tertiary mb-3">Links animate an underline on hover</p>
+                      <p className="text-xs text-text-tertiary mb-3">Links animate an underline on hover using text-decoration transition</p>
                       <p className="text-sm"><span className="relative inline-block">hover me<span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent"></span></span></p>
-                      <p className="text-xs text-text-tertiary mt-2">Use <code>.link-animate</code> class</p>
+                      <p className="text-xs text-text-tertiary mt-2">Default <code>&lt;a&gt;</code> tags use <code>text-decoration-color</code> transition. For title underlines, use <code>bg-[linear-gradient()]</code> background-size technique.</p>
                     </div>
                   </div>
                 </div>
@@ -623,53 +679,40 @@ export default function ComponentsPage() {
               </div>
             </section>
 
-            {/* Unused Styles Section */}
-            <section id="unused-styles" className="scroll-mt-24">
-              <h2 className="text-2xl font-semibold tracking-tight mb-2">Unused Styles</h2>
-              <p className="text-text-tertiary mb-6">CSS classes defined that are not currently used on the site</p>
+            {/* Labels Section */}
+            <section id="all-caps-labels" className="scroll-mt-24">
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">Labels</h2>
+              <p className="text-text-tertiary mb-6">Label and badge components</p>
 
               <div className="space-y-6 max-w-2xl">
                 <div className="p-6 bg-background-secondary rounded-xl">
-                  <h3 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-widest">Text Styles</h3>
-                  <ul className="space-y-3 text-sm">
-                    <li>
-                      <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.text-small</code>
-                      <p className="text-text-tertiary mt-1">Small text style for future use</p>
-                    </li>
-                    <li>
-                      <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-label</code>
-                      <p className="text-text-tertiary mt-1">Uppercase eyebrow text for future use</p>
-                    </li>
-                  </ul>
+                  <h3 className="text-sm font-semibold text-text-primary mb-4">Category Badge</h3>
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      <CategoryBadge>Design</CategoryBadge>
+                      <CategoryBadge>Development</CategoryBadge>
+                      <CategoryBadge>Research</CategoryBadge>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-xs text-text-tertiary">Variants</p>
+                      <div className="flex gap-2">
+                        <CategoryBadge variant="default">Default</CategoryBadge>
+                        <CategoryBadge variant="filled">Filled</CategoryBadge>
+                      </div>
+                    </div>
+                    <p className="text-xs text-text-tertiary">Used for: Work card project category tags</p>
+                  </div>
                 </div>
+              </div>
+            </section>
 
-                <div className="p-6 bg-background-secondary rounded-xl">
-                  <h3 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-widest">Animation Styles</h3>
-                  <ul className="space-y-3 text-sm">
-                    <li>
-                      <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.link-animate</code>
-                      <p className="text-text-tertiary mt-1">Underline animation on hover for future use</p>
-                    </li>
-                    <li>
-                      <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.animate-delay-*</code>
-                      <p className="text-text-tertiary mt-1">Animation delay utilities for future use</p>
-                    </li>
-                  </ul>
-                </div>
+            {/* Unused Styles Section */}
+            <section id="unused-styles" className="scroll-mt-24">
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">Unused Styles</h2>
+              <p className="text-text-tertiary mb-6">Tracking CSS classes defined in globals.css but not actively used</p>
 
-                <div className="p-6 bg-background-secondary rounded-xl">
-                  <h3 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-widest">Component Styles</h3>
-                  <ul className="space-y-3 text-sm">
-                    <li>
-                      <code className="bg-background-primary px-2 py-1 rounded text-xs font-mono">.section-container</code>
-                      <p className="text-text-tertiary mt-1">Section wrapper with top border for future use</p>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary">
-                  <p>These styles are kept as part of the design system. They can be removed from globals.css if you prefer to keep only active styles.</p>
-                </div>
+              <div className="p-4 bg-background-primary border border-border rounded-xl text-sm text-text-tertiary">
+                <p>No unused styles. All CSS classes in globals.css are actively used across the site.</p>
               </div>
             </section>
 

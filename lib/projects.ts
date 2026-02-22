@@ -3,9 +3,11 @@ export interface Project {
   title: string
   client: string
   years: string
+  role: string
   description: string
   categories: string[]
   coverImage: string
+  stats?: { value: string; label: string }[]
   tableOfContents?: { id: string; title: string }[]
   sections: { id: string; title: string; content: string }[]
 }
@@ -16,9 +18,14 @@ export const projects: Project[] = [
     title: 'Export Service',
     client: 'Department of Agriculture, Fisheries and Forestry (DAFF)',
     years: '2022–2025',
-    description: 'Account and access platform for Australia\'s export industry. I led end-to-end design serving 2,000+ regulated businesses, reducing registration times and simplifying compliance.',
+    role: 'Design Lead',
+    description: 'Centralised account platform for Australia\'s export industry. I led design across a 16-person team for three years, cutting registration from weeks to days for 2,000+ regulated businesses.',
     categories: ['Product', 'Design Systems', 'Government'],
     coverImage: 'https://framerusercontent.com/images/CvXpoQTp5MB9iFXaiJgtActjIY.png',
+    stats: [
+      { value: '2,000+', label: 'Regulated businesses' },
+      { value: '40%+', label: 'Faster department processing' },
+    ],
     tableOfContents: [
       { id: 'overview', title: 'Overview' },
       { id: 'challenges', title: 'Challenges' },
@@ -30,26 +37,26 @@ export const projects: Project[] = [
       {
         id: 'overview',
         title: 'Overview',
-        content: `<p>Australia's export industry depends on government certification at every step. But the systems exporters used to manage that relationship were fragmented across multiple departments, each with its own login, its own forms and no shared view of status. For the 2,000+ businesses that rely on timely approvals, delays meant cargo sitting in port.</p>
+        content: `<p>Australia's export industry depends on government certification at every step. But the systems exporters used were fragmented across departments — separate logins, separate forms, no shared view of status. For 2,000+ businesses relying on timely approvals, delays meant cargo sitting in port.</p>
 
-<p>A centralised platform was needed, but consolidating protected business data and replacing legacy systems introduced real security challenges. The core tension throughout this project was balancing security requirements with usability.</p>
+<p>A centralised platform was needed, but consolidating protected business data and replacing legacy systems introduced serious security constraints. The core tension throughout was balancing those constraints with usability.</p>
         
 <h3>What we built</h3>
-<p>The Export Service provides a single platform for exporters to manage documentation and regulatory obligations. Users can onboard, set communication preferences, verify business authorisations, manage staff permissions, update account details and track application status, streamlining previously fragmented workflows.</p>
+<p>The Export Service gives exporters a single place to manage documentation and regulatory obligations — onboarding, communication preferences, business verification, staff permissions, account details and application tracking — replacing workflows previously scattered across departments.</p>
 
 <h3>Role</h3>
-<p>I was design lead on a 16-person delivery team for three years, reporting to the Director of Digital Identity and Account. I owned the end-to-end design process, from early wireframes tested with exporters through to production specifications built within the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>.</p>
+<p>I was design lead on a 16-person delivery team for three years, reporting to the Director of Digital Identity and Account. I owned the design process end-to-end — from wireframes tested with exporters through to production specifications built within the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>.</p>
 
-<p>I shaped the product roadmap through research. Usability findings directly influenced which features were prioritised across quarters. I worked with business analysts to map complex journeys, with content designers to translate regulatory language into plain English and with developers to resolve implementation gaps in the Azure B2C authentication layer.</p>
+<p>Research shaped the product roadmap — usability findings directly influenced which features were prioritised each quarter. I worked with business analysts to map complex journeys, content designers to translate regulatory language into plain English, and developers to resolve implementation gaps in the Azure B2C authentication layer.</p>
 
 <p>I delivered responsive, WCAG 2.1 conforming interfaces aligned to the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a> and contributed new components back to the <a href="https://design-system.agriculture.gov.au/about" target="_blank" rel="noopener noreferrer">Agriculture Design System<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>.</p>`,
       },
       {
         id: 'challenges',
         title: 'Challenges',
-        content: `<p>This project operated within several layers of government requirements. All interfaces had to conform to WCAG 2.1 AA, the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a> and the Information Security Manual including Essential Eight security controls.</p>
+        content: `<p>This project operated within several layers of government requirements. All interfaces had to conform to WCAG 2.1 AA, the <a href="https://www.digital.gov.au/policy/digital-experience/digital-service-standard" target="_blank" rel="noopener noreferrer">Digital Service Standard<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, and the Information Security Manual — including Essential Eight security controls.</p>
 
-<p>The authentication UI had to be built in HTML and CSS because Azure B2C (the white-label authentication solution) couldn't use the Design System's React component library. This meant creating detailed design documentation and working closely with developers to maintain visual consistency and accessibility without our usual tooling.</p>
+<p>The authentication UI had to be built in HTML and CSS because Azure B2C (the white-label authentication solution) couldn't use the Design System's React component library. This meant producing detailed design documentation and pairing closely with developers to maintain visual consistency and accessibility without the usual component library.</p>
 
 <p>Business verification required integration with the Relationship Authorisation Manager (RAM), a whole-of-government service. The linking process involved multiple redirects between government applications, which could easily disorient users.</p>`,
       },
@@ -60,7 +67,7 @@ export const projects: Project[] = [
 
 <p>Before committing to code, I used the department's Agriculture Design System to create Figma prototypes for concept validation and testing. Because business units manage relationships with exporters, we began by validating early concepts with them.</p>
 
-<p>Next, we developed a research script and ran moderated usability sessions with exporters to gather feedback. Participants were recruited through Askable, giving us direct access to real users and ensuring insights reflected actual user needs.</p>
+<p>We then developed a research script and ran moderated usability sessions with exporters. Participants were recruited through Askable, giving us direct access to the people who would actually use the service.</p>
 
 <h3>Navigation</h3>
 <p>Users managing a single business didn't need a context switcher cluttering their interface, but users managing five entities needed to change context constantly. The challenge was supporting both without compromising either.</p>
@@ -71,27 +78,31 @@ export const projects: Project[] = [
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/0cqVpzxBz6niSB5Rzl8bV6Klzo.png" alt="Navigation design showing business context switcher" class="rounded-2xl w-full" />
+  <figcaption>Business context switcher — surfacing the active entity from persistent navigation</figcaption>
 </figure>
 
 <h3>Sign in with email</h3>
 <p>We expected most users to choose Digital ID since it offered fuller access to services. In testing, users reached for email sign-in first. It felt more familiar and less risky.</p>
 
-<p>The problem was that both options sat side by side with no indication of what each unlocked. Users assumed they were equal. Rather than pushing users toward Digital ID, we redesigned the sign-in screen with clear callouts explaining what additional access Digital ID would provide. We also worked with content designers to create help articles that walked users through the difference.</p>
+<p>The problem was that both options sat side by side with no indication of what each unlocked. Users assumed they were equal. Rather than pushing users toward Digital ID, we redesigned the sign-in screen with clear callouts explaining what additional access it would unlock. We also worked with content designers on help articles that walked users through the difference.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/gk5YVikymwVEBC9Q9d7uu215OiM.png" alt="Email sign-in interface with Digital ID callout" class="rounded-2xl w-full" />
+  <figcaption>Sign-in screen with Digital ID callout — explaining access differences before users commit</figcaption>
 </figure>
 
 <p>I translated the multi-factor authentication journey into screen designs, which were implemented using Microsoft Azure B2C (a white-label authentication solution).</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/TZrWYbpQmDPu45zxMCTyIH5NSQ.png" alt="Multi-factor authentication user journey map" class="rounded-2xl w-full" />
+  <figcaption>Multi-factor authentication journey — mapped across the Azure B2C authentication layer</figcaption>
 </figure>
 
 <p>Since we couldn't use the Design System's React UI library, the interface had to be built in HTML and CSS. I created detailed design documentation to guide development. The solution initially produced inconsistent layouts and elements, so I worked closely with developers, providing specific feedback to refine visual hierarchy, improve usability and strengthen accessibility.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/DNjkjYV8VmRb9N1TxkFDcNGQ.png" alt="Multi-factor authentication screen designs" class="rounded-2xl w-full" />
+  <figcaption>MFA screen designs — documentation for HTML/CSS implementation outside the React component library</figcaption>
 </figure>`,
       },
       {
@@ -108,10 +119,11 @@ export const projects: Project[] = [
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/68b9tVXIbMnGf8nTAxdqc6Wx0zc.png" alt="Business verification and linking interface" class="rounded-2xl w-full" />
+  <figcaption>Business verification and RAM linking — guiding users through the multi-redirect authorisation flow</figcaption>
 </figure>
 
 <h3>Content strategy</h3>
-<p>Clear guidance was critical to this project's success. Security requirements in regulatory environments are often frustrating and complex for users. By providing the right information at the right moment, we helped users understand that security controls are valuable business tools not just obstacles to government services.</p>
+<p>Clear guidance was critical. In regulatory environments, security requirements often feel frustrating and opaque. By surfacing the right information at the right moment, we helped users see security controls as tools for protecting their business — not just obstacles to accessing services.</p>
 
 <p>I collaborated with content designers to create 20+ help articles that translated technical requirements into plain language.</p>
 
@@ -122,6 +134,7 @@ export const projects: Project[] = [
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/wF3bDlQX34jUrjpkBOWKYuUmxw.png" alt="Error message design for invitation codes" class="rounded-2xl w-full" />
+  <figcaption>Error state designs — balancing security constraints with actionable guidance for legitimate users</figcaption>
 </figure>
 
 <p>Error states fell into two categories: system-generated or user-generated. This classification informed how we wrote and displayed each message, ensuring we balanced security with helpful guidance.</p>
@@ -132,13 +145,13 @@ export const projects: Project[] = [
         id: 'impact',
         title: 'Impact',
         content: `<h3>Business impact</h3>
-<p>The Export Service now serves over 2,000 regulated businesses. Secure onboarding and access pathways reduced department processing by over 40% and registration times dropped from weeks to days.</p>
+<p>The Export Service now serves over 2,000 regulated businesses. Secure onboarding reduced department processing time by over 40%, and registration dropped from weeks to days.</p>
 
 <h3>Design influence</h3>
-<p>Navigation components I designed were adopted platform-wide. Several components I contributed to the Agriculture Design System are used by other areas of the department. Accessibility practices I introduced were picked up by the development team and applied to ongoing work.</p>
+<p>Navigation components I designed were adopted platform-wide, and several contributions to the Agriculture Design System are now used by other teams across the department. Accessibility practices I introduced became standard within the development team.</p>
 
 <h3>Growth</h3>
-<p>When the Product Manager left the program, I stepped into the Experience Lead role, setting priorities and managing workflow across the 16-person delivery team. Over three years I went from Interaction Designer to leading the experience design function.</p>`,
+<p>When the Product Manager left, I stepped into the Experience Lead role — setting priorities and managing workflow across the 16-person delivery team. Over three years I moved from Interaction Designer to leading the experience design function.</p>`,
       },
     ],
   },
@@ -147,9 +160,15 @@ export const projects: Project[] = [
     title: 'Dan Picked wine subscriptions',
     client: 'Dan Murphy\'s',
     years: '2021–2022',
-    description: 'Wine subscription service launched to 500,000+ My Dan\'s members. I designed the end-to-end customer experience and an internal portal for staff to curate monthly selections.',
+    role: 'Lead Product Designer (Consultant)',
+    description: 'Wine subscription service shipped on schedule to 500,000+ My Dan\'s members. I designed the customer experience end-to-end — checkout, digital wallet, recurring payments — plus an internal curation portal for staff.',
     categories: ['E-commerce', 'Visual Design', 'Product'],
     coverImage: 'https://framerusercontent.com/images/IqYIH7nyFzuZ6wqTIJRVd9BCQXE.png',
+    stats: [
+      { value: '500,000+', label: 'Members reached' },
+      { value: '8 months', label: 'End-to-end delivery' },
+      { value: '2 audiences', label: 'Customer + staff portal' },
+    ],
     tableOfContents: [
       { id: 'overview', title: 'Overview' },
       { id: 'challenges', title: 'Challenges' },
@@ -161,9 +180,9 @@ export const projects: Project[] = [
       {
         id: 'overview',
         title: 'Overview',
-        content: `<p>The surge in online ordering during COVID-19 created an opportunity for Dan Murphy's to reimagine how customers discover wine. The business wanted to deepen engagement with its My Dan's loyalty members through a curated subscription service, giving customers a reason to return each month while introducing them to wines they wouldn't normally choose.</p>
+        content: `<p>The surge in online ordering during COVID-19 created an opportunity for Dan Murphy's to rethink how customers discover wine. The business wanted to deepen engagement with its 500,000+ My Dan's members through a curated subscription — a reason to return each month and a way to introduce wines customers wouldn't normally try.</p>
 
-<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, I partnered with the product manager to design the end-to-end experience across two audiences: customers subscribing and managing their account and internal staff curating monthly wine selections.</p>
+<p>As a design consultant from <a href="https://www.contino.io/" target="_blank" rel="noopener noreferrer">Contino<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>, I partnered with the product manager to design the experience across two audiences: customers subscribing and managing their account, and internal staff curating each month's wine selection.</p>
 
 <h3>What we built</h3>
 <ul>
@@ -173,14 +192,14 @@ export const projects: Project[] = [
 </ul>
 
 <h3>Role</h3>
-<p>I owned the design process from early wireframes through to production specifications. I ran regular critique sessions with Dan Murphy's internal design team and presented progress to stakeholders fortnightly. I advocated for a phased release strategy, launching first to a friends-and-family group before the wider rollout to 500,000+ members, incorporating feedback iteratively to reduce risk.</p>`,
+<p>I owned the design process from wireframes through to production specifications. I ran regular critique sessions with Dan Murphy's internal design team and presented to stakeholders fortnightly. I advocated for a phased release — launching first to a friends-and-family group before the wider rollout to 500,000+ members — so the team could incorporate feedback and reduce risk before scale.</p>`,
       },
       {
         id: 'challenges',
         title: 'Challenges',
-        content: `<p>This project operated under several pressures that shaped the design approach throughout.</p>
+        content: `<p>This project operated under several pressures that shaped the design approach.</p>
 
-<p><strong>Speed to market.</strong> The subscription needed to launch while online ordering demand was high. Every design decision was weighed against delivery timeline. This meant working closely with developers to understand what was feasible within each sprint and sometimes simplifying flows to ship a solid experience rather than a perfect one.</p>
+<p><strong>Speed to market.</strong> The subscription needed to launch while online ordering demand was high. Every design decision was weighed against the delivery timeline. This meant working closely with developers to understand what was feasible each sprint, and sometimes simplifying flows to ship a solid experience rather than a perfect one.</p>
 
 <p><strong>New payment platform.</strong> The business was integrating a recurring payment provider it hadn't used before. The checkout and wallet had to accommodate the platform's capabilities and limitations, which weren't always clear upfront. I worked with the engineering team to map technical constraints early so we could design around them rather than discover issues late in development.</p>
 
@@ -200,15 +219,17 @@ export const projects: Project[] = [
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/ZLluDzThN6hfyGWAxvLB4c98QqU.png" alt="Subscription checkout wizard showing plan selection and payment steps" class="rounded-2xl w-full" />
+  <figcaption>Subscription checkout wizard — plan selection, delivery and payment in a single focused flow</figcaption>
 </figure>
 
 <h3>Wizard structure</h3>
-<p>I structured the checkout as a step-by-step wizard rather than a single long form. Each step had a focused task: choose your plan, set delivery preferences, enter payment. This reduced cognitive load and gave users a sense of progress. A persistent summary sidebar showed selections so far, reinforcing confidence as they moved through the flow.</p>
+<p>I structured the checkout as a step-by-step wizard rather than a single long form. Each step had one task: choose your plan, set delivery preferences, enter payment. This reduced cognitive load and gave users a clear sense of progress. A persistent summary sidebar showed selections so far, reinforcing confidence at each step.</p>
 
 <p>The wizard also needed to handle returning users who wanted to modify their subscription. Rather than forcing them back through the full flow, I designed direct entry points to individual steps — change your plan, update delivery, swap payment — accessible from the subscription dashboard.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/ndC8308WUM4XjjQK7X5lTbGyHag.png" alt="Design iterations showing checkout flow progression and refinement" class="rounded-2xl w-full" />
+  <figcaption>Checkout flow iterations — refining the wizard structure across eight months of delivery</figcaption>
 </figure>`,
       },
       {
@@ -217,7 +238,7 @@ export const projects: Project[] = [
         content: `<p>The subscription's value depended on the quality of each month's wine selection. If staff couldn't curate efficiently, the customer experience would suffer — so the internal portal wasn't a back-office afterthought but a core part of the product.</p>
 
 <h3>What staff needed</h3>
-<p>Through conversations with the Dan Murphy's team, the clearest need was flexibility. Staff needed to swap wines in and out of a selection quickly — whether because of stock shortages, seasonal availability or a last-minute quality decision. The original assumption was a simple list-based picker, but feedback revealed that staff also needed to adjust descriptions, reorder selections and handle edge cases like a wine being discontinued after a selection was already built.</p>
+<p>Through conversations with the Dan Murphy's team, one need stood out: flexibility. Staff needed to swap wines in and out of a selection quickly — whether for stock shortages, seasonal changes, or a last-minute quality call. The original assumption was a simple list-based picker, but feedback revealed that staff also needed to adjust descriptions, reorder selections and handle edge cases like a wine being discontinued after a selection was already built.</p>
 
 <p>I designed the curation interface around a card-based layout where each wine in a selection could be individually edited, reordered, or replaced without disrupting the rest. A status indicator showed whether a selection was in draft, ready for review, or published, giving staff confidence about what customers would see and when.</p>
 
@@ -228,16 +249,17 @@ export const projects: Project[] = [
         id: 'impact',
         title: 'Impact',
         content: `<h3>Delivery</h3>
-<p>Over 8 months, the team shipped a complete subscription product — checkout wizard, digital wallet, recurring payments and staff curation portal — on schedule and within the market window the business needed. The phased release to a friends-and-family group before the full rollout caught usability issues early and gave the team confidence in the payment integration before it reached the wider member base.</p>
+<p>Over eight months, the team shipped a complete subscription product — checkout, digital wallet, recurring payments and staff curation portal — on schedule and within the market window the business needed. The phased release caught usability issues early and gave the team confidence in the payment integration before it reached 500,000+ members.</p>
 
 <h3>Product quality</h3>
-<p>The digital wallet's handling of card management edge cases — switching, removing and replacing active payment methods — meant fewer failed charges and support tickets at launch. The staff portal's preview functionality reduced the gap between what was curated internally and what customers received, leading to faster monthly turnaround and fewer last-minute corrections.</p>
+<p>Designing for card management edge cases — switching, removing and replacing active payment methods — meant fewer failed charges and support tickets at launch. The staff portal's preview functionality closed the gap between internal curation and the customer-facing product, leading to faster monthly turnaround and fewer corrections before publish.</p>
 
 <h3>Approach</h3>
-<p>Advocating for the phased release strategy and investing in the staff portal early were the two decisions that shaped the project's outcome most. Both required making the case to stakeholders that short-term effort would reduce long-term risk — a pattern I've carried into subsequent projects.</p>
+<p>Two decisions shaped the project's outcome most: advocating for a phased release, and investing in the staff portal early. Both required convincing stakeholders that short-term effort would reduce long-term risk — a pattern I have carried into every project since.</p>
 
 <figure class="my-8">
   <img src="https://framerusercontent.com/images/WFTCLQ2dT6CqacggV7JodMfAnok.png" alt="The launched Dan Picked subscription product" class="rounded-2xl w-full" />
+  <figcaption>The launched Dan Picked subscription — shipped on schedule to 500,000+ My Dan's members</figcaption>
 </figure>`,
       },
     ],

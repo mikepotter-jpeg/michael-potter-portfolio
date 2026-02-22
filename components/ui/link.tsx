@@ -3,7 +3,7 @@ import { ReactNode, ComponentProps } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 const linkVariants = cva(
-  'inline-flex items-center transition-fast',
+  'group inline-flex items-center transition-fast [&_svg]:transition-transform [&_svg]:duration-150 [&_svg]:ease-out',
   {
     variants: {
       variant: {
@@ -12,7 +12,7 @@ const linkVariants = cva(
       },
       size: {
         default: 'gap-2 text-body',
-        small: 'gap-1.5 text-ui',
+        small: 'gap-1.5 text-[0.875rem] leading-none',
       },
       underline: {
         true: '',

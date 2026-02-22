@@ -1,10 +1,106 @@
 @import "tailwindcss";
-@config "../tailwind.config.ts";
+@plugin "tailwindcss-animate";
+
+/* Touch device variant — enables touch:* utilities for coarse pointer devices */
+@custom-variant touch (@media (pointer: coarse));
+
+@theme {
+  /* Colors */
+  --color-background-primary: #F8F6F3;
+  --color-background-secondary: #FFFFFF;
+  --color-text-primary: #2A3132;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #5F6566;
+  --color-accent: #555B5C;
+  --color-accent-hover: #3F4445;
+  --color-accent-light: rgba(85, 91, 92, 0.2);
+  --color-accent-lighter: rgba(85, 91, 92, 0.1);
+  --color-border: #CCCCCC;
+  --color-border-light: #E5E5E5;
+  --color-focus-ring: #7C3AED;
+
+  /* Font families */
+  --font-family-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-family-serif: var(--font-figtree), system-ui, sans-serif;
+  --font-family-mono: var(--font-figtree), system-ui, sans-serif;
+
+  /* Font sizes — headings */
+  --text-heading-display: 4rem;
+  --text-heading-display--line-height: 1.05;
+  --text-heading-display--letter-spacing: -0.02em;
+
+  --text-heading-1: 3rem;
+  --text-heading-1--line-height: 1.1;
+
+  --text-heading-2: 2.5rem;
+  --text-heading-2--line-height: 1.15;
+
+  --text-heading-3: 2rem;
+  --text-heading-3--line-height: 1.25;
+
+  --text-heading-4: 1.5rem;
+  --text-heading-4--line-height: 1.35;
+
+  /* Font sizes — body */
+  --text-body-xl: 1.25rem;
+  --text-body-xl--line-height: 1.6;
+  --text-body-xl--letter-spacing: -0.01em;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.7;
+  --text-body-lg--letter-spacing: -0.01em;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.75;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.6;
+
+  /* Max widths — use --container-* for max-w-* utilities in Tailwind v4 */
+  --container-site: 1280px;
+  --container-content: 1048px;
+
+  /* Spacing — section */
+  --spacing-section-xs: 3rem;
+  --spacing-section-sm: 4rem;
+  --spacing-section-md: 5rem;
+  --spacing-section-lg: 7rem;
+  --spacing-section-xl: 8rem;
+
+  /* Spacing — card */
+  --spacing-card-sm: 1.5rem;
+  --spacing-card: 2rem;
+  --spacing-card-lg: 2.5rem;
+  --spacing-card-xl: 3rem;
+
+  /* Border radius */
+  --radius-button: 0.375rem;
+  --radius-card: 1.5rem;
+  --radius-card-lg: 1.75rem;
+
+  /* Transition durations */
+  --default-transition-duration: 200ms;
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-medium: 300ms;
+  --duration-400: 400ms;
+  --duration-slow: 500ms;
+}
 
 @layer base {
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  /* Figtree for all headings (h1-h4) */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-figtree, system-ui, sans-serif);
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -15,21 +111,6 @@
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-left: env(safe-area-inset-left, 0px);
   --safe-area-right: env(safe-area-inset-right, 0px);
-}
-
-/* Geist Mono font for display headings (H1 & H2) */
-h1,
-h2 {
-  font-family: var(--font-geist-mono, monospace);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-}
-
-/* Geist Sans headings (H3 & H4) — semibold for hierarchy */
-h3,
-h4 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
 }
 
 body {
@@ -82,13 +163,13 @@ textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px theme('colors.focus.ring') !important;
-  border-radius: theme('borderRadius.button');
+  box-shadow: 0 0 0 2px rgb(var(--background-rgb)), 0 0 0 4px var(--color-focus-ring) !important;
+  border-radius: var(--radius-button);
 }
 
 /* Links get outline-style focus without border-radius */
 a:focus-visible {
-  outline: 2px solid theme('colors.focus.ring');
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -96,22 +177,29 @@ a:focus-visible {
 [role="menuitem"]:focus-visible,
 [role="menuitemcheckbox"]:focus-visible,
 [role="menuitemradio"]:focus-visible {
-  outline: 2px solid theme('colors.focus.ring') !important;
+  outline: 2px solid var(--color-focus-ring) !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
 
+/* Button underline on hover - explicit styling for text-decoration */
+button:hover,
+a[class*="button"]:hover,
+[role="button"]:hover {
+  text-decoration-skip-ink: auto;
+}
+
 /* Card hover effect - consistent elevation, active state for touch feedback */
 @utility card-hover {
-  @apply transition-medium;
+  @apply shadow-sm transition-medium;
 }
 
 .card-hover:hover {
-  @apply shadow-xl -translate-y-1;
+  @apply shadow-lg -translate-y-0.5;
 }
 
 .card-hover:active {
-  @apply translate-y-0 shadow-lg;
+  @apply translate-y-0 shadow-md;
 }
 
 /* Fade in animation - disabled when user prefers reduced motion */
@@ -143,15 +231,15 @@ a:focus-visible {
 /* Default link styling - underline that passes behind descenders */
 a {
   text-decoration: underline;
-  text-decoration-color: theme('colors.border.DEFAULT');
-  text-underline-offset: 0.15em;
+  text-decoration-color: var(--color-border-light);
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
   text-decoration-skip-ink: auto;
-  transition: text-decoration-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a:hover {
-  text-decoration-color: theme('colors.accent.DEFAULT');
+  text-decoration-color: currentColor;
 }
 
 /* Remove underline for interactive components */
@@ -193,22 +281,12 @@ a svg {
   @apply text-body-lg md:text-body-xl leading-relaxed text-text-primary max-w-prose;
 }
 
-/* Small text */
-.text-small {
-  @apply text-body-sm leading-relaxed text-text-secondary max-w-prose;
-}
-
-/* Section label - uppercase eyebrow text */
-.section-label {
-  @apply text-ui uppercase tracking-widest text-text-tertiary font-medium;
-}
 
 /* ===========================================
    PROSE CONTENT BLOCKS
    =========================================== */
 
 .prose-custom {
-  @apply max-w-prose;
 
   /* Headings */
   & h2 {
@@ -276,7 +354,7 @@ a svg {
 
   /* Figures and images */
   & figure {
-    @apply my-10;
+    @apply my-12;
   }
 
   & figure img {
@@ -284,7 +362,7 @@ a svg {
   }
 
   & figcaption {
-    @apply text-ui-sm text-text-tertiary mt-3 text-center;
+    @apply text-body-sm text-text-tertiary mt-4 text-center;
   }
 
   /* Horizontal rules */
@@ -294,7 +372,7 @@ a svg {
 
   /* Code */
   & code {
-    @apply bg-background-secondary px-1.5 py-0.5 rounded text-ui font-mono;
+    @apply bg-background-secondary px-1.5 py-0.5 rounded text-[0.875rem] leading-none font-mono;
   }
 
   & pre {
@@ -309,4 +387,21 @@ a svg {
 /* Spacing between consecutive paragraphs in articles */
 article p + p {
   @apply mt-0;
+}
+
+/* ===========================================
+   SUBTLE GRAIN TEXTURE OVERLAY
+   =========================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
 }

@@ -51,7 +51,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   return (
     <nav aria-label="Page contents" className="sticky top-32">
       {/* Section links */}
-      <ul className="space-y-1 text-ui">
+      <ul className="space-y-1 text-[0.875rem] leading-none">
         {/* Back to top */}
         <li>
           <a
@@ -70,9 +70,9 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
               <a
                 href={`#${item.id}`}
                 aria-current={isActive ? 'true' : undefined}
-                className={`no-underline block py-1.5 transition-fast leading-snug ${
+                className={`block py-1.5 transition-fast leading-snug no-underline ${
                   isActive
-                    ? 'text-text-primary font-medium'
+                    ? 'text-text-primary font-medium border-l-2 border-text-primary pl-3 -ml-3'
                     : 'text-text-tertiary hover:text-text-primary'
                 }`}
               >

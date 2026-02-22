@@ -22,7 +22,6 @@ This document defines the design system tokens, patterns, and guidelines for the
 ```tsx
 bg-background-primary    // #F8F6F3 - Main page background (warm off-white)
 bg-background-secondary  // #FFFFFF - Card/section backgrounds (pure white)
-bg-background-accent     // #F3FFE3 - Accent background (light green, if needed)
 ```
 
 ### Text Colors
@@ -95,19 +94,19 @@ p-card-xl   // 3rem (48px) - Extra large cards
 
 ### Heading Sizes
 ```tsx
-text-hero        // 4rem - Large hero headings (64px)
-text-heading-1   // 3.5rem - H1, page titles (56px)
-text-heading-2   // 3rem - H2, section headings (48px)
-text-heading-3   // 2rem - H3, subsection headings (32px)
-text-heading-4   // 1.5rem - H4, smaller headings (24px)
+text-heading-display  // 4rem (64px) - Display/hero headings, lineHeight 1.05
+text-heading-1        // 3rem (48px) - H1, page titles, lineHeight 1.1
+text-heading-2        // 2.5rem (40px) - H2, section headings, lineHeight 1.15
+text-heading-3        // 2rem (32px) - H3, subsection headings, lineHeight 1.25
+text-heading-4        // 1.5rem (24px) - H4, smaller headings, lineHeight 1.35
 ```
 
 ### Body Text Sizes
 ```tsx
-text-body-xl  // 1.5rem (24px) - Extra large body, lead paragraphs
-text-body-lg  // 1.25rem (20px) - Large body text
-text-body     // 1.125rem (18px) - Standard body text
-text-body-sm  // 1rem (16px) - Small body text
+text-body-xl  // 1.25rem (20px) - Extra large body, lead paragraphs
+text-body-lg  // 1.125rem (18px) - Large body text
+text-body     // 1rem (16px) - Standard body text
+text-body-sm  // 0.875rem (14px) - Small body text
 ```
 
 ### UI Text Sizes
@@ -121,7 +120,16 @@ text-ui-sm  // 0.8125rem (13px) - Small UI text
 .text-lead    // Lead paragraph style (xl-2xl, primary color)
 .text-body    // Standard body text (lg, secondary color)
 .text-small   // Small text (base, secondary color)
-.section-label // Uppercase labels (ui, tertiary, uppercase, wide tracking)
+.section-label // Eyebrow labels (ui, mono, medium, tertiary)
+               // Used for: Footer section headings, page section labels
+```
+
+**UI Components:**
+```tsx
+<CategoryBadge />      // Small mono badges for project categories
+                       // File: components/ui/category-badge.tsx
+                       // Variants: "default" (transparent), "filled"
+                       // Used for: Work card project category tags
 ```
 
 **Usage Guidelines:**
@@ -254,7 +262,7 @@ When creating or updating components:
 ```tsx
 <section className="min-h-[70vh] flex items-center justify-center py-section-lg md:py-section-xl">
   <div className="w-full max-w-container mx-auto px-6">
-    <h1 className="text-heading-2 md:text-heading-1 lg:text-hero">
+    <h1 className="text-heading-2 md:text-heading-1 lg:text-heading-display">
       Hero Heading
     </h1>
   </div>

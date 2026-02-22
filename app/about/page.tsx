@@ -3,8 +3,8 @@ import AboutPageClient from '@/components/about-page-client'
 import ContactSection from '@/components/contact-section'
 
 export const metadata: Metadata = {
-  title: 'About Me | Michael Potter',
-  description: 'Product designer with 5+ years experience building digital products across government, energy and retail.',
+  title: 'About — Michael Potter, Product Designer',
+  description: 'Product designer with 6+ years experience building enterprise platforms across government, energy and retail.',
 }
 
 export default function AboutPage() {
@@ -14,7 +14,6 @@ export default function AboutPage() {
       <ContactSection
         heading="Let's work together"
         description="If you're building something meaningful and need a thoughtful design partner, I'd love to hear from you."
-        className="pt-section-lg md:pt-section-lg pb-12 bg-background-primary"
       />
     </>
   )

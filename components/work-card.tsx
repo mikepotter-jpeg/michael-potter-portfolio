@@ -3,6 +3,7 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { CategoryBadge } from '@/components/ui/category-badge'
 
 interface WorkCardProps {
   slug: string
@@ -47,34 +48,33 @@ export default function WorkCard({ slug, title, description, categories = [], co
 
         {/* Content */}
         <div className="lg:w-1/2 p-card md:p-card-lg lg:p-card-xl flex flex-col justify-center relative z-10">
-          <div className="space-y-6">
+          <div className="space-y-5">
             {/* Categories */}
             {categories.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
-                  <span
-                    key={category}
-                    className="px-3 py-1 text-ui bg-background-primary rounded-full text-text-tertiary"
-                  >
+                  <CategoryBadge key={category}>
                     {category}
-                  </span>
+                  </CategoryBadge>
                 ))}
               </div>
             )}
 
-            <div className="space-y-4">
-              <h3 className="text-heading-4 md:text-heading-3 group-hover:text-accent transition-medium">
-                {title}
+            <div className="space-y-3">
+              <h3 className="text-heading-4 md:text-heading-3 transition-medium">
+                <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1.5px] bg-left-bottom bg-no-repeat transition-[background-size] duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:bg-[length:100%_1.5px]">
+                  {title}
+                </span>
               </h3>
-              <p className="text-body text-text-secondary leading-relaxed">
+              <p className="text-body text-text-secondary leading-relaxed line-clamp-3">
                 {description}
               </p>
             </div>
 
             {/* View Project - styled as link, parent card handles navigation */}
-            <span className="inline-flex items-center gap-1 pt-2 font-medium text-text-primary group-hover:text-accent transition-medium">
+            <span className="inline-flex items-center gap-1.5 pt-1 text-[0.875rem] leading-none font-medium text-text-primary group-hover:text-accent transition-medium">
               View project
-              <ArrowRight size={16} />
+              <ArrowRight size={14} className="transition-transform duration-300 ease-out group-hover:translate-x-1" />
             </span>
           </div>
         </div>
