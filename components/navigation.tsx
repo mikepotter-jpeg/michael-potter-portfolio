@@ -85,6 +85,7 @@ export default function Navigation() {
       </a>
 
       <header
+        {...(!isVisible && { inert: true })}
         className={cn(
           "sticky top-0 z-50 w-full overflow-x-hidden border-b border-border/40 bg-background-primary/95 backdrop-blur supports-[backdrop-filter]:bg-background-primary/60 focus-within:translate-y-0 focus-within:opacity-100 pt-[var(--safe-area-top)]",
           // Only animate on homepage scroll reveal, not on page navigation

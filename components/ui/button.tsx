@@ -23,6 +23,13 @@ const buttonVariants = cva(
         icon: "h-10 w-10 touch:min-h-12 touch:min-w-12 [&_svg]:size-4 border border-border rounded-lg",
       },
     },
+    compoundVariants: [
+      {
+        variant: "link",
+        size: "icon",
+        class: "hover:bg-accent-lighter hover:text-accent",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",

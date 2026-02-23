@@ -17,7 +17,7 @@ export default function NextProjectCard({ slug, title, description, coverImage }
       aria-label={`View ${title} project`}
     >
       <div className="flex items-center gap-3">
-        <span className="text-[0.875rem] leading-none font-medium text-text-tertiary tracking-wide">Up next</span>
+        <span className="text-[0.875rem] leading-none font-normal tracking-wide uppercase text-text-primary">Up next</span>
         <ArrowRight size={14} className="text-text-tertiary transition-transform duration-300 ease-out group-hover:translate-x-1" />
       </div>
 

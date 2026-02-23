@@ -131,6 +131,8 @@ async function main() {
       const page = await context.newPage()
       try {
         const res = await page.goto(fullUrl, { waitUntil: 'networkidle', timeout: 15000 })
+        // Wait for animations to complete before running axe (avoids contrast false positives)
+        await page.waitForTimeout(2500)
         if (!res || res.status() >= 400) {
           console.error(`Warning: ${fullUrl} returned ${res?.status() ?? 'error'} - skipping`)
           await page.close()

@@ -24,7 +24,7 @@ export default function Home() {
               <motion.span
                 key={i}
                 className="inline-block mr-[0.3em]"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
@@ -84,7 +84,7 @@ export default function Home() {
             className="mb-12 md:mb-16"
             {...scrollFadeInUp}
           >
-            <span className="text-[0.875rem] leading-none font-medium text-text-tertiary tracking-wide">Selected Work</span>
+            <span className="text-[0.875rem] leading-none font-normal tracking-wide uppercase text-text-primary">Selected Work</span>
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1 mt-3">
               What I&apos;ve built
             </h2>
@@ -133,7 +133,7 @@ export default function Home() {
             className="mb-12 md:mb-16"
             {...scrollFadeInUp}
           >
-            <span className="text-[0.875rem] leading-none font-medium text-text-tertiary tracking-wide">Testimonials</span>
+            <span className="text-[0.875rem] leading-none font-normal tracking-wide uppercase text-text-primary">Testimonials</span>
             <h2 className="text-heading-3 md:text-heading-2 lg:text-heading-1 mt-3">
               Kind words
             </h2>

@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
-import NextLink from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProjectBySlug, getAllProjects } from '@/lib/projects'
 import TableOfContents from '@/components/table-of-contents'
 import ContactSection from '@/components/contact-section'
-import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import NextProjectCard from '@/components/next-project-card'
-import { ChevronUp } from 'lucide-react'
+import WorkHeroSection from '@/components/work-hero-section'
+import WorkContentSection from '@/components/work-content-section'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -53,65 +52,14 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section id="top" className="py-section-md md:py-section-lg bg-background-secondary scroll-mt-20">
-        <Container>
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-3 text-[0.875rem] leading-none text-text-tertiary mb-8" aria-label="Breadcrumb">
-            <NextLink href="/#work-section" className="hover:text-text-primary transition-fast">
-              My work
-            </NextLink>
-            <span aria-hidden="true">›</span>
-            <span className="text-text-primary">{project.title}</span>
-          </nav>
-
-          <header className="max-w-2xl xl:max-w-[740px] space-y-6">
-            <h1 className="text-heading-2 md:text-heading-1">
-              {project.title}
-            </h1>
-
-            <p className="text-lead text-text-secondary">
-              {project.description}
-            </p>
-
-            {/* Meta info */}
-            <dl className="flex flex-wrap gap-16 pt-4">
-              <div>
-                <dt className="text-[0.875rem] leading-none font-semibold text-text-primary mb-1">Client</dt>
-                <dd className="text-[0.875rem] leading-none text-text-secondary">{project.client}</dd>
-              </div>
-              <div>
-                <dt className="text-[0.875rem] leading-none font-semibold text-text-primary mb-1">Timeline</dt>
-                <dd className="text-[0.875rem] leading-none text-text-secondary">{project.years}</dd>
-              </div>
-              <div>
-                <dt className="text-[0.875rem] leading-none font-semibold text-text-primary mb-1">Role</dt>
-                <dd className="text-[0.875rem] leading-none text-text-secondary">{project.role}</dd>
-              </div>
-            </dl>
-
-            {/* Impact stats */}
-            {project.stats && project.stats.length > 0 && (
-              <div className="flex flex-wrap items-center gap-0 pt-4 border-t border-border-light">
-                {project.stats.map((stat, index) => (
-                  <div key={stat.label} className="flex items-center">
-                    <div className="py-4 pr-10">
-                      <div className="text-heading-3 md:text-heading-2 font-sans font-bold text-text-primary leading-none mb-2">
-                        {stat.value}
-                      </div>
-                      <div className="text-[0.875rem] leading-none text-text-tertiary">
-                        {stat.label}
-                      </div>
-                    </div>
-                    {index < project.stats!.length - 1 && (
-                      <div className="h-12 w-px bg-border-light mr-10 self-center" aria-hidden="true" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </header>
-        </Container>
-      </section>
+      <WorkHeroSection
+        title={project.title}
+        description={project.description}
+        client={project.client}
+        years={project.years}
+        role={project.role}
+        stats={project.stats}
+      />
 
       {/* Cover Image */}
       {project.coverImage && (
@@ -142,7 +90,7 @@ export default async function ProjectPage({ params }: Props) {
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="no-underline block py-1.5 min-h-[44px] leading-snug text-text-tertiary hover:text-text-primary transition-fast"
+                      className="underline-offset-4 hover:underline flex items-center min-h-[44px] py-1.5 transition-fast leading-snug text-text-tertiary hover:text-text-primary"
                     >
                       {item.title}
                     </a>
@@ -167,23 +115,14 @@ export default async function ProjectPage({ params }: Props) {
 
             {/* Main content */}
             <div className="min-w-0 w-full max-w-2xl xl:max-w-[740px] space-y-20">
-              {project.sections.map((section) => (
-                <article key={section.id} id={section.id} className="scroll-mt-24">
-                  <h2 className="text-heading-3 md:text-heading-2 mb-8">
-                    {section.title}
-                  </h2>
-                  <div 
-                    className="prose-custom"
-                    dangerouslySetInnerHTML={{ __html: section.content }}
-                  />
-                  {/* Back to top link - visible on smaller screens without sidebar */}
-                  <Button asChild variant="link" size="sm" className="xl:hidden mt-10">
-                    <a href="#top" className="no-underline">
-                      Top
-                      <ChevronUp size={14} className="group-hover:scale-110" />
-                    </a>
-                  </Button>
-                </article>
+              {project.sections.map((section, index) => (
+                <WorkContentSection
+                  key={section.id}
+                  id={section.id}
+                  title={section.title}
+                  content={section.content}
+                  index={index}
+                />
               ))}
             </div>
           </div>
